@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="ipdoc" placeholder="Nhập độ C"><br>
+    <input type="button" onclick="chuyendoi()" value="Click để chuyển đổi">
+    <script>
+        function chuyendoi(){
+            let doc,dof;
+            doc = parseInt(document.getElementById("ipdoc").value);
+            dof = ((9*doc) / 5 +32);
+            document.write(+doc + " độ C -> " +dof +" độ F");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính diện tích hình tròn</title>
+</head>
+<body>
+    <input type="text" id="ipr" placeholder="Nhập bán kính để tính diện tích!!" style="min-width: 200px">
+    <input type="button" onclick="tinhdientich()" value="CLick để tính nè!">
+    <script>
+        function tinhdientich() {
+        let r,dt;
+        let pi = 3.14;
+        r = parseInt(document.getElementById('ipr').value);
+        dt = pi*r*r
+            document.write("Diện tích hình tròn là: "+dt);
+        }
+    </script>
+</body>
+</html>

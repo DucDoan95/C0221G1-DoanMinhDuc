@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td{
+            border: gray solid;
+        }
+        input{
+            width: 100%;
+            height: 100%
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 730px;height: 420px; position: absolute; border: gray solid" >
+        <div style="width: 700px;height: 80px ;margin: 50px 0 0 10px; position: absolute">
+            <input disabled type="text" id="bangtinh" style="width: 699px; height: 79px ;border: gray solid; text-align: right; font-size: 50px">
+        </div>
+        <div style="width: 700px;height: 250px ;margin: 150px 0 0 10px; text-align: center; border: gray solid">
+            <form name="">
+            <table style="width: 700px; height: 250px; border: gray solid">
+                <tr>
+                    <td><input type="button" onclick="rad()" value="Rad" ></td>
+                    <td><input type="button" onclick="icon()" value="icon"></td>
+                    <td><input type="button" onclick="giaithua()" value="x!" ></td>
+                    <td><input type="button" onclick="ngoactrai()" value="(" ></td>
+                    <td><input type="button" onclick="ngoacphai()" value=")" ></td>
+                    <td><input type="button" onclick="phantram()" value="%" ></td>
+                    <td><input type="button" onclick="ac()" value="AC" ></td>
+                </tr>
+                <tr>
+                    <td>lnv</td>
+                    <td>sin</td>
+                    <td>ln</td>
+                    <td><input type="button" onclick="bay()" value="7" ></td>
+                    <td><input type="button" onclick="tam()" value="8" ></td>
+                    <td><input type="button" onclick="chin()" value="9" ></td>
+                    <td><input type="button" onclick="chia()" value="/" ></td>
+                </tr>
+                <tr>
+                    <td>&pi;</td>
+                    <td>cos</td>
+                    <td>log</td>
+                    <td><input type="button" onclick="bon()" value="4" ></td>
+                    <td><input type="button" onclick="nam()" value="5" ></td>
+                    <td><input type="button" onclick="sau()" value="6" ></td>
+                    <td><input type="button" onclick="nhan()" value="x" ></td>
+                </tr>
+                <tr>
+                    <td>e</td>
+                    <td>tan</td>
+                    <td>&radic;</td>
+                    <td><input type="button" onclick="mot()" value="1" ></td>
+                    <td><input type="button" onclick="hai()" value="2" ></td>
+                    <td><input type="button" onclick="ba()" value="3" ></td>
+                    <td><input type="button" onclick="tru()" value="-" ></td>
+                </tr>
+                <tr>
+                    <td>Ans</td>
+                    <td>EXP</td>
+                    <td>x^y</td>
+                    <td><input type="button" onclick="khong()" value="0" ></td>
+                    <td><input type="button" onclick="phay()" value="." ></td>
+                    <td><input type="button" onclick="bang()" value="=" ></td>
+                    <td><input type="button" onclick="cong()" value="+" ></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+<script >
+    function mot() {
+        document.getElementById('bangtinh').value = 1;
+    }
+
+</script>
+</body>
+</html>

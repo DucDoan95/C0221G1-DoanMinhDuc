@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="inputResult" placeholder="Kết quả đây nè !!!" style="min-width: 350px"><br>
+    <input type="text" id="inputA" placeholder="Nhập số bất kỳ">
+    <input type="text" id="inputB" placeholder="Nhập số bất kỳ"><br>
+    <input type="button" onclick="eventAdd()" value="Addition(+)">
+    <input type="button" onclick="eventSub()" value="Subtraction(-)">
+    <input type="button" onclick="eventMul()" value="Multiplication(*)">
+    <input type="button" onclick="eventDiv()" value="Division(/)">
+    <script>
+
+        function eventAdd() {
+            let soA,soB,result;
+            soA = parseInt(document.getElementById('inputA').value);
+            soB = parseInt(document.getElementById('inputB').value);
+            result = soA + soB;
+            document.getElementById('inputResult').value=result;
+        }
+        function eventSub() {
+            let soA,soB,result;
+            soA = parseInt(document.getElementById('inputA').value);
+            soB = parseInt(document.getElementById('inputB').value);
+            result = soA - soB;
+            document.getElementById('inputResult').value=result;
+        }
+        function eventMul() {
+            let soA,soB,result;
+            soA = parseInt(document.getElementById('inputA').value);
+            soB = parseInt(document.getElementById('inputB').value);
+            result = soA * soB;
+            document.getElementById('inputResult').value=result;
+        }
+        function eventDiv() {
+            let soA,soB,result;
+            soA = parseInt(document.getElementById('inputA').value);
+            soB = parseInt(document.getElementById('inputB').value);
+            result = soA / soB;
+            document.getElementById('inputResult').value=result;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="ly" placeholder="Nhập điểm lý">
+    <input type="text" id="hoa" placeholder="Nhập điểm hóa">
+    <input type="text" id="sinh" placeholder="Nhập điểm sinh">
+    <input type="button" onclick="tinh_tb()" value="Cick để tính điểm TB">
+    <script>
+        //C1
+        let iply, iphoa, ipsinh, tb;
+        iply = prompt("Nhập điểm lý: ");
+        iphoa = prompt("Nhập điểm hóa: ");
+        ipsinh = prompt("Nhập điểm sinh: ");
+        tb = (parseInt(ipsinh)+parseInt(iphoa)+parseInt(iply))/3;
+         alert("Điểm trung bình của bạn là: " +tb);
+        //C2
+       function tinh_tb() {
+           let diemly;
+           let diemhoa;
+           let diemsinh;
+           let diemtb;
+           diemly = parseInt(document.getElementById("ly").value);
+           diemhoa = parseInt(document.getElementById("hoa").value);
+           diemsinh = parseInt(document.getElementById("sinh").value);
+           diemtb = (diemsinh+diemly+diemhoa)/3;
+           document.write("Điểm trung bình của bạn là: " +diemtb);
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        <table style="width: 600px">
+            <tr>
+                <th>Ammount</th>
+                <th>Form Currency</th>
+                <th>To Currency</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th><input type="text" id="amount"></th>
+                <th>
+                    <select style="width: 100px" id="selectform">
+                        <option value="VND">VND</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </th>
+                <th>
+                    <select style="width: 100px" id="selectto">
+                        <option value="VND">VND</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </th>
+                <th><input type="button" onclick="convert()" value="Convert" style="background-color: #ff99f7"></th>
+            </tr>
+        </table>
+        <label><b>Quy đổi thành: </b></label>
+        <input type="text" id="kq" placeholder="Nơi trả kết quả" style="min-width: 200px">
+        <script>
+            function convert() {
+                let form,to,tien,quydoi;
+                form = document.getElementById('selectform').value;
+                to = document.getElementById('selectto').value;
+                tien = document.getElementById('amount').value;
+                if(form =='VND' && to == 'VND'){
+                  //  document.write(+tien+" "+form+" quy đổi thành: " +tien+"    "+to);
+                    document.getElementById("kq").value=tien +' VND';
+                }
+                else
+                    if(form =='USD' && to == 'USD'){
+                        document.getElementById("kq").value=tien +' USD';
+                    }
+                    else
+                    if(form =='USD' && to == 'VND'){
+                        quydoi = tien * 23000;
+                        document.getElementById("kq").value=quydoi + ' VND';
+                    }
+                    else
+                    {
+                            quydoi = tien / 23000;
+                        // document.write(+tien+" "+form+" quy đổi thành: " +quydoi+" "+to);
+                        document.getElementById("kq").value=quydoi + ' USD';
+                        }
+
+            }
+        </script>
+    </form>
+</body>
+</html>
