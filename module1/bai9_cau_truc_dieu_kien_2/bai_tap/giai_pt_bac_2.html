@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let soA = parseInt(prompt("Nhập hệ số a: "));
+    let soB = parseInt(prompt("Nhập hệ số b: "));
+    let soC = parseInt(prompt("Nhập hệ số c: "));
+    let delta = soB*soB - 4*soA*soC
+    if (delta < 0){
+        alert("Phương trình vô nghiệm!")
+    } else if (delta == 0){
+        x = -soB/(2*soA)
+        alert("Phương trình có nghiệm kép là x1 = " + "x2 = " + x)
+    }else if (delta > 0){
+        x1 = (-soB + Math.sqrt(delta))/(2*soA)
+        x2 = (-soB - Math.sqrt(delta))/(2*soA)
+        alert("Phương trình có hai nghiệm phân biệt là x1 = " + x1 + " và x2 = " + x2)
+    }
+</script>
+</body>
+</html>

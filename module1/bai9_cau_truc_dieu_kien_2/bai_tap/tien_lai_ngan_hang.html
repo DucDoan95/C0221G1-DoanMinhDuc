@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let soTien = parseInt(prompt("Nhập vào số tiền: "))
+    let tongtien = soTien;
+    let soThang = parseInt(prompt("Nhập vào số tháng muốn vay: "))
+    for(let i=0;i<soThang;i++){
+        tongtien = tongtien + ((tongtien*10)/100)
+    }
+    alert("Số tiền bạn vay là: "+soTien+"VND.    Số tiền lãi tổng cộng: "+(tongtien-soTien)+"VND.    Tổng số tiền bạn phải trả là: "+tongtien+"VND")
+</script>
+</body>
+</html>

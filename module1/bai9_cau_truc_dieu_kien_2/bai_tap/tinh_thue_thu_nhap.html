@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let thunhap = parseInt(prompt("Nhập thu nhập cá nhân cần tính thuế"));
+    let tienthue;
+    if(thunhap<=5000000){
+        tienthue = ((thunhap*5)/100);
+        alert(tienthue);
+    }else if(thunhap>5000000 && thunhap<=10000000){
+        tienthue = (((thunhap*10)/100) - 250000);
+        alert(tienthue);
+    }else if(thunhap>10000000 && thunhap<=18000000){
+        tienthue = ((thunhap*15)/100 - 750000);
+        alert(tienthue);
+    }else if(thunhap>18000000 && thunhap<=32000000){
+        tienthue = ((thunhap*20)/100 - 1650000);
+        alert(tienthue);
+    }else if(thunhap>32000000 && thunhap<=52000000){
+        tienthue = ((thunhap*25)/100 - 3250000);
+        alert(tienthue);
+    }else if(thunhap>52000000 && thunhap<=80000000){
+        tienthue = ((thunhap*30)/100 - 5850000);
+        alert(tienthue);
+    }else {
+        tienthue = ((thunhap*35)/100 - 9850000);
+        alert(tienthue);
+    }
+</script>
+</body>
+</html>

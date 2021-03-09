@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let soA = parseInt(prompt("Nhập hệ số a: "));
+    let soB = parseInt(prompt("Nhập hệ số b: "));
+    if(soA==0 && soB==0){
+        alert("Phương trình có vô số nghiệm")
+    }else if(soA==0 && soB != 0){
+        alert("Phương trình vô nghiệm")
+    }else {
+        alert("Phương trình có nghiệm duy nhất x= "+(-soB/soA))
+    }
+</script>
+</body>
+</html>

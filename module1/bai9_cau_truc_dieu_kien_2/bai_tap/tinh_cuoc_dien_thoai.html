@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // phí thuê bao bắt buộc 30k
+    // 2k/phút với mỗi 50 phút đầu tiên
+    // 1k5/phút với mỗi 150 phút tiếp theo
+    // 1k/phút sau 200 phút đầu tiên
+    let sophutgoi = parseInt(prompt("Nhập tổng số phút gọi: "));
+    let tongtien;
+    if(sophutgoi<=50){
+        tongtien = (25000 + sophutgoi*2000);
+        alert("Tổng tiền cước điện thoại là: "+tongtien+"VND");
+    }else if(sophutgoi<=200 && sophutgoi >50){
+        tongtien = (25000 + (50*2000)+ ((sophutgoi-50)*1500));
+        alert("Tổng tiền cước điện thoại là: "+tongtien+'VND');
+    }else {
+        tongtien =(25000 + (50*2000)+ (150*1500) + ((sophutgoi - 200)*1000))
+        alert("Tổng tiền cước điện thoại là: "+tongtien+'VND');
+    }
+
+</script>
+</body>
+</html>

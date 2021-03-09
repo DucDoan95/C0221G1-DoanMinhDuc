@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let canhA = parseInt(prompt("Nhập vào cạnh a:"))
+    let canhB = parseInt(prompt("Nhập vào cạnh b:"))
+    let canhC = parseInt(prompt("Nhập vào cạnh c:"))
+
+    if(canhA>0&&canhB>0&&canhC>0){
+        if(canhA+canhB>canhC && canhB+canhC>canhA && canhA+canhC>canhB){
+            alert("3 cạnh tạo thành 1 tam giác")
+        }
+        else {
+            alert("3 cạnh không tạo thành tam giác")
+        }
+    }else {
+        alert('3 cạnh không tạo thành tam giác')
+    }
+</script>
+</body>
+</html>

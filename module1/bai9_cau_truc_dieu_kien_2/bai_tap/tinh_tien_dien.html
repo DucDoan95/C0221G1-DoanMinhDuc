@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let soDien = parseInt(prompt("Nhập tổng số phút gọi: "));
+    let thanhtien;
+    if(soDien<=50){
+        thanhtien = (soDien*1700);
+        alert("Tổng tiền điện là: "+thanhtien+"VND");
+    }else if(soDien<=200 && soDien >50){
+        thanhtien = ((50*1700)+ ((soDien-50)*2000));
+        alert("Tổng tiền điện là: "+thanhtien+'VND');
+    }else {
+        thanhtien =((50*1700)+ (150*2000) + ((soDien - 200)*2500))
+        alert("Tổng tiền điện là: "+thanhtien+'VND');
+    }
+</script>
+</body>
+</html>
