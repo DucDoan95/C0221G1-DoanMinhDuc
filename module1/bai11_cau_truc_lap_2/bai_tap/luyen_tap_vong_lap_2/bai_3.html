@@ -10,7 +10,7 @@
     {
         for (let j=1;j<i+1;j++)
         {
-            document.write('*')
+            document.write('* ')
         }
         document.write('<br>')
     }
@@ -18,12 +18,30 @@
     for (let i=1;i<=5;i++){
         for (let j=5;j>=i;j--)
         {
-            document.write('*')
+            document.write('* ')
         }
         document.write('<br>')
     }
     document.write('<br>')
-
+    for (let i = 1; i <= 5; i++) {
+        for (let j = 1; j <= 5 - i; j++) {
+            document.writeln("&nbsp;" + '&nbsp;');
+        }
+        for (let z = 1; z <= i; z++) {
+            document.writeln("*");
+        }
+        document.writeln('<br>');
+    }
+    document.write('<br>')
+    for (let i = 0; i <= 5; i++) {
+        for (let j = 1; j <= 5 - i; j++) {
+            document.writeln("*");
+        }
+        for (let z = 1; z <= i; z++) {
+            document.writeln('&nbsp;'+'&nbsp;');
+        }
+        document.writeln('<br>');
+    }
 </script>
 </body>
 </html>
