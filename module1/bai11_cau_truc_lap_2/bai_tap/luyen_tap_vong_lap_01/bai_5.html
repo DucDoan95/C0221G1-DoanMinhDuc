@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let fibonacci
+    let f0=0,f1=0,fn=1,tong=1;
+    //document.writeln(fn);
+    for(let i=2;i<=20;i++)
+    {
+        f0 = f1;
+        f1 = fn;
+        fn = f0 + f1;
+        tong =tong+fn;
+        //document.writeln(fn);
+    }
+    document.writeln("Tổng của 20 số fibonacci là: "+tong)
+</script>
+</body>
+</html>

@@ -6,11 +6,11 @@
 </head>
 <body>
 <script>
-    let so;
-    let tong =0;
-    while( so != -1 ) {
-        so = parseInt(prompt("Enter a number: ",'0'));
-        tong = tong+so;
+    let so = parseInt(prompt("Nhập vào số của bạn"));
+    let tong = 0;
+    for(let i=1; i<=so; i++)
+    {
+        tong=tong+i;
     }
     alert(tong);
 </script>

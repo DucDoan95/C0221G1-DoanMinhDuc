@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            width: 300px;
+            height: 100px;
+            margin-left: 150px;
+            font-size: 50px;
+        }
+
+        h1 {
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body style="background-color: wheat">
+<div style="margin: 100px 0 0 400px">
+    <h1>Game đoán số</h1>
+    <input type="button" onclick="eventChoi()" value="Chơi">
+</div>
+<script>
+    function eventChoi() {
+        let sonhap = parseInt(prompt("Bạn muốn đoán số từ 1 -> "));
+
+        let sodoan,sodudoan;
+        for(let i=0;;i++){
+             sodudoan = Math.floor(Math.random() * sonhap);
+            sodoan= parseInt(prompt("Nhập vào số bạn muốn đoán: "))
+            if(sodoan == sodudoan){
+                alert("Bạn đã đoán đúng số random hiện tại là: "+sodudoan);
+                break;
+            }else {
+                alert("Bạn đã đoán sai số random hiện tại là: "+sodudoan);
+            }
+            if(i==2)
+            {
+                alert("Bạn đã đoán sai 3 lần!!! GAME OVER")
+                break;
+            }
+        }
+
+    }
+</script>
+</body>
+</html>
