@@ -6,8 +6,8 @@
 </head>
 <body>
 <script>
-    let tuoi =parseFloat(prompt("Nhập vào số tuổi của bạn:"));
-        if(typeof tuoi==='number' && (tuoi%1)===0 && tuoi>0 && tuoi<120) {
+    let tuoi =prompt("Nhập vào số tuổi của bạn:");
+        if( tuoi!=NaN && (tuoi%1)===0 && tuoi>0 && tuoi<120) {
             alert("Bạn đã nhập chính xác định dạng tuổi của môt người")
     }else alert("Bạn đã nhập sai định dạng tuổi của môt người")
 </script>

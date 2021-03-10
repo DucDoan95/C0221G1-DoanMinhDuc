@@ -8,38 +8,88 @@
 </head>
 
 <body>
-<div class="container">
-    <div class="puzzles">
-        <img id="img1" src="./img/img1x1.jpg" onclick="eventImg1()" alt="" style="min-width:800px;height: 160px"/>
-        <img id="img2" src="./img/img1x2.jpg" alt="" onclick="eventImg2()"style="min-width:800px;height: 160px"/>
-        <img id="img3" src="./img/img1x3.jpg" alt="" onclick="eventImg3()" style="min-width:800px;height: 160px"/>
-        <img id="img4" src="./img/img1x4.jpg" alt="" onclick="eventImg4()"style="min-width:800px;height: 160px"/>
-        <img id="img5" src="./img/img1x5.jpg" alt="" onclick="eventImg5()"style="min-width:800px;height: 160px"/>
-    </div>
-</div>
+<img id="img1" src="./img/cat1.jpg" onclick="eventImg(1)" alt="" style="min-width:800px;height: 160px"/>
+<img id="img2" src="./img/panda2.jpg" alt="" onclick="eventImg(2)" style="min-width:800px;height: 160px"/>
+<img id="img3" src="./img/monkey3.jpg" alt="" onclick="eventImg(3)" style="min-width:800px;height: 160px"/>
+<img id="img4" src="./img/cat4.jpg" alt="" onclick="eventImg(4)" style="min-width:800px;height: 160px"/>
+<img id="img5" src="./img/monkey5.jpg" alt="" onclick="eventImg(5)" style="min-width:800px;height: 160px"/>
+
+
 <script>
-    function eventImg1() {
-        var a = 1 + Math.floor(Math.random() * 3)
-        document.getElementById('img1').src = "./img/img" + a + "x1.jpg";
+
+    let objImg1 = document.getElementById("img1");
+    let objImg2 = document.getElementById("img2");
+    let objImg3 = document.getElementById("img3");
+    let objImg4 = document.getElementById("img4");
+    let objImg5 = document.getElementById("img5");
+
+    function eventImg(choose) {
+        switch (choose) {
+            case 1:
+                if (objImg1.getAttribute("src") === './img/cat1.jpg') {
+                    objImg1.src = './img/monkey1.jpg';
+                } else if (objImg1.getAttribute("src") === "./img/monkey1.jpg") {
+                    objImg1.src = "./img/panda1.jpg";
+                } else {
+                    objImg1.src = "./img/cat1.jpg"
+                }
+                setTimeout(check, 100);
+                break;
+            case 2:
+                if (objImg2.getAttribute("src") === './img/cat2.jpg') {
+                    objImg2.src = './img/monkey2.jpg';
+                } else if (objImg2.getAttribute("src") === "./img/monkey2.jpg") {
+                    objImg2.src = "./img/panda2.jpg";
+                } else {
+                    objImg2.src = "./img/cat2.jpg"
+                }
+                setTimeout(check, 100);
+                break;
+            case 3:
+                if (objImg3.getAttribute("src") === './img/cat3.jpg') {
+                    objImg3.src = './img/monkey3.jpg';
+                } else if (objImg3.getAttribute("src") === "./img/monkey3.jpg") {
+                    objImg3.src = "./img/panda3.jpg";
+                } else {
+                    objImg3.src = "./img/cat3.jpg"
+                }
+                setTimeout(check, 100);
+                break;
+                case 4:
+                if (objImg4.getAttribute("src") === './img/cat4.jpg') {
+                    objImg4.src = './img/monkey4.jpg';
+                } else if (objImg4.getAttribute("src") === "./img/monkey4.jpg") {
+                    objImg4.src = "./img/panda4.jpg";
+                } else {
+                    objImg4.src = "./img/cat4.jpg"
+                }
+                setTimeout(check, 100);
+                break;
+                case 5:
+                if (objImg5.getAttribute("src") === './img/cat5.jpg') {
+                    objImg5.src = './img/monkey5.jpg';
+                } else if (objImg5.getAttribute("src") === "./img/monkey5.jpg") {
+                    objImg5.src = "./img/panda5.jpg";
+                } else {
+                    objImg5.src = "./img/cat5.jpg"
+                }
+                setTimeout(check, 100);
+                break;
+            default:
+                break;
+        }
 
     }
-    function eventImg2() {
-        var b = 1 + Math.floor(Math.random() * 3)
-        document.getElementById('img2').src = "./img/img" + b + "x2.jpg";
-    }
-    function eventImg3() {
-        var c = 1 + Math.floor(Math.random() * 3)
-        document.getElementById('img3').src = "./img/img" + c + "x3.jpg";
-    }
-    function eventImg4() {
-        var d = 1 + Math.floor(Math.random() * 3)
-        document.getElementById('img4').src = "./img/img" + d + "x4.jpg";
-    }
-    function eventImg5() {
-        var d = 1 + Math.floor(Math.random() * 3)
-        document.getElementById('img5').src = "./img/img" + d + "x5.jpg";
-    }
 
+    function check() {
+        if (objImg1.getAttribute("src") === './img/cat1.jpg' && objImg2.getAttribute("src") === './img/cat2.jpg' && objImg3.getAttribute("src") === './img/cat3.jpg'&& objImg4.getAttribute("src") === './img/cat4.jpg'&& objImg5.getAttribute("src") === './img/cat5.jpg') {
+            alert("chúc mừng bạn đã tìm ra 'Mèo Méo Meo'")
+        } else if (objImg1.getAttribute("src") === './img/monkey1.jpg' && objImg2.getAttribute("src") === './img/monkey2.jpg' && objImg3.getAttribute("src") === './img/monkey3.jpg'&& objImg4.getAttribute("src") === './img/monkey4.jpg'&& objImg5.getAttribute("src") === './img/monkey5.jpg') {
+            alert("chúc mừng bạn đã tìm ra 'Dòng Họ Của Bạn'")
+        } else if (objImg1.getAttribute("src") === './img/panda1.jpg' && objImg2.getAttribute("src") === './img/panda2.jpg' && objImg3.getAttribute("src") === './img/panda3.jpg'&& objImg4.getAttribute("src") === './img/panda4.jpg'&& objImg5.getAttribute("src") === './img/panda5.jpg') {
+            alert("chúc mừng bạn đã tìm ra bé 'Gấu Trúc Panda'")
+        }
+    }
 </script>
 </body>
 </html>
