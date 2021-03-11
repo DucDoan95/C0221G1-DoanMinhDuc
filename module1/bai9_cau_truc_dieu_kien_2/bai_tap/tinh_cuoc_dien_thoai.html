@@ -10,17 +10,17 @@
     // 2k/phút với mỗi 50 phút đầu tiên
     // 1k5/phút với mỗi 150 phút tiếp theo
     // 1k/phút sau 200 phút đầu tiên
-    let sophutgoi = parseInt(prompt("Nhập tổng số phút gọi: "));
-    let tongtien;
-    if(sophutgoi<=50){
-        tongtien = (25000 + sophutgoi*2000);
-        alert("Tổng tiền cước điện thoại là: "+tongtien+"VND");
-    }else if(sophutgoi<=200 && sophutgoi >50){
-        tongtien = (25000 + (50*2000)+ ((sophutgoi-50)*1500));
-        alert("Tổng tiền cước điện thoại là: "+tongtien+'VND');
+    let soPhut = parseInt(prompt("Nhập tổng số phút gọi: "));
+    let tongTien;
+    if(soPhut<=50){
+        tongTien = (25000 + soPhut*2000);
+        alert("Tổng tiền cước điện thoại là: "+tongTien+"VND");
+    }else if(soPhut<=200 ){
+        tongTien = (25000 + (50*2000)+ ((soPhut-50)*1500));
+        alert("Tổng tiền cước điện thoại là: "+tongTien+'VND');
     }else {
-        tongtien =(25000 + (50*2000)+ (150*1500) + ((sophutgoi - 200)*1000))
-        alert("Tổng tiền cước điện thoại là: "+tongtien+'VND');
+        tongTien =(25000 + (50*2000)+ (150*1500) + ((soPhut - 200)*1000))
+        alert("Tổng tiền cước điện thoại là: "+tongTien+'VND');
     }
 
 </script>

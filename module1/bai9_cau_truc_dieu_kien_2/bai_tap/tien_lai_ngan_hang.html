@@ -7,12 +7,12 @@
 <body>
 <script>
     let soTien = parseInt(prompt("Nhập vào số tiền: "))
-    let tongtien = soTien;
+    let tongTien = soTien;
     let soThang = parseInt(prompt("Nhập vào số tháng muốn vay: "))
     for(let i=0;i<soThang;i++){
-        tongtien = tongtien + ((tongtien*10)/100)
+        tongTien = tongTien + ((tongTien*10)/100)
     }
-    alert("Số tiền bạn vay là: "+soTien+"VND.    Số tiền lãi tổng cộng: "+(tongtien-soTien)+"VND.    Tổng số tiền bạn phải trả là: "+tongtien+"VND")
+    alert("Số tiền bạn vay là: "+soTien+"VND.    Số tiền lãi tổng cộng: "+(tongTien-soTien)+"VND.    Tổng số tiền bạn phải trả là: "+tongTien+"VND")
 </script>
 </body>
 </html>

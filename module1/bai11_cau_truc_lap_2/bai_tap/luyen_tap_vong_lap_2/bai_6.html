@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script onm>
+
+        for(let i=1;i <=4;i++) {
+            for (let j = 1; j <= 5 - i; j++) {
+                document.write('&nbsp;&nbsp;')
+            }
+            for (let j = 1; j <= 2 * i +2; j++) {
+                document.write('*')
+            }
+            for (let j = 1; j <= 2*5 - 2 * i; j++) {
+                document.write('&nbsp;&nbsp;')
+            }
+            for (let j = 1; j <= 2 * i +2; j++) {
+                document.write('*')
+            }
+            document.write('<br>');
+        }
+
+        {
+            for(let i = 1; i <= 12  ; i++)
+            {
+                for(let j = 1; j < i+1; j++)
+                {
+                    document.write('&nbsp;&nbsp;')
+                }
+
+                for(let j = 1; j <= (12*2+2 -(2*i+1)); j++)
+                {
+                    document.write('*')
+                }
+                document.write('<br>');
+            }
+        }
+
+
+
+
+</script>
+</body>
+</html>

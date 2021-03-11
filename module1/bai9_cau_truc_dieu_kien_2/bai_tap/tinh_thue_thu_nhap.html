@@ -6,29 +6,29 @@
 </head>
 <body>
 <script>
-    let thunhap = parseInt(prompt("Nhập thu nhập cá nhân cần tính thuế"));
-    let tienthue;
-    if(thunhap<=5000000){
-        tienthue = ((thunhap*5)/100);
-        alert(tienthue);
-    }else if(thunhap>5000000 && thunhap<=10000000){
-        tienthue = (((thunhap*10)/100) - 250000);
-        alert(tienthue);
-    }else if(thunhap>10000000 && thunhap<=18000000){
-        tienthue = ((thunhap*15)/100 - 750000);
-        alert(tienthue);
-    }else if(thunhap>18000000 && thunhap<=32000000){
-        tienthue = ((thunhap*20)/100 - 1650000);
-        alert(tienthue);
-    }else if(thunhap>32000000 && thunhap<=52000000){
-        tienthue = ((thunhap*25)/100 - 3250000);
-        alert(tienthue);
-    }else if(thunhap>52000000 && thunhap<=80000000){
-        tienthue = ((thunhap*30)/100 - 5850000);
-        alert(tienthue);
+    let thuNhap = parseInt(prompt("Nhập thu nhập cá nhân cần tính thuế"));
+    let tienThue;
+    if(thuNhap<=5000000){
+        tienThue = ((thuNhap*5)/100);
+        alert(tienThue);
+    }else if( thuNhap<=10000000){
+        tienThue = (((thuNhap*10)/100) - 250000);
+        alert(tienThue);
+    }else if(thuNhap<=18000000){
+        tienThue = ((thuNhap*15)/100 - 750000);
+        alert(tienThue);
+    }else if( thuNhap<=32000000){
+        tienThue = ((thuNhap*20)/100 - 1650000);
+        alert(tienThue);
+    }else if( thuNhap<=52000000){
+        tienThue = ((thuNhap*25)/100 - 3250000);
+        alert(tienThue);
+    }else if( thuNhap<=80000000){
+        tienThue = ((thuNhap*30)/100 - 5850000);
+        alert(tienThue);
     }else {
-        tienthue = ((thunhap*35)/100 - 9850000);
-        alert(tienthue);
+        tienThue = ((thuNhap*35)/100 - 9850000);
+        alert(tienThue);
     }
 </script>
 </body>

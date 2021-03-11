@@ -6,18 +6,18 @@
 </head>
 <body>
 <script>
-    let fibonacci
-    let f0=0,f1=0,fn=1,tong=1;
-    //document.writeln(fn);
-    for(let i=2;i<=20;i++)
+
+    let a=0,b=0,c=1,tong=0;
+    document.writeln("Dãy 20 số fibonacci là: ")
+    for(let i=1;i<=20;i++)
     {
-        f0 = f1;
-        f1 = fn;
-        fn = f0 + f1;
-        tong =tong+fn;
-        //document.writeln(fn);
+        document.writeln(c);
+        tong +=c;
+        a = b;
+        b = c;
+        c = a + b;
     }
-    document.writeln("Tổng của 20 số fibonacci là: "+tong)
+    document.writeln("<br> Tổng của 20 số fibonacci là "+tong);
 </script>
 </body>
 </html>

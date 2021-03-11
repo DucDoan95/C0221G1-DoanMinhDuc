@@ -6,18 +6,18 @@
 </head>
 <body>
 <script>
-    let thuongky = parseInt(prompt("Nhập điểm thường kỳ: "));
-    let giuaky = parseInt(prompt("Nhập điểm giữa kỳ: "));
-    let cuoiky = parseInt(prompt("Nhập điểm cuối kỳ: "));
-    let tongket = ((thuongky*20)+(giuaky*30)+(cuoiky*50))/100;
-    if(tongket>=8.0){
-        alert("Tổng kết "+tongket+ " bạn đạt học sinh giỏi")
-    }else if(tongket >=5.0 && tongket<8.0){
-        alert("Tổng kết "+tongket+ " bạn đạt học sinh tiên tiến")
-    }else if(tongket >=3.5 && tongket <5.0){
-        alert("Tổng kết "+tongket+" bạn đạt học sinh trung bình")
+    let thuongKy = parseInt(prompt("Nhập điểm thường kỳ: "));
+    let giuaKy = parseInt(prompt("Nhập điểm giữa kỳ: "));
+    let cuoiKy = parseInt(prompt("Nhập điểm cuối kỳ: "));
+    let tongKet = ((thuongKy*20)+(giuaKy*30)+(cuoiKy*50))/100;
+    if(tongKet>=8.0){
+        alert("Tổng kết "+tongKet+ " bạn đạt học sinh giỏi")
+    }else if(tongKet >=5.0) {
+        alert("Tổng kết "+tongKet+ " bạn đạt học sinh tiên tiến")
+    }else if(tongKet >=3.5 ){
+        alert("Tổng kết "+tongKet+" bạn đạt học sinh trung bình")
     }else {
-        alert("Tổng kết "+tongket+" bạn đạt học sinh yếu")
+        alert("Tổng kết "+tongKet+" bạn đạt học sinh yếu")
     }
 </script>
 </body>

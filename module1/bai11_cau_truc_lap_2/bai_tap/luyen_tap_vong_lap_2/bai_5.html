@@ -6,7 +6,13 @@
 </head>
 <body>
 <script>
-
+    let soTien = parseInt(prompt("Nhập vào số tiền: "));
+    let laiSuat = parseInt(prompt("Nhập vào lãi suất bao nhiêu %:"));
+    let soThang = parseInt(prompt("Nhập vào số tháng vay: "));
+    for (let i = 1; i <= soThang; i++) {
+        soTien = (soTien + (soTien * laiSuat) / 100);
+    }
+    alert(soTien);
 </script>
 </body>
 </html>

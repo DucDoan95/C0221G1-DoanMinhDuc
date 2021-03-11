@@ -8,22 +8,22 @@
 <script>
     let num = 2;
     let count = 0;
-    let so="";
+    let result="";
     while (count < 20) {
-        let ktra = true;
-        for (i = 2; i < num / 2 + 1; i++) {
+        let check = true;
+        for (let i = 2; i < num / 2 + 1; i++) {
             if (num % i == 0) {
-                ktra = false;
+                check = false;
                 break;
             }
         }
-        if (ktra == true) {
-            so += num + "<br>";
+        if (check == true) {
+            result += num + "<br>";
             count++;
         }
         num++;
     }
-    document.write(so)
+    document.write(result)
 </script>
 </body>
 </html>
