@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrA = new Array(10);
+    for (let i = 0; i < arrA.length; i++) {
+        arrA[i] = prompt("Nhập giá trị của mảng A: ");
+    }
+    let arrB = new Array(10)
+    for (let i = 0; i < arrB.length; i++) {
+        arrB[i] = prompt("Nhập giá trị của mảng B: ");
+    }
+    let arrC = new Array(20)
+    arrC = arrA.concat(arrB);
+    alert("Mảng C bao gồm: "+arrC);
+</script>
+</body>
+</html>

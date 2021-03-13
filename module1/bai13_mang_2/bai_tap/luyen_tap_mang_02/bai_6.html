@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let arr = new Array('1','2','3','1-','4')
+    // for(let i=0;i<arr.length;i++){
+    //     if(arr[i]=='-'){
+    //
+    //        arr[i]= arr[i].replace("-","_")
+    //     }
+    // }
+    // alert(arr)
+    let string =''
+    let arr = new Array('a-1', 'a-2', 'a-3-4-5', 'a6--7', 'a8-_-9')
+    for (let i = 0; i < arr.length; i++) {
+        string= arr[i];
+        string = string.replace(/-/g,"_")
+        arr[i]=string;
+    }
+    alert(arr)
+</script>
+</body>
+</html>

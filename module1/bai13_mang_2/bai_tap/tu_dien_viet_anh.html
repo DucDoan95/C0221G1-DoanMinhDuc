@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            width: 200px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 >TỪ ĐIỂN ANH VIỆT SỐ TỪ 0 ---> 10</h1>
+    <br>
+  <input type="text" id="vocabulary" placeholder="Nhập tiếng việt từ một -> mười">
+<input type="button" value="TRA TỪ ĐIỂN VIỆT ANH SỐ" onclick=translateClick()>
+
+<script>
+    //let value = prompt("Enter a number: ");
+    function translateClick(){
+    let value=(document.getElementById('vocabulary').value);
+    let numbers = ['không','một','hai','ba','bốn','năm','sáu','bảy','tám','chín','mười'];
+    let eng =['zero','one','two','three','four','five,','six','seven','eight','nine','ten'];
+    for (let i = 0; i < numbers.length; i++) {
+        if (value == numbers[i]) {
+            alert("Tiếng anh của "+numbers[i].toUpperCase()+" là "+eng[i].toUpperCase());
+            break;
+        }
+    }
+    }
+</script>
+</body>
+</html>

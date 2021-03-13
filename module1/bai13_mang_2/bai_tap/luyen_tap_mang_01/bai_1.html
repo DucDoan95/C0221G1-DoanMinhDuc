@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = new Array(10,1,12,3,4,14,6,18,8,9);
+    let count=0;
+    let string ='';
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]>=10){
+            count++;
+            string += arr[i] +" ";
+        }
+    }
+    alert("Có "+count+" số >= 10 là:  " +string);
+</script>
+</body>
+</html>

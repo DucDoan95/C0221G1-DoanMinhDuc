@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            width: 200px;
+            height: 60px;
+            font-size: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="background-color: wheat">
+<center style="margin-top: 150px">
+    <h1 style="font-size: 50px;color: darkblue">TÍC TẮC TOE</h1>
+    <table>
+        <tr>
+            <td><input type="button" id="bt1" onclick="clickChange1()" value="."></td>
+            <td><input type="button" id="bt2" onclick="clickChange2()" value="."></td>
+            <td><input type="button" id="bt3" onclick="clickChange3()" value="."></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="bt4" onclick="clickChange4()" value="."></td>
+            <td><input type="button" id="bt5" onclick="clickChange5()" value="."></td>
+            <td><input type="button" id="bt6" onclick="clickChange6()" value="."></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="bt7" onclick="clickChange7()" value="."></td>
+            <td><input type="button" id="bt8" onclick="clickChange8()" value="."></td>
+            <td><input type="button" id="bt9" onclick="clickChange9()" value="."></td>
+        </tr>
+    </table>
+</center>
+<script>
+    let count = 0;
+
+    function clickChange1() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+                document.getElementById('bt1').value = 'x';
+                count++;
+                if (document.getElementById('bt1').value == document.getElementById('bt2').value && document.getElementById('bt1').value == document.getElementById('bt3').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt1').value == document.getElementById('bt4').value && document.getElementById('bt1').value == document.getElementById('bt7').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt1').value == document.getElementById('bt5').value && document.getElementById('bt1').value == document.getElementById('bt9').value) {
+                    alert("X win");
+                    location.reload();
+                }
+
+            } else {
+                document.getElementById('bt1').value = 'o';
+                count++;
+                if (document.getElementById('bt1').value == document.getElementById('bt2').value && document.getElementById('bt1').value == document.getElementById('bt3').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt1').value == document.getElementById('bt4').value && document.getElementById('bt1').value == document.getElementById('bt7').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt1').value == document.getElementById('bt5').value && document.getElementById('bt1').value == document.getElementById('bt9').value) {
+                    alert("O win")
+                    location.reload();
+                }
+            }
+        }
+    }
+
+    function clickChange2() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+                document.getElementById('bt2').value = 'x';
+                count++;
+                if (document.getElementById('bt2').value == document.getElementById('bt1').value && document.getElementById('bt2').value == document.getElementById('bt3').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt2').value == document.getElementById('bt5').value && document.getElementById('bt2').value == document.getElementById('bt8').value) {
+                    alert("X win");
+                    location.reload();
+                }
+            } else {
+                document.getElementById('bt2').value = 'o';
+                count++;
+                if (document.getElementById('bt2').value == document.getElementById('bt1').value && document.getElementById('bt2').value == document.getElementById('bt3').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt2').value == document.getElementById('bt5').value && document.getElementById('bt2').value == document.getElementById('bt8').value) {
+                    alert("O win");
+                    location.reload();
+                }
+            }
+        }
+    }
+
+    function clickChange3() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+                document.getElementById('bt3').value = 'x';
+                count++;
+                if (document.getElementById('bt3').value == document.getElementById('bt2').value && document.getElementById('bt3').value == document.getElementById('bt1').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt3').value == document.getElementById('bt5').value && document.getElementById('bt3').value == document.getElementById('bt7').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt3').value == document.getElementById('bt6').value && document.getElementById('bt3').value == document.getElementById('bt9').value) {
+                    alert("X win");
+                    location.reload();
+                }
+            } else {
+                document.getElementById('bt3').value = 'o';
+                count++;
+                if (document.getElementById('bt3').value == document.getElementById('bt2').value && document.getElementById('bt3').value == document.getElementById('bt1').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt3').value == document.getElementById('bt5').value && document.getElementById('bt3').value == document.getElementById('bt7').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt3').value == document.getElementById('bt6').value && document.getElementById('bt3').value == document.getElementById('bt9').value) {
+                    alert("O win");
+                    location.reload();
+                }
+            }
+        }
+    }
+
+    function clickChange4() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+                document.getElementById('bt4').value = 'x';
+                count++;
+                if (document.getElementById('bt4').value == document.getElementById('bt1').value && document.getElementById('bt4').value == document.getElementById('bt7').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt4').value == document.getElementById('bt5').value && document.getElementById('bt4').value == document.getElementById('bt6').value) {
+                    alert("X win");
+                    location.reload();
+                }
+
+            } else {
+                document.getElementById('bt4').value = 'o';
+                count++;
+                if (document.getElementById('bt4').value == document.getElementById('bt1').value && document.getElementById('bt4').value == document.getElementById('bt7').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt4').value == document.getElementById('bt5').value && document.getElementById('bt4').value == document.getElementById('bt6').value) {
+                    alert("O win")
+                    location.reload();
+                }
+            }
+        }
+    }
+
+    function clickChange5() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+
+                document.getElementById('bt5').value = 'x';
+                count++;
+                if (document.getElementById('bt5').value == document.getElementById('bt1').value && document.getElementById('bt5').value == document.getElementById('bt9').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt5').value == document.getElementById('bt3').value && document.getElementById('bt5').value == document.getElementById('bt7').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt5').value == document.getElementById('bt2').value && document.getElementById('bt5').value == document.getElementById('bt8').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt5').value == document.getElementById('bt4').value && document.getElementById('bt5').value == document.getElementById('bt6').value) {
+                    alert("X win");
+                    location.reload();
+                }
+
+            } else {
+                document.getElementById('bt5').value = 'o';
+                count++;
+                if (document.getElementById('bt5').value == document.getElementById('bt1').value && document.getElementById('bt5').value == document.getElementById('bt9').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt5').value == document.getElementById('bt3').value && document.getElementById('bt5').value == document.getElementById('bt7').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt5').value == document.getElementById('bt2').value && document.getElementById('bt5').value == document.getElementById('bt8').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt5').value == document.getElementById('bt4').value && document.getElementById('bt5').value == document.getElementById('bt6').value) {
+                    alert("O win");
+                    location.reload();
+                }
+            }
+        }
+    }
+
+    function clickChange6() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+
+                document.getElementById('bt6').value = 'x';
+                count++;
+                if (document.getElementById('bt6').value == document.getElementById('bt3').value && document.getElementById('bt6').value == document.getElementById('bt9').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt6').value == document.getElementById('bt5').value && document.getElementById('bt6').value == document.getElementById('bt4').value) {
+                    alert("X win");
+                    location.reload();
+                }
+
+            } else {
+                document.getElementById('bt6').value = 'o';
+                count++;
+                if (document.getElementById('bt6').value == document.getElementById('bt3').value && document.getElementById('bt6').value == document.getElementById('bt9').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt6').value == document.getElementById('bt5').value && document.getElementById('bt6').value == document.getElementById('bt4').value) {
+                    alert("O win");
+                    location.reload();
+                }
+            }
+        }
+    }
+
+    function clickChange7() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+
+                document.getElementById('bt7').value = 'x';
+                count++;
+                if (document.getElementById('bt7').value == document.getElementById('bt1').value && document.getElementById('bt7').value == document.getElementById('bt4').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt7').value == document.getElementById('bt8').value && document.getElementById('bt7').value == document.getElementById('bt9').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt7').value == document.getElementById('bt5').value && document.getElementById('bt7').value == document.getElementById('bt3').value) {
+                    alert("X win");
+                    location.reload();
+                }
+
+            } else {
+                document.getElementById('bt7').value = 'o';
+                count++;
+                if (document.getElementById('bt7').value == document.getElementById('bt1').value && document.getElementById('bt7').value == document.getElementById('bt4').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt7').value == document.getElementById('bt8').value && document.getElementById('bt7').value == document.getElementById('bt9').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt7').value == document.getElementById('bt5').value && document.getElementById('bt7').value == document.getElementById('bt3').value) {
+                    alert("O win");
+                    location.reload();
+                }
+            }
+        }
+    }
+
+    function clickChange8() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+
+                document.getElementById('bt8').value = 'x';
+                count++;
+                if (document.getElementById('bt8').value == document.getElementById('bt2').value && document.getElementById('bt8').value == document.getElementById('bt5').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt7').value == document.getElementById('bt8').value && document.getElementById('bt8').value == document.getElementById('bt9').value) {
+                    alert("X win");
+                    location.reload();
+                }
+            } else {
+                document.getElementById('bt8').value = 'o';
+                count++;
+                if (document.getElementById('bt8').value == document.getElementById('bt2').value && document.getElementById('bt8').value == document.getElementById('bt5').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt7').value == document.getElementById('bt8').value && document.getElementById('bt8').value == document.getElementById('bt9').value) {
+                    alert("O win");
+                    location.reload();
+                }
+            }
+        }
+    }
+
+    function clickChange9() {
+        for (let i = 1; i < 2; i++) {
+            if (count % 2 == 0) {
+
+                document.getElementById('bt9').value = 'x';
+                count++;
+                if (document.getElementById('bt9').value == document.getElementById('bt6').value && document.getElementById('bt9').value == document.getElementById('bt3').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt9').value == document.getElementById('bt5').value && document.getElementById('bt9').value == document.getElementById('bt1').value) {
+                    alert("X win");
+                    location.reload();
+                } else if (document.getElementById('bt9').value == document.getElementById('bt8').value && document.getElementById('bt7').value == document.getElementById('bt7').value) {
+                    alert("X win");
+                    location.reload();
+                }
+
+            } else {
+                document.getElementById('bt9').value = 'o';
+                count++;
+                if (document.getElementById('bt9').value == document.getElementById('bt6').value && document.getElementById('bt9').value == document.getElementById('bt3').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt9').value == document.getElementById('bt5').value && document.getElementById('bt9').value == document.getElementById('bt1').value) {
+                    alert("O win");
+                    location.reload();
+                } else if (document.getElementById('bt9').value == document.getElementById('bt8').value && document.getElementById('bt7').value == document.getElementById('bt7').value) {
+                    alert("O win");
+                    location.reload();
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = new Array(10,1,12,3,4,14,6,18,8,9);
+    let max=0;
+    let loca;
+    for (let i = 0; i<arr.length;i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+            loca = i;
+        }
+    }
+    alert("Số lớn nhất là: "+max+". Ở vị trí số: "+loca);
+</script>
+</body>
+</html>
