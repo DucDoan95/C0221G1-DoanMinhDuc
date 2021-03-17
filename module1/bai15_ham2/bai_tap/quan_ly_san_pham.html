@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        tr:nth-child(even ) {
+            background-color: lightgray;
+            height: 50px;
+        }
+
+        tr {
+            height: 30px;
+        }
+
+        input:nth-child(1) {
+            width: 80px;
+            height: 40px;
+            background-color: mediumseagreen;
+        }
+
+        td:nth-child(1) {
+            width: 300px;
+        }
+
+        td {
+            width: 150px;
+        }
+        table{
+            margin-top: 40px;
+        }
+
+    </style>
 </head>
-<body>
+<body style>
 <!--    <h1>MANAGE PRODUCTS</h1>-->
 <!--    <h2>Add New Product</h2>-->
 <!--    <p>-->
@@ -14,20 +42,22 @@
 <!--    <h2>Display All Product</h2>-->
 <label style="font-size: 30px"><b>Add New Product</b></label><br>
 <input type="text" id="enter" placeholder="New product" style="width: 200px; height: 30px;margin: 20px 0 30px 0">
-<input type="button" onclick="addProduct()" value="Add"><br>
-<label style="font-size: 30px;"><b>Display All Product</b></label>
+<input type="button" onclick="addProduct()" value="Add" style="width: 80px;height: 40px;background-color: mediumseagreen">
+<input type="button" onclick="searchProduct()" value="Search" style="width: 80px;height: 40px;background-color: mediumseagreen"><br>
+<label style="font-size: 30px"><b>Display All Product</b></label><br>
 <div id="di5play"></div>
 <script>
     let arr = ['Sony Xperia', 'Samsung Galaxy', 'Nokia 6', 'Xiaomi Redmid Note 4',
         'Apple Iphone 6S', 'Xiaomi Mi 5s Plus', 'Apple Iphone 8 Plus', 'Fujitsu F-04E', 'Oppo A71'];
-    display();
+    display(arr);
 
-    function display() {
-        let tableString = '<table border="1"> ';
-        
-        for (let i = 0; i < arr.length; i++) {
+    function display(listArray) {
+        listArray.sort();
+        let tableString = '<table cellpadding="0" cellspacing="0" > <tr><td colspan="3"style="font-size: 20px"><b>Product Name</b></td><td style="text-align: center;min-width: 50px;color: red;font-size: 20px">' + listArray.length + " products" + '</td></tr>';
+
+        for (let i = 0; i < listArray.length; i++) {
             tableString += '<tr>';
-            tableString += '<td class="name">' + arr[i] + '</td>';
+            tableString += '<td class="name">' + listArray[i] + '</td>';
             tableString += '<td><input type="button" class="edit" value="Edit" onclick="edit(' + i + ')"></td>';
             tableString += '<td><input type="button" class="delete" value="Delete" onclick="del3te(' + i + ')"></td>';
             tableString += '</tr>';
@@ -38,16 +68,16 @@
 
     function addProduct(i) {
         let str = document.getElementById('enter').value;
-        if(str.replace(/ /g,'') != ''){
+        if (str.replace(/ /g, '') != '') {
             if (arr.indexOf(str) === -1) {
                 arr.push(str);
-                display();
+                display(arr);
                 document.getElementById('enter').value = "";
             } else {
                 alert("Sản phẩm đã có hãy nhập lại")
                 document.getElementById('enter').value = "";
             }
-        }else {
+        } else {
             alert("Hãy điền tên sản phẩm!")
             document.getElementById('enter').value = "";
         }
@@ -56,28 +86,44 @@
     }
 
     function del3te(i) {
-        if (confirm("Bạn có chắc muốn xóa SP này")) {
+        if (confirm("Bạn có chắc muốn xóa "+arr[i])) {
+            alert('Đã xóa '+arr[i])
             arr.splice(i, 1);
-            alert('deleted')
-            display();
+            display(arr);
         }
-        display();
+        display(arr);
 
     }
 
     function edit(i) {
         let productChange = prompt("Nhập thông tin thay đổi")
-        // arr[i]= productChange
-        // display();
-        // alert('edited');
-        if (arr.indexOf(productChange) === -1) {
-            arr[i] = productChange
-            display();
+        if (productChange.replace(/ /g, '') != '') {
+            if (arr.indexOf(productChange) === -1) {
+                alert('Đã edit ' +'"'+arr[i]+'"' +' thành '+'"'+productChange+'"')
+                arr[i] = productChange
+                display(arr);
+                document.getElementById('enter').value = "";
+
+            } else {
+                alert("Tên SP này đã tồn tại");
+            }
+        }else {
+            alert("Hãy điền tên sản phẩm!")
             document.getElementById('enter').value = "";
-        } else {
-            alert("Tên SP này đã tồn tại");
         }
     }
+    function searchProduct() {
+        let arrSearch =[];
+        let inputSearch = document.getElementById('enter').value;
+        for (let i=0;i<arr.length;i++){
+            if(arr[i].includes(inputSearch)){
+                arrSearch.push(arr[i])
+            }
+        }
+        display(arrSearch)
+    }
+
+
 </script>
 </body>
 </html>
