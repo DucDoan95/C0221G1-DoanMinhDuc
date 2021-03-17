@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let inputNum = prompt("Bạn muốn xuất tất cả số nguyên tố nhỏ hơn bao nhiêu:")
+    document.writeln(exportPrime(inputNum));
+
+    function isPrime(n) {
+        if (n < 2) {
+            return false;
+        } else {
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }return true
+        }
+    }
+    function exportPrime(amount) {
+        let result='';
+        for(let i=0;i<amount;i++){
+            if(isPrime(i)){
+                result += +i +" <br>";
+            }
+        }
+        return result;
+    }
+
+</script>
+</body>
+</html>

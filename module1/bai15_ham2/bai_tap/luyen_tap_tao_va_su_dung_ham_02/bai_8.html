@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let arr = new Array();
+    function addArray(arr) {
+        let length = prompt("Enter length of array:");
+        for (let i = 0; i < length; i++) {
+            arr[i] = prompt("Enter value Array: ")
+        }
+        return arr;
+    }
+
+    function reverserArr(arr) {
+        arr = arr.reverse();
+        return arr
+    }
+
+    alert("Array after reverser : " + reverserArr(addArray(arr)))
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const pi = 3.14;
+    let radius = prompt("Enter radius of Circle: ");
+    function calculateCircleArea (r) {
+        let s = r*r *pi;
+        return s;
+    }
+    function calculateCircumference(r) {
+        let c = 2*r*pi;
+        return c;
+    }
+    let area = calculateCircleArea(radius);
+    let circum = calculateCircumference(radius);
+    alert("Circle Area is: "+area);
+    alert("Circle Circumference is: "+circum);
+</script>
+</body>
+</html>

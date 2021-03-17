@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrNameStar = new Array('Polaris','Aldebaran','Deneb','Vega','Altair','Dubhe','Regulus');
+    let arrNameConstellation = new Array('Ursa Minor','Tarurus,','Cygnus','Lyra','Aquila','Ursa Majo','Leo');
+    let string = prompt("What stars are you finding");
+    function compareString(a,arr1,arr2) {
+        for(let i=0;i<arr1.length;i++){
+           if(a === arr1[i]){
+               return "Constellation of this star is: "+arr2[i];
+           }
+        }
+        return "Cant found any star with that name";
+    }
+    let output = compareString(string,arrNameStar,arrNameConstellation)
+    alert(output)
+
+</script>
+</body>
+</html>

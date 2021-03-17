@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        input {
+            width: 210px;
+            text-align: center;
+            height: 50px;
+            font-size: 20px;
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body style="font-size: 25px">
+    <input type="text" id="txtFeet" placeholder="Nhập Feet ->  Meter" oninput="feetToMeter(this.value)">
+    Feet to <label
+        id="outputMeter"></label> Meter <br><br>
+    <input type="text" id="txtMeter" placeholder="Nhập Meter -> Feet" oninput="meterToFeet(this.value)"> Meter to <label
+        id="outputFeet"></label> Feet
+<script>
+
+    function feetToMeter(feet) {
+        let meter = 0.305 * feet;
+        document.getElementById("outputMeter").innerHTML = meter;
+    }
+
+    function meterToFeet(meter) {
+        let feet = 3.279 * meter
+        document.getElementById("outputFeet").innerHTML = feet;
+    }
+</script>
+</body>
+</html>
