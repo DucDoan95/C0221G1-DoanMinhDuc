@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1000" height="600" style="border: 1px solid"></canvas>
+<script>
+    class Rectangle {
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+
+        setHeight(height) {
+            this.height = height;
+        }
+
+        setWidth(width) {
+            this.width = width;
+        }
+
+        getHeight() {
+            return this.height;
+        }
+
+        getWidth() {
+            return this.width;
+        }
+
+        calculateArea() {
+            return this.height * this.width;
+        }
+
+        calculatePerimeter() {
+            return (2*(this.height+this.width) );
+        }
+
+        rectangleDraw() {
+            let c = document.getElementById('myCanvas');
+            let ctx = c.getContext('2d');
+            ctx.fillRect(0, 0, this.width*3, this.height*3);
+        }
+    }
+
+   let rectangle = new Rectangle(0,0);
+    rectangle.setHeight(parseInt(prompt("Nhập chiều dài")));
+    rectangle.setWidth(parseInt(prompt("Nhập chiều rộng")));
+    rectangle.getHeight();
+    rectangle.getWidth();
+     alert(" Area of Reactangle: "+rectangle.calculateArea());
+     alert(" Perimeter of Reactangle: "+rectangle.calculatePerimeter());
+    rectangle.rectangleDraw();
+
+</script>
+</body>
+</html>

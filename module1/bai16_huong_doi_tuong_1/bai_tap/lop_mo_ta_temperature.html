@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        constructor(inputC) {
+            this.inputC = inputC;
+        }
+
+        // getInputC() {
+        //     return this.inputC;
+        // }
+        //
+        // setInputC(inputC) {
+        //     this.inputC = inputC;
+        // }
+        exchangeCtoF(){
+            return this.inputC*1.8+32;
+        }
+        exchangeCtoK(){
+            return this.inputC+273;
+        }
+    }
+    temperature = new Temperature(25);
+    alert(temperature.exchangeCtoF());
+    alert(temperature.exchangeCtoK());
+</script>
+</body>
+</html>
