@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Apple{
+        constructor(weight) {
+            this.weight = weight;
+        }
+        getWeight(){
+            return ("Táo còn " +this.weight+ " phần") ;
+        }
+        isEmpty(){
+            if(this.weight>0){
+                return true
+            }else {
+                return false
+            }
+        }
+        decrease(){
+            this.weight--;
+        }
+    }
+    class Human {
+
+        constructor(name,gender,weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        setGender(gender){
+            this.gender = gender;
+        }
+        getGender(){
+            return this.gender;
+        }
+        eat(apple){
+            apple.decrease();
+            this.weight++;
+        }
+        say(name){
+            name = this.name
+            return name +" cắn một phát"
+        }
+        getName(){
+            return this.name;
+        }
+        setName(){
+            this.name = name;
+        }
+        getWeight(){
+            return this.weight;
+        }
+        setWeight(weight){
+            this.weight = weight
+        }
+        getInFor(){
+            return "Tên "+this.name+" Giới tính: "+this.gender+ " Cân nặng: "+this.weight
+        }
+    }
+    let apple = new Apple(10)
+    let eva = new Human("Eva","Nữ",50)
+    let adam = new Human('Adam','Nam',100)
+    alert(adam.getInFor())
+    alert(eva.getInFor())
+    alert(apple.getWeight())
+    adam.eat(apple)
+    alert(adam.say())
+    alert(adam.getInFor())
+
+    eva.eat(apple)
+    alert(eva.say())
+    alert(eva.getInFor())
+    alert(apple.getWeight())
+</script>
+</body>
+</html>
