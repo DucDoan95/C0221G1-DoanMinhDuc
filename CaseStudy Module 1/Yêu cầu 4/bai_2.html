@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1></h1>
+<script>
+    let s = "cabcaabacaca"
+
+    function differentSymbolsNaive(s){
+        let string = s.split(' ');
+        let arr=[];
+        for(let i=0;i<s.length;i++){
+            if(arr.includes(s[i])===false){
+                arr.push(s[i]);
+            }
+        }
+        return arr.length;
+    }
+    alert(differentSymbolsNaive(s));
+</script>
+</body>
+</html>

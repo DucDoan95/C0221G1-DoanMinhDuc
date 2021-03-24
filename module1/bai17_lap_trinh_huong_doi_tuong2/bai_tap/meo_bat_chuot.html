@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Mouse{
+        constructor(name,weight,speed,status) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.status = status;
+            this.say = "";
+        }
+        say(mes){
+            this.say = mes;
+            return this.say();
+        }
+        getInfo(){
+            return "Name: "+this.name+" Weight: "+this.weight+" Speed: "+this.speed+" Status: "+this.status
+        }
+    }
+    class Cat{
+        constructor(name,weight,speed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+        }
+        say (){
+            return this.say();
+        }
+        catch(mouse){
+           if(this.speed > mouse.speed ){
+               this.say = 'Ahihi stupid I CATCH YOU';
+               return true;
+           }else {
+               this.say = 'Wow you are so FAST or am i STUPID';
+               return false;
+           }
+        }
+        eat(mouse){
+            if(this.catch(mouse)==true && mouse.status == 'alive'){
+
+                this.weight += mouse.weight;
+                this.say = 'Yummy Yummy';
+                mouse.status='die';
+            }else if( mouse.status !== 'alive'){
+                this.say = 'Ewww tha mouse is die';
+            }else {
+                this.say = 'HuHuHu im so hungry';
+            }
+        }
+        getInfo(){
+            return "Name: "+this.name+" Weight: "+this.weight+" Speed: "+this.speed;
+        }
+    }
+    let tom = new Cat('TOM',20,20);
+    let jerry1 = new Mouse('Jerry',2,15,'alive');
+    alert("Round 1")
+    alert(tom.getInfo());
+    alert(jerry1.getInfo());
+    tom.catch(jerry1);
+    alert(tom.say);
+    tom.eat(jerry1);
+    alert(tom.say);
+    alert(tom.getInfo());
+    alert(jerry1.getInfo());
+    alert("Round 2")
+    let jerry2 = new Mouse('Jerry',2,25,'alive');
+    alert(tom.getInfo());
+    alert(jerry2.getInfo());
+    tom.catch(jerry2);
+    alert(tom.say);
+    tom.eat(jerry2);
+    alert(tom.say);
+    alert(tom.getInfo());
+    alert(jerry2.getInfo());
+</script>
+</body>
+</html>

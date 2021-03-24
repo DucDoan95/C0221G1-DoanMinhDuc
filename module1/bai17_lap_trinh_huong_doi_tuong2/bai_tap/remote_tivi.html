@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ip1 {
+            height: 50px;
+        }
+
+        label {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div style="position: absolute">
+    <label>TIVI SamSung</label><br>
+    <label>Kênh: </label>
+    <label id="kenh">1 </label><br>
+    <label>Âm lượng </label>
+    <label id="amLuong">1</label><br>
+    <label id="mode">Trạng Thái: Off</label><br>
+    <br>
+
+    <label style="margin-left: 150px">Remote</label><br>
+    <input class="ip1" type="button" value="Chuyển kênh lên" onclick="chuyenKenhLen()">
+    <input class="ip1" type="button" value="Chuyển kênh xuống" onclick="chuyenKenhXuong()">
+    <input class="ip1" type="button" value="Tăng âm lượng" onclick="amLuongTang()">
+    <input class="ip1" type="button" value="Giảm âm lượng" onclick="amLuongGiam()">
+    <input class="ip1" type="button" value="On/Off" onclick="modeOnOff()">
+</div>
+<script>
+    class TiVi {
+        constructor(kenh, amLuong) {
+            this.kenh = kenh;
+            this.amLuong = amLuong;
+            this.mode = false;
+        }
+        getamLuong(){
+            return this.amLuong;
+        }
+
+        modeOnOff() {
+            this.mode = !this.mode;
+        }
+        getKenh(){
+            return this.kenh;
+        }
+
+    }
+
+    class ReMote {
+        constructor(ma) {
+            this.ma = ma;
+        }
+
+        chuyenKenhLen(tivi) {
+            tivi.kenh++;
+        }
+
+        chuyenKenhXuong(tivi) {
+            tivi.kenh--;
+        }
+
+        tangAmLuong(tivi) {
+            tivi.amLuong++;
+        }
+
+        giamAmLuong(tivi) {
+            tivi.amLuong--;
+        }
+    }
+
+    let tivi = new TiVi(1, 0);
+    let remote = new ReMote(1);
+
+    function modeOnOff() {
+
+        if(tivi.mode === true){
+            tivi.modeOnOff();
+            document.getElementById('mode').innerHTML = "Trạng Thái: Off";
+
+        }else if(tivi.mode ===false){
+            tivi.modeOnOff();
+            document.getElementById('mode').innerHTML = "Trạng Thái: On";
+
+        }
+    }
+    function chuyenKenhLen() {
+        if(tivi.kenh >=99){
+            tivi.kenh = 0;
+        }
+        if(tivi.mode === true){
+            remote.chuyenKenhLen(tivi);
+            document.getElementById('kenh').innerHTML = tivi.getKenh();
+        }
+    }
+    function chuyenKenhXuong() {
+        if(tivi.kenh <=1){
+            tivi.kenh = 100;
+        }
+        if(tivi.mode === true){
+            remote.chuyenKenhXuong(tivi);
+            document.getElementById('kenh').innerHTML = tivi.getKenh();
+        }
+    }
+    function amLuongTang() {
+        if(tivi.amLuong >=50){
+            tivi.amLuong = 49;
+        }
+        if(tivi.mode === true){
+            remote.tangAmLuong(tivi);
+            document.getElementById('amLuong').innerHTML = tivi.getamLuong();
+        }
+    }
+    function amLuongGiam() {
+        if(tivi.amLuong <=0){
+            tivi.amLuong = 1;
+        }
+        if(tivi.mode === true){
+            remote.giamAmLuong(tivi);
+            document.getElementById('amLuong').innerHTML = tivi.getamLuong();
+        }
+    }
+
+</script>
+</body>
+</html>

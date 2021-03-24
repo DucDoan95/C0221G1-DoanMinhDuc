@@ -37,22 +37,32 @@
             this.top -= 50
             console.log('ok: ' + this.top);
         }
+        this.changePic = function (picture) {
+            this.image = picture;
+        }
     }
 
-    let hero = new Hero('pikachu.png', 0, 30, 200);
+    let hero = new Hero('tomTrai.png', 0, 30, 200);
+
 
     function start() {
 
         if (hero.left < window.innerWidth - hero.size && hero.top == 0) {
+            hero.changePic('tomTrai.png')
             hero.moveRight();
         } else if (hero.left > window.innerHeight - hero.size && window.innerHeight - hero.size > hero.top) {
+            hero.changePic('tomXuong.png')
             hero.moveDown();
         } else if (window.innerHeight - hero.size < hero.top) {
+            hero.changePic('tomPhai.png')
             hero.moveLeft();
+
+
         }
         if (hero.left <= 0) {
+            hero.changePic('tomLen.png')
             hero.moveUp();
-    }
+        }
 
 
         document.getElementById('game').innerHTML = hero.getHeroElement();
@@ -60,6 +70,7 @@
     }
 
     start();
+
 </script>
 </body>
 </html>

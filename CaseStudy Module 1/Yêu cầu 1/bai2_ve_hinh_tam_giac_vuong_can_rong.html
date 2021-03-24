@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Title</title>
+        </head>
+<body>
+<input  type="text" id="inputHeight" placeholder="Nhập chiều cao">
+
+<input type="button" onclick="draw()" value="Click để vẽ hình!">
+<script>
+    function draw() {
+        let height;
+        height = parseInt(document.getElementById('inputHeight').value);
+        let i;
+        let j;
+        for(i=1;i <=height;i++)
+        {
+            for(j=1;j<=i;j++)
+            {
+                if(i==1 || j==1 ||i==height ||j==i){
+                    document.write('*');
+                }
+                else {
+                    document.write('&nbsp;&nbsp;');
+                }
+            }
+            document.write('<br>');
+        }
+    }
+</script>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

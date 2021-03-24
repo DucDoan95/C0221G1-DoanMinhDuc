@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrNum = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    let arrString = ['một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín', 'không']
+    let num = prompt("Nhập vào chuỗi");
+    let output = '';
+    for (let i = 0; i < num.length; i++) {
+        let index = arrNum.indexOf(num[i]);
+        if (index !== -1) {
+            output += arrString[index] + " ";
+        }
+    }
+    alert(output)
+</script>
+</body>
+</html>

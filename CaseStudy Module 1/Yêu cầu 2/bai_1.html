@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Thuế VÀ Lương Ròng</title>
+</head>
+<body>
+<script>
+    let luongNhap = parseInt(prompt("Nhập vào lương nhân viên để tính: "));
+    let thue;
+    let luongRong;
+        if(luongNhap>=15000000)
+        {
+            thue = (luongNhap*20)/100;
+            luongRong = luongNhap - thue;
+            alert('Thuế thu nhập của bạn là: '+thue+"VND. Lương ròng của bạn là: "+luongRong+"VND")
+        }else if(luongNhap<15000000 && luongNhap>=7000000) {
+            thue = (luongNhap * 10) / 100;
+            luongRong = luongNhap - thue;
+            alert('Thuế thu nhập của bạn là: ' + thue + "VND. Lương ròng của bạn là: " + luongRong+"VND")
+        }else {
+            thue = (luongNhap * 5) / 100;
+            luongRong = luongNhap - thue;
+            alert('Thuế thu nhập của bạn là: ' + thue + "VND. Lương ròng của bạn là: " + luongRong+"VND")
+        }
+
+
+</script>
+</body>
+</html>

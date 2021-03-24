@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let num = prompt('Nhập số phần tử: ')
+    let arr = new Array();
+
+
+    for (let i = 0; i < num; i++) {
+        arr[i] = parseInt(prompt("Nhập giá trị từng phần tử: "));
+    }
+    function prefixSums(a) {
+        for (let i = 1; i < a.length; i++) {
+            a[i] = parseInt(a[i - 1]) + parseInt(a[i]);
+        }
+        return a;
+    }
+   alert(prefixSums(arr));
+</script>
+</body>
+</html>

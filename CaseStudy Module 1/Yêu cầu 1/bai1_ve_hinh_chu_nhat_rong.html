@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input  type="text" id="inputHeight" placeholder="Nhập chiều dài">
+    <input  type="text" id="inputWidth" placeholder="Nhập chiều rộng">
+    <input type="button" onclick="draw()" value="Click để vẽ hình!">
+    <script>
+        function draw() {
+            let height,width;
+            height = parseInt(document.getElementById('inputHeight').value);
+            width = parseInt(document.getElementById('inputWidth').value);
+            let i;
+            let j;
+            for(i=1;i <=height;i++)
+            {
+                for(j=1;j<=width;j++)
+                {
+                    if(i==1 || j==1 ||i==height ||j==width){
+                        document.write('*');
+                    }
+                    else {
+                        document.write('&nbsp;&nbsp;');
+                    }
+                }
+                document.write('<br>');
+            }
+        }
+    </script>
+</body>
+</html>

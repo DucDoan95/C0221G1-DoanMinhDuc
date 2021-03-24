@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrA = [7, 2, 5, 3, 5, 3];
+    let arrB = [7, 2, 5, 4, 6, 3, 5, 3, 6];
+
+
+    function missingValue(a, b) {
+        let c = new Array();
+        for (let i = 0; i < b.length; i++) {
+            if (a.indexOf(b[i]) == -1 && c.includes(b[i]) === false) {
+                c += b[i];
+            }
+        }
+        return c;
+    }
+
+    alert(missingValue(arrA, arrB))
+</script>
+</body>
+</html>
