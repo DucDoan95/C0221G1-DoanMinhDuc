@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<br>
+<h1>Sổ Xố CodeGym</h1>
+<p id="kq"></p>
+<input type="button" value="Mua vé" onclick="muaVe()">
+<input type="button" value="Kết quả" onclick="ketQua()"><span id="ketqua"></span>
+<script>
+    class Ve {
+        constructor(so1, so2, so3, so4, so5, so6, ma) {
+            this.so1 = so1;
+            this.so2 = so2;
+            this.so3 = so3;
+            this.so4 = so4;
+            this.so5 = so5;
+            this.so6 = so6;
+            this.ma = ma;
+        }
+        setSo1(so1) {
+            this.so1 = so1;
+        }
+        getMa(){
+            return this.ma;
+        }
+        setSo2(so2) {
+            this.so2 = so2
+        }
+        setSo3(so3) {
+            this.so3 = so3;
+        }
+        setSo4(so4) {
+            this.so4 = so4;
+        }
+        setSo5(so5) {
+            this.so5 = so5;
+        }
+        setSo6(so6) {
+            this.so6 = so6;
+        }
+        getSo1() {
+            return this.so1;
+        }
+        getSo2() {
+            return this.so2;
+        }
+        getSo3() {
+            return this.so3;
+        }
+        getSo4() {
+            return this.so4;
+        }
+        getSo5() {
+            return this.so5;
+        }
+        getSo6() {
+            return this.so6;
+        }
+    }
+    let arr = [];
+    let count = 0;
+    function muaVe() {
+        let check = true;
+        if (count < 4) {
+            let muaVeSo = prompt("bạn muốn mua vé loại nào \n" + "1. Bạn muốn chọn số\n" + "2. Bạn muốn số random" + "\n 3.Exit");
+            switch (muaVeSo) {
+                case "1":
+                    let ve = new Ve("00", "00", "00", "00", "00", "00", count);
+                    arr.push(ve);
+                    count++;
+                    display();
+                    break;
+                case "2":
+                    let s1=Math.round(Math.random()*100);
+                    if(s1<=9){
+                        s1='0'+s1;
+                    }
+                    let s2=Math.round(Math.random()*100);
+                    if(s2<=9){
+                        s2='0'+s2;
+                    }
+                    let s3=Math.round(Math.random()*100);
+                    if(s3<=9){
+                        s3='0'+s3;
+                    }
+                    let s4=Math.round(Math.random()*100);
+                    if(s4<=9){
+                        s4='0'+s4;
+                    }
+                    let s5=Math.round(Math.random()*100);
+                    if(s5<=9){
+                        s5='0'+s5;
+                    }
+                    let s6=Math.round(Math.random()*100);
+                    if(s6<=9){
+                        s6='0'+s6;
+                    }
+                      let ve1 = new Ve(s1,s2,s3,s4,s5,s6, count);
+                    arr.push(ve1);
+                    count++;
+                    display();
+                    break;
+                default:
+                    check = false
+            }
+        } else {
+            alert("bạn đã hết quyền mua vé")
+        }
+    }
+
+    function display() {
+        let string = '';
+        for (let i = 0; i < arr.length; i++) {
+            string += '<label>Vé'+(+i+1)+': </label>' +
+                '<input style="height: 30px;width: 40px" type="button" id="' + arr[i].ma + '0' + '" value="' + arr[i].getSo1() + '" onclick="chon1(this.id)">' +
+                '<input style="height: 30px;width: 40px" type="button" id="' + arr[i].ma + '1' + '" value="' + arr[i].getSo2() + '"onclick="chon1(this.id)">' +
+                '<input style="height: 30px;width: 40px" type="button" id="' + arr[i].ma + '2' + '" value="' + arr[i].getSo3() + '"onclick="chon1(this.id)">' +
+                '<input style="height: 30px;width: 40px" type="button" id="' + arr[i].ma + '3' + '" value="' + arr[i].getSo4() + '"onclick="chon1(this.id)">' +
+                '<input style="height: 30px;width: 40px" type="button" id="' + arr[i].ma + '4' + '" value="' + arr[i].getSo5() + '"onclick="chon1(this.id)">' +
+                '<input style="height: 30px;width: 40px" type="button" id="' + arr[i].ma + '5' + '" value="' + arr[i].getSo6() + '"onclick="chon1(this.id)">' + '<br>';
+        }
+        document.getElementById("kq").innerHTML = string;
+    }
+
+    function chon1(id) {
+        let a = id.split("");
+        let maVe = a[0];
+        let maSo = a[1];
+        let so = prompt("nhâp só");
+        switch (maSo) {
+            case "0":
+                arr[maVe].setSo1(so);
+                break;
+            case "1":
+                arr[maVe].setSo2(so);
+                break;
+            case "2":
+                arr[maVe].setSo3(so);
+                break;
+            case "3":
+                arr[maVe].setSo4(so);
+                break;
+            case "4":
+                arr[maVe].setSo5(so);
+                break;
+            case "5":
+                arr[maVe].setSo6(so);
+                break;
+        }
+        display();
+    }
+
+    let vietLot = ["08", "01", "02", "03", "04", "05"];
+    function ketQua() {
+        let string ="";
+
+        for (let i = 0; i < arr.length; i++) {
+            let count = 0;
+            if (vietLot.includes(arr[i].getSo1())) {
+                count++;
+            }
+            if (vietLot.includes(arr[i].getSo2())) {
+                count++;
+            }
+            if (vietLot.includes(arr[i].getSo3())) {
+                count++;
+            }
+            if (vietLot.includes(arr[i].getSo4())) {
+                count++;
+            }
+            if (vietLot.includes(arr[i].getSo5())) {
+                count++;
+            }
+            if (vietLot.includes(arr[i].getSo6())) {
+                count++;
+            }
+
+            if (count == 3) {
+                string+='Vé '+(i+1)+" Giải ba\n";
+            }else if(count==4){
+                string+="Vé "+(i+1)+ " Giải nhì\n";
+            }else if(count==5){
+                string+="Vé "+(i+1)+ " Giải nhất\n";
+            }else if(count==6){
+                string+="Vé "+(i+1)+ " Giải viet lote\n";
+            }else {
+                string+="Vé "+(i+1)+" trật\n"
+            }
+        }
+        alert(string)
+    }
+</script>
+</body>
+</html>
