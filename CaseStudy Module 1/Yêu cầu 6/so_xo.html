@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            width: 50px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Xổ số CodeGym</h1>
+    <input type="number" id="ticketNum1" min="0" max="99">
+    <input type="number" id="ticketNum2"min="0" max="99">
+    <input type="number" id="ticketNum3"min="0" max="99">
+    <input type="number" id="ticketNum4"min="0" max="99">
+    <input type="number" id="ticketNum5"min="0" max="99">
+    <input type="number" id="ticketNum6"min="0" max="99"><br><br>
+    <input type="number" id="resultNum1"min="0" max="99">
+    <input type="number" id="resultNum2"min="0" max="99">
+    <input type="number" id="resultNum3"min="0" max="99">
+    <input type="number" id="resultNum4"min="0" max="99">
+    <input type="number" id="resultNum5"min="0" max="99">
+    <input type="number" id="resultNum6"min="0" max="99"><br><br>
+    <input type="button" value="Mua vé" style="width: 100px;height: 50px">
+    <input type="button" value="Xem kết quả" style="width: 100px;height: 50px" onclick="btnResult()">
+</div>
+<script>
+    class CodeGymLot {
+        constructor(num1, num2, num3, num4, num5, num6) {
+            this.num1 = num1;
+            this.num2 = num2;
+            this.num3 = num3;
+            this.num4 = num4;
+            this.num5 = num5;
+            this.num6 = num6;
+        }
+
+        setNum1(num1) {
+            this.num1 = num1;
+        }
+
+        setNum1(num2) {
+            this.num2 = num2;
+        }
+
+        setNum3(num3) {
+            this.num3 = num3;
+        }
+
+        setNum4(num4) {
+            this.num4 = num4;
+        }
+
+        setNum5(num5) {
+            this.num5 = num5;
+        }
+
+        setNum1(num6) {
+            this.num6 = num6;
+        }
+
+        getNum1() {
+            return this.num1;
+        }
+
+        getNum2() {
+            return this.num2;
+        }
+
+        getNum3() {
+            return this.num3;
+        }
+
+        getNum4() {
+            return this.num4;
+        }
+
+        getNum5() {
+            return this.num5;
+        }
+
+        getNum6() {
+            return this.num6;
+        }
+    }
+
+    let veSo1 = new CodeGymLot(1, 2, 3, 4, 5, 6)
+    let ketQua = new CodeGymLot(2, 5, 3, 4, 4, 6);
+
+    let tuyChon = parseInt(prompt("Bạn có 2 lựa chọn: \n" +
+        '1. Bạn muốn tự chọn số.\n' +
+        '2. Hệ thống tự random.'));
+    switch (tuyChon) {
+        case 1:
+            break;
+        case 2:
+            randomTicket();
+    }
+    function f() {
+
+    }
+    function randomTicket() {
+        document.getElementById('ticketNum1').value = Math.round(Math.random()*100);
+        document.getElementById('ticketNum2').value = Math.round(Math.random()*100);
+        document.getElementById('ticketNum3').value = Math.round(Math.random()*100);
+        document.getElementById('ticketNum4').value = Math.round(Math.random()*100);
+        document.getElementById('ticketNum5').value = Math.round(Math.random()*100);
+        document.getElementById('ticketNum6').value = Math.round(Math.random()*100);
+    }
+
+    function checkResult(veSo, ketQua) {
+        if (veSo.num1 == ketQua.num1 && veSo.num2 == ketQua.num2 && veSo.num3 == ketQua.num3 && veSo.num4 == ketQua.num4 && veSo.num5 == ketQua.num5 && veSo.num6 == ketQua.num6) {
+            return 'trúng giải nhất'
+        } else if (veSo.num2 == ketQua.num2 && veSo.num3 == ketQua.num3 && veSo.num4 == ketQua.num4 && veSo.num5 == ketQua.num5 && veSo.num6 == ketQua.num6) {
+            return 'trúng giải nhì '
+        } else if (veSo.num4 == ketQua.num4 && veSo.num5 == ketQua.num5 && veSo.num6 == ketQua.num6) {
+            return 'trúng giải khuyến khích'
+        } else
+            return 'trật '
+    }
+</script>
+</body>
+</html>

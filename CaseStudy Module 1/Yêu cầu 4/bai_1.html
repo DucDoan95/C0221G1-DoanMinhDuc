@@ -6,13 +6,13 @@
 </head>
 <body>
 <script>
-    let a ='tRuong    TaN   HAI '
+    let a ='tRuong    TaN   HAI ';
     let arrInput=a.toLowerCase().split(" ");
-    let result=[]
+    let result=[];
     for(let i=0;i<arrInput.length;i++){
         arrInput[i]=arrInput[i].charAt(0).toUpperCase()+arrInput[i].slice(1);
         if(arrInput[i].length>0){
-            result.push(arrInput[i])
+            result.push(arrInput[i]);
         }
 
     }
@@ -21,10 +21,10 @@
     let maxString=result[0];
     for(let i=0;i<result.length;i++){
         if(parseInt(result[i].length)>parseInt(max)){
-            maxString =result[i]
+            maxString =result[i];
         }
     }
-    alert(maxString)
+    alert(maxString);
 </script>
 </body>
 </html>
