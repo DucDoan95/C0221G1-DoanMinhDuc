@@ -9,7 +9,7 @@
     let s1 = 'aabcc';
     let s2 = 'adcaa';
     let arr = new Array()
-    function commonCharacterCount(s1, s2) {
+    function commonCharacter(s1, s2) {
         let string = '';
         let a = s1.split('');
         let b = s2.split('');
@@ -21,7 +21,20 @@
         }
         return string;
     }
-   alert(commonCharacterCount(s1, s2))
+    let str = commonCharacter(s1, s2);
+    alert(str);
+
+    function differentSymbolsNaive(s){
+        let string = s.split(' ');
+        let arr=[];
+        for(let i=0;i<s.length;i++){
+            if(arr.includes(s[i])===false){
+                arr.push(s[i]);            }
+        }
+        return arr;
+    }
+    let arrCommon = differentSymbolsNaive(str);
+
 
 
 </script>

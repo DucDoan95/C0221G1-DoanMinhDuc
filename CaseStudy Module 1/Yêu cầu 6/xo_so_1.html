@@ -13,9 +13,10 @@
 <body>
 <br>
 <h1>Sổ Xố CodeGym</h1>
-<p id="kq"></p>
 <input type="button" value="Mua vé" onclick="muaVe()">
 <input type="button" value="Kết quả" onclick="ketQua()"><span id="ketqua"></span>
+<p id="kq"></p>
+
 <script>
     class Ve {
         constructor(so1, so2, so3, so4, so5, so6, ma) {
@@ -72,7 +73,7 @@
     function muaVe() {
         let check = true;
         if (count < 4) {
-            let muaVeSo = prompt("bạn muốn mua vé loại nào \n" + "1. Bạn muốn chọn số\n" + "2. Bạn muốn số random" + "\n 3.Exit");
+            let muaVeSo = prompt("Bạn muốn mua vé loại nào \n" + "1. Bạn muốn chọn số\n" + "2. Bạn muốn số random" + "\n 3.Exit");
             switch (muaVeSo) {
                 case "1":
                     let ve = new Ve("00", "00", "00", "00", "00", "00", count);
@@ -114,7 +115,7 @@
                     check = false
             }
         } else {
-            alert("bạn đã hết quyền mua vé")
+            alert("Bạn đã hết quyền mua vé")
         }
     }
 
@@ -136,7 +137,7 @@
         let a = id.split("");
         let maVe = a[0];
         let maSo = a[1];
-        let so = prompt("nhâp só");
+        let so = prompt("Nhâp số");
         switch (maSo) {
             case "0":
                 arr[maVe].setSo1(so);
@@ -186,15 +187,15 @@
             }
 
             if (count == 3) {
-                string+='Vé '+(i+1)+" Giải ba\n";
+                string+='Vé '+(i+1)+" Trúng giải ba x ngàn vnd\n";
             }else if(count==4){
-                string+="Vé "+(i+1)+ " Giải nhì\n";
+                string+="Vé "+(i+1)+ " Trúng giải nhì x triệu vnd\n";
             }else if(count==5){
-                string+="Vé "+(i+1)+ " Giải nhất\n";
+                string+="Vé "+(i+1)+ " Trúng giải nhất x tỷ vnd\n";
             }else if(count==6){
-                string+="Vé "+(i+1)+ " Giải viet lote\n";
+                string+="Vé "+(i+1)+ " Giải viet lote muốn gì đc nấy\n";
             }else {
-                string+="Vé "+(i+1)+" trật\n"
+                string+="Vé "+(i+1)+" Trúng gió\n"
             }
         }
         alert(string)
