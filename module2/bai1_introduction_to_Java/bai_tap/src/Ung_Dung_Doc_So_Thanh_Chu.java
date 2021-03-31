@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Ung_Dung_Doc_So_Thanh_Chu {
-    private static String one_to_ten(int n) {
+    private static String find1To20(int n) {
         switch (n) {
             case 0:
                 return "zero";
@@ -23,14 +23,6 @@ public class Ung_Dung_Doc_So_Thanh_Chu {
                 return "eight";
             case 9:
                 return "nine";
-            default:
-                return "";
-
-        }
-    }
-
-    private static String ten_to_twenty(int n) {
-        switch (n) {
             case 10:
                 return "ten";
             case 11:
@@ -50,13 +42,15 @@ public class Ung_Dung_Doc_So_Thanh_Chu {
             case 18:
                 return "eighteen";
             case 19:
-                return "twenty";
+                return "ninety";
             default:
                 return "";
+
         }
     }
 
-    private static String twenty_to_ninety(int n) {
+
+    private static String find20To99(int n) {
         switch (n) {
             case 2:
                 return "twenty";
@@ -79,7 +73,7 @@ public class Ung_Dung_Doc_So_Thanh_Chu {
         }
     }
 
-    private static String one_hundred_to_nine_hundred(int n) {
+    private static String find100To999(int n) {
         switch (n) {
             case 1:
                 return "one hundred";
@@ -104,37 +98,48 @@ public class Ung_Dung_Doc_So_Thanh_Chu {
         }
     }
 
+    public static String output1To19(int num) {
+        return find1To20(num);
+    }
+
+    public static String output20To99(int num) {
+        int unit = num % 10;
+        int dozen = num / 10;
+        if (unit == 0) {
+            return find20To99(dozen);
+
+        } else {
+            return find20To99(dozen) + " " + find1To20(unit);
+        }
+    }
+
+    public static String output100To999(int num) {
+        int unit = num % 10;
+        int dozen = num % 100 / 10;
+        int hundred = num / 100;
+        if (dozen == 0 && unit == 0) {
+            return find100To999(hundred);
+        } else if (dozen == 0 && unit != 0) {
+            return find100To999(hundred) + " and " + find1To20(unit);
+        } else if (dozen != 0 && unit != 0) {
+            return find100To999(hundred) + " " + find20To99(dozen) + " " + find1To20(unit);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
-        String result = "", str1 = "", str2 = "", str3 = "", str4 = "";
-        int num1, num2, num3;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter number: ");
         int num = scanner.nextInt();
-        num1 = num % 10;
-        num2 = num % 100 / 10;
-        num3 = num % 1000 / 100;
-        if (num1 == 0) {
-            num1 = -1;
-        }
-
-        if (num >= 0 && num < 10) {
-            str1 = one_to_ten(num);
-            result = str1;
-        } else if (num < 20) {
-            str2 = ten_to_twenty(num);
-            result = str2;
-        } else if (num >= 20 && num <= 99) {
-            str1 = one_to_ten(num1);
-            str3 = twenty_to_ninety(num2);
-            result = str3 + " " + str1;
-        } else if (num >= 100 && num <= 999) {
-            str1 = one_to_ten(num1);
-            str3 = twenty_to_ninety(num2);
-            str4 = one_hundred_to_nine_hundred(num3);
-            result = str4 + " " + str3 + " " + str1;
+        if (num < 20) {
+            System.out.println(output1To19(num));
+        } else if (num <= 99) {
+            System.out.println(output20To99(num));
+        } else if (num <= 999) {
+            System.out.println(output100To999(num));
         } else {
-            result = "out of ability";
+            System.out.println("out of");
         }
-        System.out.println(result);
     }
 }
+
