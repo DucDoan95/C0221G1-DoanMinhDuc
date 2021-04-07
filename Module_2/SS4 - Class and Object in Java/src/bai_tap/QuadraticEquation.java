@@ -45,11 +45,11 @@ public class QuadraticEquation {
         double c = scanner.nextDouble();
         QuadraticEquation quadraticEquation = new QuadraticEquation(a,b,c);
         if(quadraticEquation.getDiscriminant()>0){
-            System.out.print("PT có 2 nghiệm: x1 = "+quadraticEquation.getRoot1()+"; x2 = "+quadraticEquation.getRoot2());
+            System.out.print("The equation has two roots: "+quadraticEquation.getRoot1()+" and "+quadraticEquation.getRoot2());
         }else if(quadraticEquation.getDiscriminant()==0){
-            System.out.print("PT có nghiệm kép: x1 = x2 = "+ quadraticEquation.getValueX());
+            System.out.print("The equation has two roots: "+ quadraticEquation.getValueX());
         }else {
-            System.out.print("PT vô nghiệm! ");
+            System.out.print("The equation has no real roots");
         }
     }
 }
