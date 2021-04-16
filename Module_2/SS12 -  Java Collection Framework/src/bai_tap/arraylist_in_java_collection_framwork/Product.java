@@ -1,10 +1,9 @@
-package bai_tap.arraylist_linkedlist_in_java_collection_framwork;
+package bai_tap.arraylist_in_java_collection_framwork;
 
 public class Product {
     private int productId;
     private String productName;
     private double productPrice;
-
     public Product() {
     }
 
@@ -40,11 +39,13 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+
+        return "Product {" +
                 "productId=" + productId +
                 ", productName='" + productName + '\'' +
                 ", productPrice=" + productPrice +
 
                 '}'+"\n";
+
     }
 }
