@@ -1,21 +1,18 @@
 package controllers;
 
+import commons.RegexCustomer;
 import models.Customer;
 
 import java.util.Scanner;
 
 public class NewCustomer {
-    static final String regexName = "^[A-Z][a-z]{0,}(?: [A-Z][a-z]*){0,}$";
-    static final String regexID = "^[0-9]{3}[ ][0-9]{3}[ ][0-9]{3}$";
-    static final String regexEmail = "^[A-Za-z0-9_]{1,}[@][a-zA-Z0-9]{1,}[.][a-zA-Z0-9]{1,}$";
-    static final String regexBirthday = "^([0][1-9]|[1][0-9]|[2][0-9]|[3][0-1])[\\/]([0][1-9]|[1][0-2])[\\/]([1][9][0][1-9]|[1][9][1-9][0-9]|[2-9][0-9][0-9][0-9])$";
 
     public static Customer addNewCustomer() {
         Customer customers = new Customer();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Customer Name: ");
         String name = scanner.nextLine();
-        while (!name.matches(regexName)) {
+        while (!RegexCustomer.regexNameCustomer(name)) {
             System.out.println("Customer's name must capitalize the first letter of each word");
             System.out.print("Enter Customer Name: ");
             name = scanner.nextLine();
@@ -24,11 +21,12 @@ public class NewCustomer {
 
         System.out.print("Enter Customer Birthday : ");
         String birthday = scanner.nextLine();
-        while (!birthday.matches(regexBirthday)) {
+        while (!RegexCustomer.regexBirthdayCustomer(birthday)) {
             System.out.println("Birthday must  be in the format dd/mm/yyyy and year >1900");
             System.out.print("Enter Customer Birthday: ");
             birthday = scanner.nextLine();
         }
+        customers.setBirthday(birthday);
 
         System.out.print("Enter Customer Gender: ");
         String gender = scanner.nextLine();
@@ -42,12 +40,9 @@ public class NewCustomer {
                 gender = scanner.nextLine();
             }
         }
-
-
-
         System.out.print("Enter Customer ID Card : ");
         String idCard = scanner.nextLine();
-        while (!idCard.matches(regexID)) {
+        while (!RegexCustomer.regexIDCustomer(idCard)) {
             System.out.println("The Id Card must have 9 digits and be in the format XXX XXX XXX");
             System.out.print("Enter Customer ID: ");
             idCard = scanner.nextLine();
@@ -59,7 +54,7 @@ public class NewCustomer {
 
         System.out.print("Enter Customer Email : ");
         String email = scanner.nextLine();
-        while (!email.matches(regexEmail)) {
+        while (!RegexCustomer.regexEmailCustomer(email)) {
             System.out.println("Email must be in the correct format abc@abc.abc");
             System.out.print("Enter Customer Email: ");
             email = scanner.nextLine();

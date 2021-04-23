@@ -28,7 +28,7 @@ public class Triangle extends Throwable {
     }
 
     public static void IllegalTriangleException(int a, int b, int c) throws Triangle {
-        if (a + b <= c || a + c <= b || b + c <= a) {
+        if (a<=0||b<=0||c<=0||a + b <= c || a + c <= b || b + c <= a) {
             throw new Triangle();
         }
     }

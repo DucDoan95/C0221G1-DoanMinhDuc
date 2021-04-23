@@ -71,11 +71,11 @@ public abstract class Services {
     @Override
     public String toString() {
         return
-                "\nID: " + id +
-                "\nService Name: " + serviceName +
-                "\nArea Using: " + areaUsing +
-                "\nRental Fee: " + rentalFee +
-                "\nMaximum number of People: " + maxPeople +
-                "\nRental Type:" + rentalType;
+                "ID: " + id +
+                ", Service Name: " + serviceName +
+                ", Area Using: " + areaUsing +
+                ", Rental Fee: " + rentalFee +
+                ", Maximum number of People: " + maxPeople +
+                ", Rental Type:" + rentalType;
     }
 }

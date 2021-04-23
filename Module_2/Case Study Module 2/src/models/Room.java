@@ -32,7 +32,7 @@ public class Room extends Services {
 
     @Override
     public String toString() {
-        return "      Room" +super.toString()+
-                "\nService Free:" + serviceFree;
+        return super.toString()+
+                ", Service Free:" + serviceFree;
     }
 }

@@ -113,15 +113,15 @@ public class Customer {
     }
     @Override
     public String toString() {
-        return "      Customer" +
-                "\nName: " + name +
-                "\nBirthday: " + birthday +
-                "\nGender: " + gender +
-                "\nID Card: " + idCard +
-                "\nPhone Number: " + phoneNumber +
-                "\nEmail: " + email +
-                "\nCustomer Type: " + customerType +
-                "\nAddress: " + address ;
+        return
+                "Name: " + name +
+                ", Birthday: " + birthday +
+                ", Gender: " + gender +
+                ", ID Card: " + idCard +
+                ", Phone Number: " + phoneNumber +
+                ", Email: " + email +
+                ", Customer Type: " + customerType +
+                ", Address: " + address ;
 
     }
 }

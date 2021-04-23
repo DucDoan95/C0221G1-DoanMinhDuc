@@ -1,15 +1,16 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainController {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         displayMainMenu();
 
 
     }
 
-    public static void displayMainMenu() {
+    public static void displayMainMenu() throws IOException {
         while (true) {
             System.out.println("      MAIN MENU:\n" +
                     "1. Add New Services\n" +
@@ -47,7 +48,7 @@ public class MainController {
 
     }
 
-    public static void addNewServices() {
+    public static void addNewServices() throws IOException {
         while (true) {
             System.out.println("\n      ADD NEW SERVICE:\n" +
                     "1. Add New Villa\n" +
@@ -77,7 +78,7 @@ public class MainController {
 
     }
 
-    public static void showServices() {
+    public static void showServices() throws IOException {
         while (true) {
             System.out.println("\n      SHOW SERVICES:\n" +
                     "1. Show all Villa\n" +
