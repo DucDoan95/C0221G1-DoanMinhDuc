@@ -15,6 +15,7 @@ public class CopyFile {
                 fileWriter.write(line+"\n");
                 System.out.println(line);
             }
+            bufferedReader.close();
             fileReader.close();
             fileWriter.close();
             System.out.println("\tCopy file is done");

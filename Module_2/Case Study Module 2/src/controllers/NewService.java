@@ -1,5 +1,6 @@
 package controllers;
 
+import commons.RegexService;
 import models.Services;
 
 import java.util.Scanner;
@@ -9,15 +10,45 @@ public class NewService {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter ID: ");
         services.setId(scanner.nextLine());
+
         System.out.print("Enter Service Name: ");
-        services.setServiceName(scanner.nextLine());
+        String serviceName =scanner.nextLine();
+        while (!RegexService.regexServiceName(serviceName)){
+            System.out.println("Service Name must capitalize the first letter of each word");
+            System.out.print("Enter Service Name: ");
+            serviceName = scanner.nextLine();
+        }
+        services.setServiceName(serviceName);
+
         System.out.print("Enter Area Using: ");
-        services.setAreaUsing(Float.parseFloat(scanner.nextLine()));
+        String area = scanner.nextLine();
+        services.setAreaUsing(Float.parseFloat(area));
+
         System.out.print("Enter Rental Fee: ");
-        services.setRentalFee(Double.parseDouble(scanner.nextLine()));
+        String rentalFee =scanner.nextLine();
+        while (!RegexService.regexRentalFee(rentalFee)){
+            System.out.println("Rental Fee must be a positive integer");
+            System.out.print("Enter Rental Fee: ");
+            rentalFee = scanner.nextLine();
+        }
+        services.setRentalFee(Double.parseDouble(rentalFee));
+
         System.out.print("Enter Maximum number of people: ");
-        services.setMaxPeople(Integer.parseInt(scanner.nextLine()));
+        String maxPeople =scanner.nextLine();
+        while (!RegexService.regexMaxPeople(maxPeople)){
+            System.out.println("Maximum people must be >0 and <20 people");
+            System.out.print("Enter Maximum number of people: ");
+            maxPeople = scanner.nextLine();
+        }
+        services.setMaxPeople(Integer.parseInt(maxPeople));
+
         System.out.print("Enter Rental Type: ");
-        services.setTypeRental(scanner.nextLine());
+        String rentalType =scanner.nextLine();
+        while (!RegexService.rexRentalType(rentalType)){
+            System.out.println("Rental Type must capitalize the first letter of each word");
+            System.out.print("Enter Rental Type: ");
+            rentalType = scanner.nextLine();
+        }
+        services.setTypeRental(rentalType);
     }
 }
