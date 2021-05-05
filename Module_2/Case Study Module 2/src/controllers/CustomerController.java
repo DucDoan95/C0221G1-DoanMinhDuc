@@ -31,13 +31,20 @@ public class CustomerController {
 
     }
     public static void showInfoOfCustomer(){
+        List<Customer>customerList = new ArrayList<>();
         try{
             File file = new File("E:\\CodeGym\\Codegym\\C0221G1-DoanMinhDuc\\Module_2\\Case Study Module 2\\src\\data\\Customer.csv");
             FileReader fileReaderCustomer = new FileReader(file);
             BufferedReader bufferedReaderCustomer = new BufferedReader(fileReaderCustomer);
             String line = null;
             while ((line = bufferedReaderCustomer.readLine())!=null){
-                System.out.println(line);
+                String[] split = line.split(",");
+                Customer customer = new Customer(split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7]);
+                customerList.add(customer);
+            }
+            customerList.sort(Comparator.comparing(Customer::getName));
+            for (Customer customer:customerList){
+                System.out.println(customer);
             }
             bufferedReaderCustomer.close();
         }catch (Exception e){

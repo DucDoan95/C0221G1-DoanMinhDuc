@@ -123,7 +123,7 @@ public class ServiceController {
        // List<Room> roomList = new ArrayList<>();
 //        for (Room room : roomList) {
 //            System.out.println(room.showInfor()+"\n");
-//        }
+//       }
         try {
             FileReader fileReader = new FileReader("E:\\CodeGym\\Codegym\\C0221G1-DoanMinhDuc\\Module_2\\Case Study Module 2\\src\\data\\Service.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);

@@ -10,11 +10,11 @@ public class NewCustomer {
     public static Customer addNewCustomer() {
         Customer customers = new Customer();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Customer Name: ");
+        System.out.println("Enter Customer Name: ");
         String name = scanner.nextLine();
         while (!RegexCustomer.regexNameCustomer(name)) {
-            System.out.println("Customer's name must capitalize the first letter of each word");
-            System.out.print("Enter Customer Name: ");
+            System.err.println("Customer's name must capitalize the first letter of each word");
+            System.out.println("Enter Customer Name: ");
             name = scanner.nextLine();
         }
         customers.setName(name);

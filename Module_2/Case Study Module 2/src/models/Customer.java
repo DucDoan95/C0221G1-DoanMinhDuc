@@ -114,14 +114,14 @@ public class Customer {
     @Override
     public String toString() {
         return
-                "Name: " + name +
-                ", Birthday: " + birthday +
-                ", Gender: " + gender +
-                ", ID Card: " + idCard +
-                ", Phone Number: " + phoneNumber +
-                ", Email: " + email +
-                ", Customer Type: " + customerType +
-                ", Address: " + address ;
+                 name +
+                "," +birthday +
+                "," + gender +
+                "," + idCard +
+                "," + phoneNumber +
+                "," + email +
+                "," + customerType +
+                "," + address ;
 
     }
 }

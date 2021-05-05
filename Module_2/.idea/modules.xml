@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Case Study Furama/Case Study Furama.iml" filepath="$PROJECT_DIR$/Case Study Furama/Case Study Furama.iml" />
       <module fileurl="file://$PROJECT_DIR$/Case Study Module 2/Case Study Module 2.iml" filepath="$PROJECT_DIR$/Case Study Module 2/Case Study Module 2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Module_2.iml" filepath="$PROJECT_DIR$/Module_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Quan Ly Cong Nhan Vien Chuc/Quan Ly Cong Nhan Vien Chuc.iml" filepath="$PROJECT_DIR$/Quan Ly Cong Nhan Vien Chuc/Quan Ly Cong Nhan Vien Chuc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Quan Ly Hoa Don Tien Dien/Quan Ly Hoa Don Tien Dien.iml" filepath="$PROJECT_DIR$/Quan Ly Hoa Don Tien Dien/Quan Ly Hoa Don Tien Dien.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Quan Ly Phuong Tien Giao Thong/Quan Ly Phuong Tien Giao Thong.iml" filepath="$PROJECT_DIR$/Quan Ly Phuong Tien Giao Thong/Quan Ly Phuong Tien Giao Thong.iml" />
       <module fileurl="file://$PROJECT_DIR$/SS1 - Introduction to Java/SS1 - Introduction to Java.iml" filepath="$PROJECT_DIR$/SS1 - Introduction to Java/SS1 - Introduction to Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/SS10 - ArrayList/SS10 - ArrayList.iml" filepath="$PROJECT_DIR$/SS10 - ArrayList/SS10 - ArrayList.iml" />
       <module fileurl="file://$PROJECT_DIR$/SS11 - Generic, Stack and Queue/SS11 - Generic, Stack and Queue.iml" filepath="$PROJECT_DIR$/SS11 - Generic, Stack and Queue/SS11 - Generic, Stack and Queue.iml" />
