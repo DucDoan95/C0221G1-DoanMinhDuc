@@ -131,7 +131,7 @@ public class ReadWriteFile {
             String[] temp;
             while ((line = bufferedReader.readLine()) != null) {
                 temp = line.split(",");
-                Employee employee = new Employee(temp[0], temp[1], temp[2]);
+                Employee employee = new Employee(temp[0], temp[1], temp[2],temp[3]);
                 employeeList.add(employee);
             }
         } catch (

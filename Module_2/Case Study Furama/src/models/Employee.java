@@ -1,6 +1,7 @@
 package models;
 
 public class Employee {
+    private String id;
     private String nameEmployee;
     private String ageEmployee;
     private String addressEmployee;
@@ -8,7 +9,8 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String nameEmployee, String ageEmployee, String addressEmployee) {
+    public Employee(String id,String nameEmployee, String ageEmployee, String addressEmployee) {
+        this.id=id;
         this.nameEmployee = nameEmployee;
         this.ageEmployee = ageEmployee;
         this.addressEmployee = addressEmployee;
@@ -22,16 +24,20 @@ public class Employee {
         return ageEmployee;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getAddressEmployee() {
         return addressEmployee;
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "nameEmployee='" + nameEmployee + '\'' +
-                ", ageEmployee='" + ageEmployee + '\'' +
-                ", addressEmployee='" + addressEmployee + '\'' +
+        return "Employee{id='" +id+
+                ", nameEmployee='" + nameEmployee +
+                ", ageEmployee='" + ageEmployee +
+                ", addressEmployee='" + addressEmployee +
                 '}';
     }
 }

@@ -12,14 +12,7 @@ public class EmployeeController {
         Map<String, String> map = new HashMap<String, String>();
         for(int i=0;i<employeeList.size();i++)
         {
-            if(i<9){
-                map.put("Mã số 00"+(i+1),employeeList.get(i).toString());
-            }else if(i<99){
-                map.put("Mã số 0"+(i+1),employeeList.get(i).toString());
-            }else {
-                map.put("Mã số "+(i+1),employeeList.get(i).toString());
-            }
-
+            map.put(employeeList.get(i).getId(),employeeList.get(i).toString());
         }
         Set<String> set = map.keySet();
         for (String key : set) {

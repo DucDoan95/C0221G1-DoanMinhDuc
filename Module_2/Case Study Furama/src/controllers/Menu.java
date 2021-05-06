@@ -17,8 +17,9 @@ public class Menu {
                     "4. Show Information of Customer\n" +
                     "5. Add New Booking\n" +
                     "6. Show Information of Employee\n" +
-                    "7. Exit\n"+
-                    "8. Cinema\n");
+                    "7. Cinema\n"+
+                    "8. Find Employee\n"+
+                    "9. Exit\n");
             Scanner scanner = new Scanner(System.in);
             switch (scanner.nextLine()) {
                 case "1":
@@ -40,10 +41,13 @@ public class Menu {
                     EmployeeController.showEmployee();
                     break;
                 case "7":
-                    System.exit(0);
+                    FuramaCinema.buyTicket();
                     break;
                 case "8":
-                    FuramaCinema.buyTicket();
+                    FileCabinet.findFile();
+                    break;
+                case "9":
+                    System.exit(0);
             }
         }
     }

@@ -73,10 +73,10 @@ public class HouseController {
 
         System.out.println("Enter Number of Floor ");
         String numberFloor = scanner.nextLine();
-        while (!RegexServices.isValidNumberFloor(idService)){
+        while (!RegexServices.isValidNumberFloor(numberFloor)){
             System.err.println("Number of Floor must be a positive number");
             System.out.println("Enter Number of Floor ");
-            rentalFee = scanner.nextLine();
+            numberFloor = scanner.nextLine();
         }
 
 

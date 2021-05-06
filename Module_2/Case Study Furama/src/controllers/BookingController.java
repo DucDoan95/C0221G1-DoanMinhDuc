@@ -27,14 +27,13 @@ public class BookingController {
             bufferedWriter.write(temp);
             bufferedWriter.newLine();
             bufferedWriter.close();
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        temp="";
-}
+        temp = "";
+    }
 
     public static void chooseCustomer() {
         List<Customer> customerList = new ArrayList<>();
@@ -42,56 +41,78 @@ public class BookingController {
         for (int i = 0; i < customerList.size(); i++) {
             System.out.println("STT " + (i + 1) + " " + customerList.get(i).showInfo());
         }
-        int chooseCustomer = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < customerList.size(); i++) {
-            if(i==chooseCustomer-1){
-                temp += customerList.get(chooseCustomer - 1).showInfo();
+        int chooseCustomer;
+        while (true) {
+            System.out.println("Enter STT Customer");
+            chooseCustomer = Integer.parseInt(scanner.nextLine());
+            for (int i = 0; i < customerList.size(); i++) {
+                if (i == chooseCustomer - 1) {
+                    temp += customerList.get(chooseCustomer - 1).showInfo();
+                    return;
+                }
             }
+            System.err.println("STT Wrong or dont have STT in the System");
+
         }
     }
 
     public static void chooseService() {
-        System.out.println(
-                "1. Booking Villa\n" +
-                        "2. Booking House\n" +
-                        "3. Booking Room\n" +
-                        "4. Back to menu\n" +
-                        "5. Exit");
-        int choose = Integer.parseInt(scanner.nextLine());
-        if (choose == 1) {
-            List<Services> servicesList = new ArrayList<>();
-            servicesList = ReadWriteFile.ReadFile("Villa.csv");
-            VillaController.showVilla();
-            System.out.println("Enter ID Villa to Booking");
-            String idVilla = scanner.nextLine();
-            for (int i = 0; i < servicesList.size(); i++) {
-                if (servicesList.get(i).getId().equals(idVilla)) {
-                    temp += " IS BOOKING ";
-                    temp += servicesList.get(i).showInfo();
+        while (true) {
+            System.out.println(
+                    "1. Booking Villa\n" +
+                            "2. Booking House\n" +
+                            "3. Booking Room\n");
+            int choose = Integer.parseInt(scanner.nextLine());
+            if (choose == 1) {
+                List<Services> servicesList = new ArrayList<>();
+                servicesList = ReadWriteFile.ReadFile("Villa.csv");
+                VillaController.showVilla();
+
+                while (true) {
+                    System.out.println("Enter ID Villa to Booking");
+                    String idVilla = scanner.nextLine();
+                    for (int i = 0; i < servicesList.size(); i++) {
+                        if (servicesList.get(i).getId().equals(idVilla)) {
+                            temp += " IS BOOKING ";
+                            temp += servicesList.get(i).showInfo();
+                            return;
+                        }
+                    }
+                    System.err.println("ID Wrong or dont have ID in the System");
                 }
-            }
-        } else if (choose == 2) {
-            List<Services> servicesList = new ArrayList<>();
-            servicesList = ReadWriteFile.ReadFile("House.csv");
-            HouseController.showHouse();
-            System.out.println("Enter ID House to Booking");
-            String idHouse = scanner.nextLine();
-            for (int i = 0; i < servicesList.size(); i++) {
-                if (servicesList.get(i).getId().equals(idHouse)) {
-                    temp += " IS BOOKING ";
-                    temp += servicesList.get(i).showInfo();
+            } else if (choose == 2) {
+                List<Services> servicesList = new ArrayList<>();
+                servicesList = ReadWriteFile.ReadFile("House.csv");
+                HouseController.showHouse();
+                while (true) {
+                    System.out.println("Enter ID House to Booking");
+                    String idHouse = scanner.nextLine();
+                    for (int i = 0; i < servicesList.size(); i++) {
+                        if (servicesList.get(i).getId().equals(idHouse)) {
+                            temp += " IS BOOKING ";
+                            temp += servicesList.get(i).showInfo();
+                            return;
+                        }
+                    }
+                    System.err.println("ID Wrong or dont have ID in the System");
+
                 }
-            }
-        } else if (choose == 3) {
-            List<Services> servicesList = new ArrayList<>();
-            servicesList = ReadWriteFile.ReadFile("Room.csv");
-            RoomController.showRoom();
-            System.out.println("Enter ID Room to Booking");
-            String idRoom = scanner.nextLine();
-            for (int i = 0; i < servicesList.size(); i++) {
-                if (servicesList.get(i).getId().equals(idRoom)) {
-                    temp += " IS BOOKING ";
-                    temp += servicesList.get(i).showInfo();
+            } else if (choose == 3) {
+                List<Services> servicesList = new ArrayList<>();
+                servicesList = ReadWriteFile.ReadFile("Room.csv");
+                RoomController.showRoom();
+                while (true) {
+                    System.out.println("Enter ID Room to Booking");
+                    String idRoom = scanner.nextLine();
+                    for (int i = 0; i < servicesList.size(); i++) {
+                        if (servicesList.get(i).getId().equals(idRoom)) {
+                            temp += " IS BOOKING ";
+                            temp += servicesList.get(i).showInfo();
+                            return;
+                        }
+                    }
+                    System.err.println("ID Wrong or dont have ID in the System");
+
                 }
             }
         }

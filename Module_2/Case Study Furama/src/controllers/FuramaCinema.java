@@ -15,14 +15,19 @@ public class FuramaCinema {
         for(int i=0;i<customerList.size();i++){
             System.out.println("STT "+(i+1)+" "+customerList.get(i).showInfo());
         }
-        System.out.println("Choose STT Customer to buy ticket");
-        int stt = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < customerList.size(); i++) {
-            if(i==stt-1) {
-                queue.offer(customerList.get(stt - 1).getCustomerName());
+        while (true) {
+            System.out.println("Choose STT Customer to buy ticket");
+            int stt = Integer.parseInt(scanner.nextLine());
+            for (int i = 0; i < customerList.size(); i++) {
+                if (i == stt - 1) {
+                    queue.offer(customerList.get(stt - 1).getCustomerName());
+                    System.out.println(queue);
+                    return;
+                }
             }
+
         }
-        System.out.println(queue);
 
     }
+
 }
