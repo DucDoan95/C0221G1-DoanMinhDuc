@@ -31,7 +31,6 @@ values("Đoàn Minh Đức",5,4,4,"1995-06-05","090909090","50000000","096999999
 ("Hoàng Thị Diệu Thúy",1,2,1,"1996-08-12","787878787","10000000","0944444444","dieuthuy@gmail.com","Sơn Trà"),
 ("Trần Anh Tú",5,4,4,"1995-06-05","090909090","50000000","09699999999","ducdoan@gmail.com","Dương Thưởng");
 
-
 insert into loai_khach(ten_loai_khach)
 values("Diamond"),
 ("Platinium"),
@@ -41,8 +40,8 @@ values("Diamond"),
 
 insert into khach_hang(id_loai_khach,ho_ten,ngay_sinh,so_cmtnd,sdt,email,dia_chi)
 values(1,"Nguyễn Văn Tèo","1890-05-25","030604050","0936363636","vanteo@gmail.com","Phan Huy Ích"),
-(1,"Trần Nguyên Vũ","1996-07-15","036587452","0966121451","nguyenvu@gmail.com","Ông Ích Khiêm"),
-(2,"Nguyễn Ngọc Lân","1991-08-26","052458755","0978458784","lannguyen@gmail.com","Nguyễn Văn Đậu"),
+(1,"Trần Nguyên Vũ","1996-07-15","036587452","0966121451","nguyenvu@gmail.com","Đà Nẵng"),
+(2,"Nguyễn Ngọc Lân","1991-08-26","052458755","0978458784","lannguyen@gmail.com","Quảng Trị"),
 (3,"Hồ Mậu Tùng","1988-12-22","065452547","0983214512","tungho@gmail.com","Bành Văn Trân"),
 (4,"Lê Văn Minh","1978-08-10","012132102","0931232121","minhvan@gmail.com","Hải Phòng"),
 (5,"Huỳnh Văn Tý","1886-01-15","565423653","0933123123","tyvan@gmail.com","Nha Trang");
