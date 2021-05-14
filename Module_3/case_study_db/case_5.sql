@@ -1,9 +1,9 @@
 use furama_database;
 
-select khach_hang.id_khach_hang,khach_hang.ho_ten,loai_khach.ten_loai_khach,hop_dong.id_hop_dong,dich_vu.ten_dich_vu,hop_dong.ngay_lam_hop_dong,hop_dong.ngay_ket_thuc, dich_vu.chi_phi_thue+dich_vu_di_kem.don_vi*dich_vu_di_kem.gia as tong_tien
-from khach_hang
-left join loai_khach on loai_khach.id_loai_khach = khach_hang.id_loai_khach
-left join hop_dong on hop_dong.id_khach_hang = khach_hang.id_khach_hang
-left join dich_vu on dich_vu.id_dich_vu = hop_dong.id_dich_vu
-left join hop_dong_chi_tiet on hop_dong.id_hop_dong = hop_dong_chi_tiet.id_hop_dong
-left join dich_vu_di_kem on dich_vu_di_kem.id_dich_vu_di_kem = hop_dong_chi_tiet.id_dich_vu_di_kem
+select kh.id_khach_hang,kh.ho_ten,lk.ten_loai_khach,hd.id_hop_dong,dv.ten_dich_vu,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc, dv.chi_phi_thue+dvdk.don_vi*dvdk.gia as tong_tien
+from khach_hang kh
+left join loai_khach lk on lk.id_loai_khach = kh.id_loai_khach
+left join hop_dong hd on hd.id_khach_hang = kh.id_khach_hang
+left join dich_vu dv on dv.id_dich_vu = hd.id_dich_vu
+left join hop_dong_chi_tiet hdct on hd.id_hop_dong = hdct.id_hop_dong
+left join dich_vu_di_kem dvdk on dvdk.id_dich_vu_di_kem = hdct.id_dich_vu_di_kem

@@ -1,0 +1,9 @@
+use furama_database;
+
+select dvdk.id_dich_vu_di_kem,dvdk.ten_dich_vu_di_kem,dvdk.gia,dvdk.don_vi,dvdk.trang_thai_kha_dung
+from dich_vu_di_kem dvdk
+join hop_dong_chi_tiet hdct on dvdk.id_dich_vu_di_kem = hdct.id_dich_vu_di_kem
+join hop_dong hd on hd.id_hop_dong = hdct.id_hop_dong
+join khach_hang kh on kh.id_khach_hang = hd.id_khach_hang
+join loai_khach lk on lk.id_loai_khach = kh.id_loai_khach
+where lk.ten_loai_khach ="Diamond" and (kh.dia_chi in ("Vinh","Quảng Ngãi"));
