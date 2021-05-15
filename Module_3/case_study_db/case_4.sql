@@ -1,10 +1,13 @@
 use furama_database;
 
-select khach_hang.ho_ten,hop_dong.id_hop_dong,khach_hang.id_loai_khach,count(hop_dong.id_hop_dong) as so_lan_dat_phong 
-from khach_hang
-left join hop_dong on hop_dong.id_khach_hang = khach_hang.id_khach_hang
-group by khach_hang.ho_ten
-having khach_hang.id_loai_khach =1
+-- 4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần.
+-- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng. 
+-- Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.
+
+select kh.ho_ten,hd.id_hop_dong,kh.id_loai_khach,count(hd.id_hop_dong) as so_lan_dat_phong 
+from khach_hang kh
+left join hop_dong hd on hd.id_khach_hang = kh.id_khach_hang
+group by kh.id_khach_hang
+having kh.id_loai_khach =1
 order by so_lan_dat_phong asc
 ;
-
