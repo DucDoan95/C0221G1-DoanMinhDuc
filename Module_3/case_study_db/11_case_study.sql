@@ -9,5 +9,5 @@ join hop_dong_chi_tiet hdct on dvdk.id_dich_vu_di_kem = hdct.id_dich_vu_di_kem
 join hop_dong hd on hd.id_hop_dong = hdct.id_hop_dong
 join khach_hang kh on kh.id_khach_hang = hd.id_khach_hang
 join loai_khach lk on lk.id_loai_khach = kh.id_loai_khach
-where lk.id_loai_khach =1 and (kh.dia_chi ="Vinh"or kh.dia_chi ="Quảng Ngãi")
+where lk.ten_loai_khach ="Diamond" and (kh.dia_chi in ("Vinh","Quảng Ngãi"))
 ;
