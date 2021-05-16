@@ -1,5 +1,6 @@
-create database if not exists furama_database1 CHARACTER SET utf8 COLLATE utf8_general_ci;
-use furama_database1;
+create database if not exists furama_database
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+use furama_database;
 
 create table vi_tri(
 id_vi_tri int not null primary key auto_increment,
@@ -76,14 +77,14 @@ id_dich_vu int not null,
 foreign key (id_dich_vu) references dich_vu(id_dich_vu),
 ngay_lam_hop_dong date,
 ngay_ket_thuc date,
-tien_dat_coc int,
-tong_tien int);
+tien_dat_coc int default 0,
+tong_tien int default 0);
 
 create table dich_vu_di_kem(
 id_dich_vu_di_kem int not null primary key auto_increment,
 ten_dich_vu_di_kem varchar(45),
-gia int,
-don_vi int,
+gia int default 0,
+don_vi int default 0,
 trang_thai_kha_dung varchar(45));
 
 create table hop_dong_chi_tiet(
@@ -92,7 +93,7 @@ id_hop_dong int not null,
 foreign key (id_hop_dong) references hop_dong(id_hop_dong),
 id_dich_vu_di_kem int not null,
 foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
-so_luong int);
+so_luong int default 0);
 
 
 -- THÊM DỮ LIỆU
@@ -137,7 +138,11 @@ values(1,"Nguyễn Văn Tèo","1890-05-25","030604050","0936363636","vanteo@gmai
 (2,"Nguyễn Ngọc Lân","1991-08-26","052458755","0978458784","lannguyen@gmail.com","Quảng Trị"),
 (3,"Hồ Mậu Tùng","1988-12-22","065452547","0983214512","tungho@gmail.com","Bành Văn Trân"),
 (4,"Lê Văn Minh","1978-08-10","012132102","0931232121","minhvan@gmail.com","Hải Phòng"),
-(5,"Huỳnh Văn Tý","1886-01-15","565423653","0933123123","tyvan@gmail.com","Nha Trang");
+(1,"Huỳnh Văn Tý","1956-01-15","565423653","0933123123","tyvan@gmail.com","Nha Trang"),
+(1,"Huỳnh Vũ Võ","1990-01-16","0530303542","0933123321","vuvo@gmail.com","Vinh"),
+(1,"Trần Tam Khúc","1990-01-16","0530303542","0933123321","vuvo@gmail.com","Quảng Ngãi"),
+(1,"Huỳnh Văn Tý","1986-02-20","527894527","0975487878","tyvanhuynh@gmail.com","Vinh");
+
 
 insert into kieu_thue(ten_kieu_thue,gia)
 values("Theo Năm","20000000"),
@@ -160,7 +165,13 @@ values("Villa001",500,5,"20","30000000",3,2,"Trống"),
 insert into hop_dong(id_nhan_vien,id_khach_hang,id_dich_vu,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,tong_tien)
 values(1,1,1,"2021/12/05","2021/12/06","500000","30000000"),
 (2,2,2,"2021/12/03","2021/12/10","1000000","200000000"),
-(3,3,3,"2021/12/04","2021/12/07","500000","50000000");
+(3,3,3,"2019/12/04","2019/12/07","500000","50000000"),
+(4,1,3,"2019/12/04","2019/12/07","500000","50000000"),
+(3,1,4,"2018/07/14","2018/07/17","1000000","70000000"),
+(2,3,2,"2019/10/07","2019/10/10","500000","30000000"),
+(3,4,1,"2018/09/15","2018/09/20","500000","20000000"),
+(3,8,1,"2019/03/15","2019/03/20","1000000","25000000"),
+(2,7,2,"2019/05/20","2019/05/21","500000","1000000");
 
 insert into dich_vu_di_kem(ten_dich_vu_di_kem,gia,don_vi,trang_thai_kha_dung)
 values("Massage","200000","1","Khả Dụng"),
@@ -172,4 +183,11 @@ values("Massage","200000","1","Khả Dụng"),
 insert into hop_dong_chi_tiet(id_hop_dong,id_dich_vu_di_kem,so_luong)
 values(1,1,2),
 (2,5,1),
-(3,3,5);
+(3,3,5),
+(4,2,1),
+(5,3,2),
+(6,1,3),
+(7,2,1),
+(8,1,2),
+(9,5,2)
+;
