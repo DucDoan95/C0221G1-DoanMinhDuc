@@ -12,4 +12,5 @@ where  dv.id_dich_vu not in(
        from hop_dong hd
        where (year(hd.ngay_lam_hop_dong)=2019 and (month(hd.ngay_lam_hop_dong) in(1,2,3)))
        )
+group by dv.id_dich_vu
 ;

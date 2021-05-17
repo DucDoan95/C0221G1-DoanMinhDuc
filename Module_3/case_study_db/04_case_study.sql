@@ -7,7 +7,7 @@ use furama_database;
 select kh.ho_ten,hd.id_hop_dong,kh.id_loai_khach,count(hd.id_hop_dong) as so_lan_dat_phong 
 from khach_hang kh
 left join hop_dong hd on hd.id_khach_hang = kh.id_khach_hang
+where kh.id_loai_khach =1
 group by kh.id_khach_hang
-having kh.id_loai_khach =1
 order by so_lan_dat_phong asc
 ;

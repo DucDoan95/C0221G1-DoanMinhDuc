@@ -10,4 +10,5 @@ join hop_dong hd on hd.id_hop_dong = hdct.id_hop_dong
 join khach_hang kh on kh.id_khach_hang = hd.id_khach_hang
 join loai_khach lk on lk.id_loai_khach = kh.id_loai_khach
 where lk.ten_loai_khach ="Diamond" and (kh.dia_chi in ("Vinh","Quảng Ngãi"))
+group by dvdk.id_dich_vu_di_kem
 ;

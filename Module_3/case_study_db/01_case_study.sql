@@ -20,9 +20,9 @@ ho_ten varchar(45),
 id_vi_tri int not null,
 id_trinh_do int not null,
 id_bo_phan int not null,
-foreign key (id_vi_tri) references vi_tri(id_vi_tri),
-foreign key (id_trinh_do) references trinh_do(id_trinh_do),
-foreign key (id_bo_phan) references bo_phan(id_bo_phan),
+foreign key (id_vi_tri) references vi_tri(id_vi_tri) ON DELETE CASCADE,
+foreign key (id_trinh_do) references trinh_do(id_trinh_do) ON DELETE CASCADE,
+foreign key (id_bo_phan) references bo_phan(id_bo_phan) ON DELETE CASCADE,
 ngay_sinh date,
 so_cmtnd varchar(45),
 luong varchar(45),
@@ -37,7 +37,7 @@ ten_loai_khach varchar(45));
 create table khach_hang(
 id_khach_hang int not null primary key auto_increment,
 id_loai_khach int not null ,
-foreign key (id_loai_khach) references loai_khach(id_loai_khach),
+foreign key (id_loai_khach) references loai_khach(id_loai_khach) ON DELETE CASCADE,
 ho_ten varchar(45),
 ngay_sinh date,
 so_cmtnd varchar(45),
@@ -62,23 +62,25 @@ so_tang int,
 so_nguoi_toi_da varchar(45),
 chi_phi_thue varchar(45),
 id_kieu_thue int not null,
-foreign key (id_kieu_thue) references kieu_thue(id_kieu_thue),
+foreign key (id_kieu_thue) references kieu_thue(id_kieu_thue) ON DELETE CASCADE,
 id_loai_dich_vu int not null,
-foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu),
+foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu) ON DELETE CASCADE,
 trang_thai varchar(45));
 
 create table hop_dong(
 id_hop_dong int not null primary key auto_increment,
 id_nhan_vien int not null,
-foreign key (id_nhan_vien) references nhan_vien(id_nhan_vien),
+foreign key (id_nhan_vien) references nhan_vien(id_nhan_vien) ON DELETE CASCADE, 
 id_khach_hang int not null,
-foreign key (id_khach_hang) references khach_hang(id_khach_hang),
+foreign key (id_khach_hang) references khach_hang(id_khach_hang) ON DELETE CASCADE,
 id_dich_vu int not null,
-foreign key (id_dich_vu) references dich_vu(id_dich_vu),
+foreign key (id_dich_vu) references dich_vu(id_dich_vu) ON DELETE CASCADE,
 ngay_lam_hop_dong date,
 ngay_ket_thuc date,
 tien_dat_coc int default 0,
-tong_tien int default 0);
+tong_tien int default 0
+);
+
 
 create table dich_vu_di_kem(
 id_dich_vu_di_kem int not null primary key auto_increment,
@@ -90,9 +92,9 @@ trang_thai_kha_dung varchar(45));
 create table hop_dong_chi_tiet(
 id_hop_dong_chi_tiet int not null primary key auto_increment,
 id_hop_dong int not null,
-foreign key (id_hop_dong) references hop_dong(id_hop_dong),
+foreign key (id_hop_dong) references hop_dong(id_hop_dong) ON DELETE CASCADE,
 id_dich_vu_di_kem int not null,
-foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
+foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem) ON DELETE CASCADE,
 so_luong int default 0);
 
 
@@ -171,7 +173,9 @@ values(1,1,1,"2021/12/05","2021/12/06","500000","30000000"),
 (2,3,2,"2019/10/07","2019/10/10","500000","30000000"),
 (3,4,1,"2018/09/15","2018/09/20","500000","20000000"),
 (3,8,1,"2019/03/15","2019/03/20","1000000","25000000"),
-(2,7,2,"2019/05/20","2019/05/21","500000","1000000");
+(2,7,2,"2019/05/20","2019/05/21","500000","10000000"),
+(1,5,2,"2015/03/15","2015/03/20","500000","20000000")
+;
 
 insert into dich_vu_di_kem(ten_dich_vu_di_kem,gia,don_vi,trang_thai_kha_dung)
 values("Massage","200000","1","Khả Dụng"),
@@ -189,5 +193,6 @@ values(1,1,2),
 (6,1,3),
 (7,2,1),
 (8,1,2),
-(9,5,2)
+(9,3,2),
+(10,2,1)
 ;
