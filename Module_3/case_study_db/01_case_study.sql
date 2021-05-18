@@ -77,15 +77,15 @@ id_dich_vu int not null,
 foreign key (id_dich_vu) references dich_vu(id_dich_vu) ON DELETE CASCADE,
 ngay_lam_hop_dong date,
 ngay_ket_thuc date,
-tien_dat_coc int default 0,
-tong_tien int default 0
+tien_dat_coc double default 0,
+tong_tien double default 0
 );
 
 
 create table dich_vu_di_kem(
 id_dich_vu_di_kem int not null primary key auto_increment,
 ten_dich_vu_di_kem varchar(45),
-gia int default 0,
+gia double default 0,
 don_vi int default 0,
 trang_thai_kha_dung varchar(45));
 
@@ -125,7 +125,8 @@ values("Đoàn Minh Đức",5,4,4,"1995-06-05","090909090","50000000","096999999
 ("Nguyễn Anh Tấn",3,3,2,"1980-04-15","365365365","20000000","0966666666","anhtan@gmail.com","Hòa Khánh"),
 ("Trần Như Tâm",3,3,2,"1985-07-05","656565656","20000000","0955555555","nhutam@gmail.com","Hòa Khánh"),
 ("Hoàng Thị Diệu Thúy",1,2,1,"1996-08-12","787878787","10000000","0944444444","dieuthuy@gmail.com","Sơn Trà"),
-("Trần Anh Tú",5,4,4,"1995-06-05","090909090","50000000","09699999999","ducdoan@gmail.com","Dương Thưởng");
+("Trần Anh Tú",5,4,4,"1995-06-05","090909090","50000000","09699999999","ducdoan@gmail.com","Dương Thưởng"),
+("Nguyễn Văn Huy",5,4,4,"1990-07-15","020304050","70000000","0961231231","huyvan@gmail.com","Hải Châu");
 
 insert into loai_khach(ten_loai_khach)
 values("Diamond"),
@@ -174,7 +175,8 @@ values(1,1,1,"2021/12/05","2021/12/06","500000","30000000"),
 (3,4,1,"2018/09/15","2018/09/20","500000","20000000"),
 (3,8,1,"2019/03/15","2019/03/20","1000000","25000000"),
 (2,7,2,"2019/05/20","2019/05/21","500000","10000000"),
-(1,5,2,"2015/03/15","2015/03/20","500000","20000000")
+(1,5,2,"2015/03/15","2015/03/20","500000","20000000"),
+(8,8,2,"2019/12/12","2019/12/15","500000","20000000")
 ;
 
 insert into dich_vu_di_kem(ten_dich_vu_di_kem,gia,don_vi,trang_thai_kha_dung)
@@ -194,5 +196,6 @@ values(1,1,2),
 (7,2,1),
 (8,1,2),
 (9,3,2),
-(10,2,1)
+(10,2,1),
+(11,2,1)
 ;
