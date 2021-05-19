@@ -9,6 +9,7 @@ select nv.id_nhan_vien,nv.ho_ten,nv.id_vi_tri,nv.id_trinh_do,nv.id_bo_phan,nv.ng
 from nhan_vien nv
 join hop_dong hd on hd.id_nhan_vien = nv.id_nhan_vien
 where nv.dia_chi = "Hải Châu" and hd.ngay_lam_hop_dong = "2019/12/12"
+group by hd.id_nhan_vien;
 ;
 
 select *from v_nhan_vien;
