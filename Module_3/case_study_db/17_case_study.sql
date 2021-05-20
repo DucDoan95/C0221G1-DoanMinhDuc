@@ -13,7 +13,7 @@ where khach_hang.id_khach_hang in
     join hop_dong_chi_tiet hdct on hdct.id_hop_dong = hd.id_hop_dong
     join dich_vu_di_kem dvdk on dvdk.id_dich_vu_di_kem = hdct.id_dich_vu_di_kem
     join dich_vu dv on dv.id_dich_vu = hd.id_dich_vu
-    where kh.id_loai_khach = 2
+    where kh.id_loai_khach = 2 and year(hd.ngay_lam_hop_dong)=2019
     group by hd.id_khach_hang
     having  sum(dv.chi_phi_thue+hdct.so_luong*dvdk.gia)  >10000000
     )as khs

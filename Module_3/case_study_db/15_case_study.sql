@@ -8,6 +8,7 @@ from nhan_vien nv
 left join trinh_do td on td.id_trinh_do = nv.id_trinh_do
 left join bo_phan bp on bp.id_bo_phan = nv.id_bo_phan
 left join hop_dong hd on nv.id_nhan_vien = hd.id_nhan_vien
+where year(hd.ngay_lam_hop_dong) between 2018 and 2019
 group by nv.id_nhan_vien
 having count(hd.id_nhan_vien)<=3
 ;

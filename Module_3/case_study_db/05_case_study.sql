@@ -4,7 +4,7 @@ use furama_database;
 -- TongTien (Với TongTien tính theo công thức sau: ChiPhiThue + SoLuong*Gia, với SoLuong và Giá là từ bảng DichVuDiKem) 
 -- cho tất cả các Khách hàng đã từng đặt phỏng. (Những Khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 
-select kh.id_khach_hang,kh.ho_ten,lk.ten_loai_khach,hd.id_hop_dong,dv.ten_dich_vu,hd.ngay_lam_hop_dong,
+select kh.id_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.id_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong,
 	   hd.ngay_ket_thuc, sum(dv.chi_phi_thue+hdct.so_luong*dvdk.gia) as tong_tien
 from khach_hang kh
 left join loai_khach lk on lk.id_loai_khach = kh.id_loai_khach
