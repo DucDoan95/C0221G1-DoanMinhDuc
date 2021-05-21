@@ -1,0 +1,23 @@
+hr{
+    margin-top: -18px;
+}
+.p_indent{
+    text-indent: 50px;
+}
+p{
+    text-align: justify;
+}
+.span_sky{
+    color: deepskyblue;
+}
+.span_blue{
+    color: blue;
+}
+sup{
+    color: blue;
+}
+body{
+    font-size: 20px;
+    margin-left: 200px;
+    margin-right: 250px;
+}
