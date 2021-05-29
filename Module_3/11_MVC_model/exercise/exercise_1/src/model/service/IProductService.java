@@ -5,14 +5,10 @@ import model.bean.Product;
 import java.util.List;
 
 public interface IProductService {
-    List<Product> findByAll();
-
+    List<Product> findAll();
+    void create(String id,Product product);
+    void update(String id,Product product);
+    void remove(String id);
     Product findById(String id);
-
-    void editProduct(String id, Product product);
-
-    void createProduct(Product product);
-
-    void removeProduct(String id);
     Product findByName(String name);
 }

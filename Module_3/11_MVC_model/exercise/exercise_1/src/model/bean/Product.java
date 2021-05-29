@@ -3,19 +3,19 @@ package model.bean;
 public class Product {
     private String id;
     private String name;
-    private float price;
+    private String price;
     private String description;
     private String manufacture;
 
-    public Product(String id, String name, float price, String description, String manufacture) {
+    public Product() {
+    }
+
+    public Product(String id, String name, String price, String description, String manufacture) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.manufacture = manufacture;
-    }
-
-    public Product() {
     }
 
     public String getId() {
@@ -34,11 +34,11 @@ public class Product {
         this.name = name;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -56,16 +56,5 @@ public class Product {
 
     public void setManufacture(String manufacture) {
         this.manufacture = manufacture;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", manufacture='" + manufacture + '\'' +
-                '}';
     }
 }

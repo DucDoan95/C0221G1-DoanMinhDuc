@@ -56,7 +56,11 @@ public class CustomerServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }else {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/error404.jsp");
+            try {
+                response.sendRedirect("/view/customer/error-404.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
