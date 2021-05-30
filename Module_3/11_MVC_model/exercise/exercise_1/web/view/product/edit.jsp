@@ -33,7 +33,7 @@
                 <table>
                     <tr>
                         <td>Id:</td>
-                        <td><input  disabled type="text" name="id" id="id" value="${product.id}"></td>
+                        <td><input  readonly  type="text" name="id" id="id" value="${product.id}"></td>
                     </tr>
                     <tr>
                         <td>Name:</td>

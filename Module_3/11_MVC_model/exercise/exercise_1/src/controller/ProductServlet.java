@@ -40,22 +40,49 @@ public class ProductServlet extends HttpServlet {
                 break;
 
         }
-
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "create":
+                formCreateProduct(request, response);
+                break;
+            case "edit":
+                formEditProduct(request, response);
+                break;
+            case "delete":
+                formDeleteProduct(request, response);
+                break;
+            case "view":
+                formViewProduct(request, response);
+                break;
+            case "search":
+                break;
+            default:
+                showProductForm(request, response);
+                break;
+
+        }
+    }
+
+    //do Post
     private void searchProduct(HttpServletRequest request, HttpServletResponse response) {
-            String name = request.getParameter("search");
-            Product product = this.productService.findByName(name);
-            RequestDispatcher requestDispatcher;
-            request.setAttribute("product", product);
-            requestDispatcher = request.getRequestDispatcher("/view/product/view.jsp");
-            try {
-                requestDispatcher.forward(request,response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        String name = request.getParameter("search");
+        Product product = this.productService.findByName(name);
+        RequestDispatcher requestDispatcher;
+        request.setAttribute("product", product);
+        requestDispatcher = request.getRequestDispatcher("/view/product/view.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -65,19 +92,19 @@ public class ProductServlet extends HttpServlet {
         String price = request.getParameter("price");
         String description = request.getParameter("description");
         String manufacture = request.getParameter("manufacture");
-        Product product =productService.findById(id);
-        if(product == null){
-            productService.create(id,new Product(id,name,price,description,manufacture));
+        Product product = productService.findById(id);
+        if (product == null) {
+            productService.create(id, new Product(id, name, price, description, manufacture));
             request.setAttribute("message", "Create successful ");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/product/create.jsp");
             try {
-                requestDispatcher.forward(request,response);
+                requestDispatcher.forward(request, response);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else {
+        } else {
             try {
                 response.sendRedirect("/view/product/error-404.jsp");
             } catch (IOException e) {
@@ -119,40 +146,11 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "";
-        }
-        switch (action) {
-            case "create":
-                formCreateProduct(request, response);
-                break;
-            case "edit":
-                formEditProduct(request, response);
-                break;
-            case "delete":
-                formDeleteProduct(request, response);
-                break;
-            case "view":
-                formViewProduct(request, response);
-                break;
-            case "search":
-                break;
-            default:
-                showProductForm(request, response);
-                break;
-
-        }
-    }
-
-
-
+    //do Get
     private void formViewProduct(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
         Product product = productService.findById(id);
-        request.setAttribute("product",product);
+        request.setAttribute("product", product);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/product/view.jsp");
         try {
             requestDispatcher.forward(request, response);
