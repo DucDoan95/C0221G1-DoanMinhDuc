@@ -212,7 +212,7 @@
                 <div class="row p-2 align-items-center">
                     <div class="col-lg-5 col-md-4 col-sm-4 "></div>
                     <div class="col-lg-2 col-md-4 col-sm-4 ">
-                        <input class="btn btn-success" type="submit" id="submit" value="Create Service"
+                        <input class="btn btn-success" type="submit" id="submit" value="Delete Service"
                                style="width: 200px">
                     </div>
                     <div class="col-lg-5 col-md-4 col-sm-4 col-xl-4"></div>

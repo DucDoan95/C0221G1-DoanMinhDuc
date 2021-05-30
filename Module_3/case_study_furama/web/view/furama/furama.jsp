@@ -108,7 +108,7 @@
     </nav>
 </div>
 <div class="jumbotron jumbotron-fluid m-0 p-0 "
-     style="height: 600px;background-image: url(https://www.furama.com/images/about-hotel-img.jpg);background-size: 100%">
+     style="height: 450px;background-image: url(https://www.furama.com/images/nh_sgstrip.jpg);background-size: 100%">
 </div>
 <div class="container-fluid">
     <div class="row text-center p-4">
