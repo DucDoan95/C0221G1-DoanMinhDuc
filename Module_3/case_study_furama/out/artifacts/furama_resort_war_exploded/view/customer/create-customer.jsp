@@ -22,8 +22,9 @@
         .container-fluid .row {
             height: 10%;
         }
+
         input{
-            width: 100%;
+            width: 85%;
         }
     </style>
 </head>
@@ -47,7 +48,7 @@
                         <a class="dropdown-item" href="../../view/customer/list-customer.jsp">List Customer</a>
                         <a class="dropdown-item" href="../../view/customer/create-customer.jsp">Create Customer</a>
                         <a class="dropdown-item" href="../../view/customer/edit-customer.jsp">Edit Customer</a>
-                        <a class="dropdown-item" href="../../view/customer/delete-customer.jsp">Delete Customer</a>
+                        <a class="dropdown-item" href="view-customer.jsp">Delete Customer</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown px-4">
@@ -96,10 +97,14 @@
                         Contract Detail
                     </a>
                     <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/contract_detail/list-contract-detail.jsp">List Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/create-contract-detail.jsp">Create Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/edit-contract-detail.jsp">Edit Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/delete-contract-detail.jsp">Delete Contract Detail</a>
+                        <a class="dropdown-item" href="../../view/contract_detail/list-contract-detail.jsp">List
+                            Contract Detail</a>
+                        <a class="dropdown-item" href="../../view/contract_detail/create-contract-detail.jsp">Create
+                            Contract Detail</a>
+                        <a class="dropdown-item" href="../../view/contract_detail/edit-contract-detail.jsp">Edit
+                            Contract Detail</a>
+                        <a class="dropdown-item" href="../../view/contract_detail/delete-contract-detail.jsp">Delete
+                            Contract Detail</a>
                     </div>
                 </li>
             </ul>
@@ -110,99 +115,113 @@
         </div>
     </nav>
 </div>
-<div class="container">
-    <form>
+<div class="container mb-0">
+    <form method="post">
         <div class=" row">
             <div class="col-lg-2"></div>
             <div class="col-lg-8 bg-info">
                 <div class="row p-3 bg-light">
                     <div class="col-lg-12 text-center">
                         <h1>Create Customer</h1>
+                        <h3>
+                            <c:if test="${message=='Create successful'}">
+                                <p class="text-success">${message}</p>
+                            </c:if>
+                            <c:if test="${message=='Create unsuccessful'}">
+                                <p class="text-danger">${message}</p>
+                            </c:if>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row bg-light">
+                    <div class="col-lg-12 w-100 p-0 m-0">
+                        <a class="btn btn-success" href="/customer"> < Back to List</a>
                     </div>
                 </div>
                 <div class="row p-2 pt-5">
-                    <div class="col-lg-3">
-                        <label class="font-weight-bold">Customer ID</label>
-                    </div>
-                    <div class="col-lg-9">
-                        <input  type="text" name="customerID">
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-3">
-                        <label class="font-weight-bold">Customer Type ID</label>
-                    </div>
-                    <div class="col-lg-9">
-                        <input  type="text" name="customerTypeID">
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Customer Name</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="customerName">
+                    <div class="col-lg-8 ">
+                        <input type="text" name="customerName" value="${customer.customerName}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4  text-right">
+                        <label class="font-weight-bold">Customer Type ID</label>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <select class="form-select w-auto" aria-label="Default select example" name="customerTypeID">
+                            <option value="1">Diamond</option>
+                            <option value="2">Platinum</option>
+                            <option value="3">Gold</option>
+                            <option value="4">Silver</option>
+                            <option value="5">Member</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Customer Birthday</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="customerBirthday">
+                    <div class="col-lg-8">
+                        <input class="w-auto" type="date" name="customerBirthday">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Customer Gender</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="customerGender">
+                    <div class="col-lg-8">
+                        <select class="form-select w-auto" aria-label="Default select example" name="customerGender" >
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Customer ID Card</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="customerIDCard">
+                    <div class="col-lg-8">
+                        <input type="text" name="customerIDCard" value="${customer.customerIDCard}">
                     </div>
                 </div>
-                <div class="row p-2">
-                    <div class="col-lg-3">
+                <div class="row p-2 ">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Customer Phone</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="customerPhone">
+                    <div class="col-lg-8">
+                        <input type="text" name="customerPhone" value="${customer.customerPhone}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Customer Email</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="customerEmail">
+                    <div class="col-lg-8 ">
+                        <input type="text" name="customerEmail" value="${customer.customerEmail}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Customer Address</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="customerAddress">
+                    <div class="col-lg-8">
+                        <input type="text" name="customerAddress" value="${customer.customerAddress}">
                     </div>
                 </div>
-                <div class="row p-2 align-items-center">
-                    <div class="col-lg-5 col-md-4 col-sm-4 "></div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 ">
-                        <input class="btn btn-success" type="submit" id="submit" value="Create Customer" style="width: 200px">
+                <div class="row p-2 justify-content-center pb-4">
+                    <div class="col-lg-4 col-md-4 col-sm-4 "></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 ">
+                        <input class="btn btn-success" type="submit" id="submit" value="Create Customer"
+                               style="width: 200px">
                     </div>
-                    <div class="col-lg-5 col-md-4 col-sm-4 col-xl-4"></div>
-
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4"></div>
                 </div>
             </div>
             <div class="col-lg-2"></div>
-
         </div>
     </form>
 </div>

@@ -24,7 +24,7 @@
         }
 
         input {
-            width: 100%;
+            width: 85%;
         }
     </style>
 </head>
@@ -48,7 +48,7 @@
                         <a class="dropdown-item" href="../../view/customer/list-customer.jsp">List Customer</a>
                         <a class="dropdown-item" href="../../view/customer/create-customer.jsp">Create Customer</a>
                         <a class="dropdown-item" href="../../view/customer/edit-customer.jsp">Edit Customer</a>
-                        <a class="dropdown-item" href="../../view/customer/delete-customer.jsp">Delete Customer</a>
+                        <a class="dropdown-item" href="../customer/view-customer.jsp">Delete Customer</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown px-4">
@@ -97,10 +97,14 @@
                         Contract Detail
                     </a>
                     <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/contract_detail/list-contract-detail.jsp">List Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/create-contract-detail.jsp">Create Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/edit-contract-detail.jsp">Edit Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/delete-contract-detail.jsp">Delete Contract Detail</a>
+                        <a class="dropdown-item" href="../../view/contract_detail/list-contract-detail.jsp">List
+                            Contract Detail</a>
+                        <a class="dropdown-item" href="../../view/contract_detail/create-contract-detail.jsp">Create
+                            Contract Detail</a>
+                        <a class="dropdown-item" href="../../view/contract_detail/edit-contract-detail.jsp">Edit
+                            Contract Detail</a>
+                        <a class="dropdown-item" href="../../view/contract_detail/delete-contract-detail.jsp">Delete
+                            Contract Detail</a>
                     </div>
                 </li>
             </ul>
@@ -113,111 +117,177 @@
 </div>
 
 <div class="container">
-    <form>
+    <form method="post">
         <div class=" row">
             <div class="col-lg-2"></div>
             <div class="col-lg-8 bg-info">
                 <div class="row p-3 bg-light">
                     <div class="col-lg-12 text-center">
                         <h1>Edit Employee</h1>
+                        <c:if test="${message=='Edit successful'}">
+                            <p class="text-success">${message}</p>
+                        </c:if>
+                        <c:if test="${message=='Edit unsuccessful'}">
+                            <p class="text-danger">${message}</p>
+                        </c:if>
+                    </div>
+                </div>
+                <div class="row bg-light">
+                    <div class="col-lg-12 w-100 p-0 m-0">
+                        <a class="btn btn-success" href="/employee"> < Back to List</a>
                     </div>
                 </div>
                 <div class="row p-2 pt-5">
-                    <div class="col-lg-3">
-                        <label class="font-weight-bold">Employee ID</label>
-                    </div>
-                    <div class="col-lg-9">
-                        <input readonly type="text" name="employeeID">
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Name</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeeName">
+                    <div class="col-lg-8">
+                        <input type="text" name="employeeName" value="${employee.employeeName}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Birthday</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeeBirthday">
+                    <div class="col-lg-8">
+                        <input type="date" name="employeeBirthday" value="${employee.employeeBirthday}">
                     </div>
                 </div>
 
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee ID Card</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeeIDCard">
+                    <div class="col-lg-8">
+                        <input type="text" name="employeeIDCard" value="${employee.employeeIDCard}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Salary</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeeSalary">
+                    <div class="col-lg-8">
+                        <input type="text" name="employeeSalary" value="${employee.employeeSalary}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Phone</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeePhone">
+                    <div class="col-lg-8">
+                        <input type="text" name="employeePhone" value="${employee.employeePhone}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Email</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeeEmail">
+                    <div class="col-lg-8">
+                        <input type="text" name="employeeEmail" value="${employee.employeeEmail}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Address</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeeAddress">
+                    <div class="col-lg-8">
+                        <input type="text" name="employeeAddress" value="${employee.employeeAddress}">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Position ID</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeePositionID">
+                    <div class="col-lg-8">
+                        <select class="form-select w-auto" aria-label="Default select example" name="positionID"
+                                value="${employee.positionID}">
+                            <option value="1">Receptionist</option>
+                            <option value="2">Service</option>
+                            <option value="3">Specialist</option>
+                            <option value="4">Supervisor</option>
+                            <option value="5">Director</option>
+                            <option hidden value="${employee.positionID}" selected>
+                                <c:if test="${employee.positionID == 1}">
+                                    Receptionist
+                                </c:if>
+                                <c:if test="${employee.positionID ==2}">
+                                    Service
+                                </c:if>
+                                <c:if test="${employee.positionID ==3}">
+                                    Specialist
+                                </c:if>
+                                <c:if test="${employee.positionID ==4}">
+                                    Supervisor
+                                </c:if>
+                                <c:if test="${employee.positionID ==5}">
+                                    Director
+                                </c:if>
+                            </option>
+                        </select>
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Education ID</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeeEducationID">
+                    <div class="col-lg-8">
+                        <select class="form-select w-auto" aria-label="Default select example" name="educationDegreeID"
+                                value="${employee.educationDegreeID}">
+                            <option value="1">Intermediate</option>
+                            <option value="2">College</option>
+                            <option value="3">University</option>
+                            <option value="4">Graduate</option>
+                            <option hidden value="${employee.educationDegreeID}" selected>
+                                <c:if test="${employee.educationDegreeID == 1}">
+                                    Intermediate
+                                </c:if>
+                                <c:if test="${employee.educationDegreeID ==2}">
+                                    College
+                                </c:if>
+                                <c:if test="${employee.educationDegreeID ==3}">
+                                    University
+                                </c:if>
+                                <c:if test="${employee.educationDegreeID ==4}">
+                                    Graduate
+                                </c:if>
+                            </option>
+                        </select>
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Employee Division ID</label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text" name="employeeDivisionID">
-                    </div>
+                    <div class="col-lg-8">
+                        <select class="form-select w-auto" aria-label="Default select example" name="divisionID"
+                                value="${employee.divisionID}">
+                            <option value="1">Sales-Marketing Department</option>
+                            <option value="2">Administrative Department</option>
+                            <option value="3">Service Department</option>
+                            <option value="4">Management Department</option>
+                            <option hidden value="${employee.divisionID}" selected>
+                                <c:if test="${employee.divisionID == 1}">
+                                    Sales-Marketing Department
+                                </c:if>
+                                <c:if test="${employee.divisionID ==2}">
+                                    Administrative Department
+                                </c:if>
+                                <c:if test="${employee.divisionID ==3}">
+                                    Service Department
+                                </c:if>
+                                <c:if test="${employee.divisionID ==4}">
+                                    Management Department
+                                </c:if>
+                            </option>
+                        </select></div>
                 </div>
                 <div class="row p-2 align-items-center">
-                    <div class="col-lg-5 col-md-4 col-sm-4 "></div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 ">
+                    <div class="col-lg-4 col-md-4 col-sm-4 "></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 ">
                         <input class="btn btn-success" type="submit" id="submit" value="Edit Employee"
                                style="width: 200px">
                     </div>
-                    <div class="col-lg-5 col-md-4 col-sm-4 col-xl-4"></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4"></div>
 
                 </div>
             </div>

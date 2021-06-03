@@ -47,7 +47,7 @@
                         <a class="dropdown-item" href="../../view/customer/list-customer.jsp">List Customer</a>
                         <a class="dropdown-item" href="../../view/customer/create-customer.jsp">Create Customer</a>
                         <a class="dropdown-item" href="../../view/customer/edit-customer.jsp">Edit Customer</a>
-                        <a class="dropdown-item" href="../../view/customer/delete-customer.jsp">Delete Customer</a>
+                        <a class="dropdown-item" href="../customer/view-customer.jsp">Delete Customer</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown px-4">

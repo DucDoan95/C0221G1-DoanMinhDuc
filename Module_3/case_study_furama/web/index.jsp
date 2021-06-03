@@ -12,6 +12,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  <c:redirect url="view/furama/furama.jsp"></c:redirect>
+  <c:redirect url="/view/furama/furama.jsp"></c:redirect>
   </body>
 </html>

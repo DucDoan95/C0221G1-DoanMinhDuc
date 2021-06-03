@@ -41,10 +41,8 @@
                         Customer
                     </a>
                     <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/customer/list-customer.jsp">List Customer</a>
-                        <a class="dropdown-item" href="../../view/customer/create-customer.jsp">Create Customer</a>
-                        <a class="dropdown-item" href="../../view/customer/edit-customer.jsp">Edit Customer</a>
-                        <a class="dropdown-item" href="../../view/customer/delete-customer.jsp">Delete Customer</a>
+                        <a class="dropdown-item" href="/customer">List Customer</a>
+                        <a class="dropdown-item" href="/customer?action=create">Create Customer</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown px-4">
@@ -54,10 +52,8 @@
                         Employee
                     </a>
                     <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/employee/list-employee.jsp">List Employee </a>
-                        <a class="dropdown-item" href="../../view/employee/create-employee.jsp">Create Employee </a>
-                        <a class="dropdown-item" href="../../view/employee/edit-employee.jsp">Edit Employee </a>
-                        <a class="dropdown-item" href="../../view/employee/delete-employee.jsp">Delete Employee </a>
+                        <a class="dropdown-item" href="/employee">List Employee </a>
+                        <a class="dropdown-item" href="/employee?action=create">Create Employee </a>
                     </div>
                 </li>
                 <li class="nav-item dropdown px-4">
@@ -69,8 +65,6 @@
                     <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../../view/service/list-service.jsp">List Service</a>
                         <a class="dropdown-item" href="../../view/service/create-service.jsp">Create Service</a>
-                        <a class="dropdown-item" href="../../view/service/edit-service.jsp">Edit Service</a>
-                        <a class="dropdown-item" href="../../view/service/delete-service.jsp">Delete Service</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown px-4">
@@ -82,8 +76,6 @@
                     <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../../view/contract/list-contract.jsp">List Contract</a>
                         <a class="dropdown-item" href="../../view/contract/create-contract.jsp">Create Contract</a>
-                        <a class="dropdown-item" href="../../view/contract/edit-contract.jsp">Edit Contract</a>
-                        <a class="dropdown-item" href="../../view/contract/delete-contract.jsp">Delete Contract</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown px-4">
@@ -95,8 +87,6 @@
                     <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../../view/contract_detail/list-contract-detail.jsp">List Contract Detail</a>
                         <a class="dropdown-item" href="../../view/contract_detail/create-contract-detail.jsp">Create Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/edit-contract-detail.jsp">Edit Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/delete-contract-detail.jsp">Delete Contract Detail</a>
                     </div>
                 </li>
             </ul>
