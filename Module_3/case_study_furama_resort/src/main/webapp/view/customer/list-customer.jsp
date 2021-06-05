@@ -84,7 +84,7 @@
                         <td>${customer.customerPhone}</td>
                         <td>
                             <button type="button" class="btn btn-info"
-                                    onclick="sendDataToModalView('${customer.customerID}','${customer.customerName}','${customer.customerTypeID}','${customer.customerBirthday}','${customer.customerGender}','${customer.customerIDCard}','${customer.customerPhone}','${customer.customerEmail}','${customer.customerAddress}')"
+                                    onclick="sendDataToModalView('${customer.customerID}','${customer.customerName}','${customer.customerType.customerTypeID}','${customer.customerBirthday}','${customer.customerGender}','${customer.customerIDCard}','${customer.customerPhone}','${customer.customerEmail}','${customer.customerAddress}')"
                                     data-toggle="modal" data-target="#exampleModalLongView">
                                 View
                             </button>

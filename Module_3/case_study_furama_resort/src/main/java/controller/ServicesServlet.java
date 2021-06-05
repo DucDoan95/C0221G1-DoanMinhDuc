@@ -1,7 +1,13 @@
 package controller;
 
 import model.bean.Customer;
+import model.bean.RentType;
+import model.bean.ServiceType;
 import model.bean.Services;
+import model.service.rent_type.IRentType;
+import model.service.rent_type.impl.RentTypeImpl;
+import model.service.service_type.IServiceType;
+import model.service.service_type.impl.ServiceTypeImpl;
 import model.service.services.IServices;
 import model.service.services.impl.ServicesImpl;
 
@@ -12,10 +18,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "ServicesServlet",urlPatterns ="/services")
+@WebServlet(name = "ServicesServlet", urlPatterns = "/services")
 public class ServicesServlet extends HttpServlet {
     IServices iServices = new ServicesImpl();
+    IRentType iRentType = new RentTypeImpl();
+    IServiceType iServiceType = new ServiceTypeImpl();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -43,12 +53,19 @@ public class ServicesServlet extends HttpServlet {
         int serviceMaxPeople = Integer.parseInt(request.getParameter("serviceMaxPeople"));
         int rentTypeID = Integer.parseInt(request.getParameter("rentTypeID"));
         int serviceTypeID = 3;
-        Services room = new Services(serviceName,serviceArea,serviceCost,serviceMaxPeople,rentTypeID,serviceTypeID);
+        RentType rentType = iRentType.findRentTypeByID(rentTypeID);
+        ServiceType serviceType = iServiceType.findServiceTypeByID(serviceTypeID);
+        List<RentType> rentTypeList = iRentType.getAllRentType();
+        Services room = new Services(serviceName, serviceArea, serviceCost, serviceMaxPeople, rentType, serviceType);
         boolean check = iServices.createVillaService(room);
         if (check) {
             request.setAttribute("message", "Create successful");
+            request.setAttribute("rentTypeList", rentTypeList);
+
         } else {
             request.setAttribute("message", "Create unsuccessful");
+            request.setAttribute("rentTypeList", rentTypeList);
+
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/service/create-room.jsp");
@@ -71,12 +88,20 @@ public class ServicesServlet extends HttpServlet {
         String standardRoom = request.getParameter("standardRoom");
         String descriptionOtherConvenience = request.getParameter("descriptionOtherConvenience");
         int numberOfFloors = Integer.parseInt(request.getParameter("numberOfFloors"));
-        Services house = new Services(serviceName,serviceArea,serviceCost,serviceMaxPeople,rentTypeID,serviceTypeID,standardRoom,descriptionOtherConvenience,numberOfFloors);
+
+        RentType rentType = iRentType.findRentTypeByID(rentTypeID);
+        ServiceType serviceType = iServiceType.findServiceTypeByID(serviceTypeID);
+        List<RentType> rentTypeList = iRentType.getAllRentType();
+        Services house = new Services(serviceName, serviceArea, serviceCost, serviceMaxPeople, rentType, serviceType, standardRoom, descriptionOtherConvenience, numberOfFloors);
         boolean check = iServices.createVillaService(house);
         if (check) {
             request.setAttribute("message", "Create successful");
+            request.setAttribute("rentTypeList", rentTypeList);
+
         } else {
             request.setAttribute("message", "Create unsuccessful");
+            request.setAttribute("rentTypeList", rentTypeList);
+
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/service/create-house.jsp");
@@ -100,12 +125,20 @@ public class ServicesServlet extends HttpServlet {
         String descriptionOtherConvenience = request.getParameter("descriptionOtherConvenience");
         double poolArea = Double.parseDouble(request.getParameter("poolArea"));
         int numberOfFloors = Integer.parseInt(request.getParameter("numberOfFloors"));
-        Services villa = new Services(serviceName,serviceArea,serviceCost,serviceMaxPeople,rentTypeID,serviceTypeID,standardRoom,descriptionOtherConvenience,poolArea,numberOfFloors);
+        List<RentType> rentTypeList = iRentType.getAllRentType();
+        RentType rentType = iRentType.findRentTypeByID(rentTypeID);
+        ServiceType serviceType = iServiceType.findServiceTypeByID(serviceTypeID);
+
+        Services villa = new Services(serviceName, serviceArea, serviceCost, serviceMaxPeople, rentType, serviceType, standardRoom, descriptionOtherConvenience, poolArea, numberOfFloors);
         boolean check = iServices.createVillaService(villa);
         if (check) {
             request.setAttribute("message", "Create successful");
+            request.setAttribute("rentTypeList", rentTypeList);
+
         } else {
             request.setAttribute("message", "Create unsuccessful");
+            request.setAttribute("rentTypeList", rentTypeList);
+
         }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/service/create-villa.jsp");
         try {
@@ -138,6 +171,8 @@ public class ServicesServlet extends HttpServlet {
     }
 
     private void showCreateRoomForm(HttpServletRequest request, HttpServletResponse response) {
+        List<RentType> rentTypeList = iRentType.getAllRentType();
+        request.setAttribute("rentTypeList", rentTypeList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/create-room.jsp");
         try {
             requestDispatcher.forward(request, response);
@@ -149,6 +184,8 @@ public class ServicesServlet extends HttpServlet {
     }
 
     private void showCreateHouseForm(HttpServletRequest request, HttpServletResponse response) {
+        List<RentType> rentTypeList = iRentType.getAllRentType();
+        request.setAttribute("rentTypeList", rentTypeList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/create-house.jsp");
         try {
             requestDispatcher.forward(request, response);
@@ -160,6 +197,8 @@ public class ServicesServlet extends HttpServlet {
     }
 
     private void showCreateVillaForm(HttpServletRequest request, HttpServletResponse response) {
+        List<RentType> rentTypeList = iRentType.getAllRentType();
+        request.setAttribute("rentTypeList", rentTypeList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/create-villa.jsp");
         try {
             requestDispatcher.forward(request, response);

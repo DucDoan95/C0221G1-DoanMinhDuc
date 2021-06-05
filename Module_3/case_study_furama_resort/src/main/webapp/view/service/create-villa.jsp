@@ -92,10 +92,9 @@
                     </div>
                     <div class="col-lg-8">
                         <select class="form-select w-auto" aria-label="Default select example" name="rentTypeID">
-                            <option value="1">Year</option>
-                            <option value="2">Month</option>
-                            <option value="3">Day</option>
-                            <option value="4" selected>Hour</option>
+                            <c:forEach items="${rentTypeList}" var="rentType">
+                                <option value="${rentType.rentTypeID}">${rentType.rentTypeName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>

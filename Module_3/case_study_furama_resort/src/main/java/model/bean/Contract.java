@@ -5,30 +5,30 @@ public class Contract {
     private String contractStartDate;
     private String contractEndDate;
     private double contractDeposit;
-    private int employeeID;
-    private int customerID;
-    private int serviceID;
-
-    public Contract(int contractID, String contractStartDate, String contractEndDate, double contractDeposit, int employeeID, int customerID, int serviceID) {
-        this.contractID = contractID;
-        this.contractStartDate = contractStartDate;
-        this.contractEndDate = contractEndDate;
-        this.contractDeposit = contractDeposit;
-        this.employeeID = employeeID;
-        this.customerID = customerID;
-        this.serviceID = serviceID;
-    }
+    private Employee employee;
+    private Customer customer;
+    private Services services;
 
     public Contract() {
     }
 
-    public Contract(String contractStartDate, String contractEndDate, double contractDeposit, int employeeID, int customerID, int serviceID) {
+    public Contract(int contractID, String contractStartDate, String contractEndDate, double contractDeposit, Employee employee, Customer customer, Services services) {
+        this.contractID = contractID;
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
         this.contractDeposit = contractDeposit;
-        this.employeeID = employeeID;
-        this.customerID = customerID;
-        this.serviceID = serviceID;
+        this.employee = employee;
+        this.customer = customer;
+        this.services = services;
+    }
+
+    public Contract(String contractStartDate, String contractEndDate, double contractDeposit, Employee employee, Customer customer, Services services) {
+        this.contractStartDate = contractStartDate;
+        this.contractEndDate = contractEndDate;
+        this.contractDeposit = contractDeposit;
+        this.employee = employee;
+        this.customer = customer;
+        this.services = services;
     }
 
     public int getContractID() {
@@ -63,40 +63,27 @@ public class Contract {
         this.contractDeposit = contractDeposit;
     }
 
-    public int getEmployeeID() {
-        return employeeID;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public int getCustomerID() {
-        return customerID;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public int getServiceID() {
-        return serviceID;
+    public Services getServices() {
+        return services;
     }
 
-    public void setServiceID(int serviceID) {
-        this.serviceID = serviceID;
-    }
-
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "contractID=" + contractID +
-                ", contractStartDate='" + contractStartDate + '\'' +
-                ", contractEndDate='" + contractEndDate + '\'' +
-                ", contractDeposit=" + contractDeposit +
-                ", employeeID=" + employeeID +
-                ", customerID=" + customerID +
-                ", serviceID=" + serviceID +
-                '}';
+    public void setServices(Services services) {
+        this.services = services;
     }
 }

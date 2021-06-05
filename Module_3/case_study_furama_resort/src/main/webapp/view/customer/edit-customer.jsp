@@ -67,27 +67,9 @@
 
                     <div class="col-lg-8">
                         <select class="form-select w-auto" aria-label="Default select example" name="customerTypeID">
-                            <option value="1">Diamond</option>
-                            <option value="2">Platinum</option>
-                            <option value="3">Gold</option>
-                            <option value="4">Silver</option>
-                            <option value="5">Member</option>
-                            <option hidden value="${customer.customerTypeID}" selected >
-                                <c:if test="${customer.customerTypeID == 1}">
-                                    Diamond
-                                </c:if>
-                                <c:if test="${customer.customerTypeID == 2}">
-                                    Platinum
-                                </c:if>
-                                <c:if test="${customer.customerTypeID == 3}">
-                                    Gold
-                                </c:if>
-                                <c:if test="${customer.customerTypeID == 4}">
-                                    Silver
-                                </c:if>
-                                <c:if test="${customer.customerTypeID == 5}">
-                                    Member
-                                </c:if>
+                            <c:forEach items="${customerTypeList}" var="customerType">
+                                <option value="${customerType.customerTypeID}" ${customerType.customerTypeID==customer.customerType.customerTypeID?"selected":""}>${customerType.customerTypeName}</option>
+                            </c:forEach>
                             </option>
                         </select>
                     </div>

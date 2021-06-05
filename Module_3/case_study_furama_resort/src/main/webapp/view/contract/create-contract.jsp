@@ -22,96 +22,16 @@
         .container-fluid .row {
             height: 10%;
         }
-        input{
-            width: 100%;
+
+        input {
+            width: 85%;
         }
     </style>
 </head>
 <body>
-<div class="container-fluid col-lg-12">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="/"><img class="mb-1" src="../../img/icon.png" style="width: auto;height: 2.5rem"/></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown px-4">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Customer
-                    </a>
-                    <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/customer/list-customer.jsp">List Customer</a>
-                        <a class="dropdown-item" href="../../view/customer/create-customer.jsp">Create Customer</a>
-                        <a class="dropdown-item" href="../../view/customer/edit-customer.jsp">Edit Customer</a>
-                        <a class="dropdown-item" href="../customer/view-customer.jsp">Delete Customer</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown px-4">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-1" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Employee
-                    </a>
-                    <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/employee/list-employee.jsp">List Employee </a>
-                        <a class="dropdown-item" href="../../view/employee/create-employee.jsp">Create Employee </a>
-                        <a class="dropdown-item" href="../../view/employee/edit-employee.jsp">Edit Employee </a>
-                        <a class="dropdown-item" href="../../view/employee/delete-employee.jsp">Delete Employee </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown px-4">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Service
-                    </a>
-                    <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/service/list-service.jsp">List Service</a>
-                        <a class="dropdown-item" href="../../view/service/create-service.jsp">Create Service</a>
-                        <a class="dropdown-item" href="../../view/service/edit-service.jsp">Edit Service</a>
-                        <a class="dropdown-item" href="../../view/service/delete-service.jsp">Delete Service</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown px-4">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-3" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Contract
-                    </a>
-                    <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/contract/list-contract.jsp">List Contract</a>
-                        <a class="dropdown-item" href="../../view/contract/create-contract.jsp">Create Contract</a>
-                        <a class="dropdown-item" href="../../view/contract/edit-contract.jsp">Edit Contract</a>
-                        <a class="dropdown-item" href="../../view/contract/delete-contract.jsp">Delete Contract</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown px-4">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-4" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Contract Detail
-                    </a>
-                    <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../../view/contract_detail/list-contract-detail.jsp">List Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/create-contract-detail.jsp">Create Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/edit-contract-detail.jsp">Edit Contract Detail</a>
-                        <a class="dropdown-item" href="../../view/contract_detail/delete-contract-detail.jsp">Delete Contract Detail</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-</div>
+<jsp:include page="../../view/furama/furama-header.jsp"></jsp:include>
 <div class="container mb-0">
-    <form method="post">
+    <form method="post" action="/contract?action=create">
         <div class=" row">
             <div class="col-lg-2"></div>
             <div class="col-lg-8 bg-info">
@@ -130,81 +50,73 @@
                 </div>
                 <div class="row bg-light">
                     <div class="col-lg-12 w-100 p-0 m-0">
-                        <a class="btn btn-success" href="/customer"> < Back to List</a>
+                        <a class="btn btn-success" href="../../view/furama/furama.jsp"> < Back to Home</a>
                     </div>
                 </div>
                 <div class="row p-2 pt-5">
                     <div class="col-lg-4 text-right">
-                        <label class="font-weight-bold">Customer Name</label>
+                        <label class="font-weight-bold">Contract Start Date</label>
                     </div>
                     <div class="col-lg-8 ">
-                        <input type="text" name="customerName" value="${customer.customerName}">
+                        <input class="w-auto" type="date" name="contractStartDate">
                     </div>
                 </div>
                 <div class="row p-2">
-                    <div class="col-lg-4  text-right">
-                        <label class="font-weight-bold">Customer Type ID</label>
+                    <div class="col-lg-4 text-right">
+                        <label class="font-weight-bold">Contract End Date</label>
                     </div>
-
+                    <div class="col-lg-8 ">
+                        <input class="w-auto" type="date" name="contractEndDate">
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-lg-4 text-right">
+                        <label class="font-weight-bold">Contract Deposit</label>
+                    </div>
                     <div class="col-lg-8">
-                        <select class="form-select w-auto" aria-label="Default select example" name="customerTypeID">
-                            <option value="1">Diamond</option>
-                            <option value="2">Platinum</option>
-                            <option value="3">Gold</option>
-                            <option value="4">Silver</option>
-                            <option value="5">Member</option>
+                        <input type="text" name="contractDeposit">
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-lg-4 text-right">
+                        <label class="font-weight-bold">Employee </label>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <select class="form-select w-auto" aria-label="Default select example" name="employeeID">
+                                <c:forEach items="${employeeList}" var="employee">
+                                    <option value="${employee.employeeID}">${employee.employeeName}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-4 text-right">
+                    <label class="font-weight-bold">Customer </label>
+                </div>
+                <div class="col-lg-8">
+                    <div class="form-group">
+                        <select class="form-select w-auto" aria-label="Default select example" name="customerID">
+                            <c:forEach items="${customerList}" var="customer">
+                                <option value="${customer.customerID}">${customer.customerName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
-                <div class="row p-2">
+            </div>
+                <div class="row">
                     <div class="col-lg-4 text-right">
-                        <label class="font-weight-bold">Customer Birthday</label>
+                        <label class="font-weight-bold">Service </label>
                     </div>
                     <div class="col-lg-8">
-                        <input class="w-auto" type="date" name="customerBirthday">
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-4 text-right">
-                        <label class="font-weight-bold">Customer Gender</label>
-                    </div>
-                    <div class="col-lg-8">
-                        <select class="form-select w-auto" aria-label="Default select example" name="customerGender" >
-                            <option value="0">Male</option>
-                            <option value="1">Female</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-4 text-right">
-                        <label class="font-weight-bold">Customer ID Card</label>
-                    </div>
-                    <div class="col-lg-8">
-                        <input type="text" name="customerIDCard">
-                    </div>
-                </div>
-                <div class="row p-2 ">
-                    <div class="col-lg-4 text-right">
-                        <label class="font-weight-bold">Customer Phone</label>
-                    </div>
-                    <div class="col-lg-8">
-                        <input type="text" name="customerPhone">
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-4 text-right">
-                        <label class="font-weight-bold">Customer Email</label>
-                    </div>
-                    <div class="col-lg-8 ">
-                        <input type="text" name="customerEmail">
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-4 text-right">
-                        <label class="font-weight-bold">Customer Address</label>
-                    </div>
-                    <div class="col-lg-8">
-                        <input type="text" name="customerAddress">
+                        <div class="form-group">
+                            <select class="form-select w-auto" aria-label="Default select example" name="serviceID">
+                                <c:forEach items="${servicesList}" var="service">
+                                    <option value="${service.serviceID}">${service.serviceName}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="row p-2 justify-content-center pb-4">
@@ -220,12 +132,6 @@
         </div>
     </form>
 </div>
-<div class="container-fluid">
-    <div class="row text-center p-4">
-        <div class="col-lg-12">
-            <p>Copyright © 2018 Furama Hotels International. All Rights Reserved.</p>
-        </div>
-    </div>
-</div>
+<jsp:include page="../../view/furama/furama-footer.jsp"></jsp:include>
 </body>
 </html>

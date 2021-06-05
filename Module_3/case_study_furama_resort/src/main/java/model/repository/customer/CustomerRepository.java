@@ -1,7 +1,10 @@
 package model.repository.customer;
 
 import model.bean.Customer;
+import model.bean.CustomerType;
 import model.repository.BaseRepository;
+import model.service.customer_type.ICustomerType;
+import model.service.customer_type.impl.CustomerTypeImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +15,8 @@ import java.util.List;
 
 public class CustomerRepository {
     BaseRepository baseRepository = new BaseRepository();
+    ICustomerType iCustomerType = new CustomerTypeImpl();
+
     final String CREATE_CUSTOMER = "insert into customer(customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address)\n" +
             "values(?,?,?,?,?,?,?,?);";
     final String FIND_CUSTOMER_BY_ID = "select *from customer where customer_id = ?;";
@@ -30,7 +35,7 @@ public class CustomerRepository {
         boolean check = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_CUSTOMER);
-            preparedStatement.setInt(1, customer.getCustomerTypeID());
+            preparedStatement.setInt(1, customer.getCustomerType().getCustomerTypeID());
             preparedStatement.setString(2, customer.getCustomerName());
             preparedStatement.setString(3, customer.getCustomerBirthday());
             preparedStatement.setString(4, customer.getCustomerGender());
@@ -64,7 +69,8 @@ public class CustomerRepository {
                 String customerPhone = resultSet.getString("customer_phone");
                 String customerEmail = resultSet.getString("customer_email");
                 String customerAddress = resultSet.getString("customer_address");
-                customer = new Customer(customerID, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
+                CustomerType customerType = iCustomerType.findCustomerTypeByID(customerTypeId);
+                customer = new Customer(customerID, customerType, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
             }
             preparedStatement.close();
             connection.close();
@@ -90,7 +96,8 @@ public class CustomerRepository {
                 String customerPhone = resultSet.getString("customer_phone");
                 String customerEmail = resultSet.getString("customer_email");
                 String customerAddress = resultSet.getString("customer_address");
-                Customer customer = new Customer(customerID, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
+                CustomerType customerType = iCustomerType.findCustomerTypeByID(customerTypeId);
+                Customer customer = new Customer(customerID, customerType, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
                 customerList.add(customer);
             }
             preparedStatement.close();
@@ -107,7 +114,7 @@ public class CustomerRepository {
         boolean check = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(EDIT_CUSTOMER);
-            preparedStatement.setInt(1, customer.getCustomerTypeID());
+            preparedStatement.setInt(1, customer.getCustomerType().getCustomerTypeID());
             preparedStatement.setString(2, customer.getCustomerName());
             preparedStatement.setString(3, customer.getCustomerBirthday());
             preparedStatement.setString(4, customer.getCustomerGender());
@@ -158,7 +165,8 @@ public class CustomerRepository {
                 String customerPhone = resultSet.getString("customer_phone");
                 String customerEmail = resultSet.getString("customer_email");
                 String customerAddress = resultSet.getString("customer_address");
-                Customer customer = new Customer(customerID, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
+                CustomerType customerType = iCustomerType.findCustomerTypeByID(customerTypeId);
+                Customer customer = new Customer(customerID, customerType, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
                 customerList.add(customer);
             }
             preparedStatement.close();

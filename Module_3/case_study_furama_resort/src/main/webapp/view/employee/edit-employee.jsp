@@ -113,30 +113,10 @@
                         <label class="font-weight-bold">Employee Position ID</label>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select w-auto" aria-label="Default select example" name="positionID"
-                                value="${employee.positionID}">
-                            <option value="1">Receptionist</option>
-                            <option value="2">Service</option>
-                            <option value="3">Specialist</option>
-                            <option value="4">Supervisor</option>
-                            <option value="5">Director</option>
-                            <option hidden value="${employee.positionID}" selected>
-                                <c:if test="${employee.positionID == 1}">
-                                    Receptionist
-                                </c:if>
-                                <c:if test="${employee.positionID ==2}">
-                                    Service
-                                </c:if>
-                                <c:if test="${employee.positionID ==3}">
-                                    Specialist
-                                </c:if>
-                                <c:if test="${employee.positionID ==4}">
-                                    Supervisor
-                                </c:if>
-                                <c:if test="${employee.positionID ==5}">
-                                    Director
-                                </c:if>
-                            </option>
+                        <select class="form-select w-auto" aria-label="Default select example" name="positionID">
+                            <c:forEach items="${positionList}" var="position">
+                                <option value="${position.positionID}" ${position.positionID==employee.position.positionID?"selected":""}>${position.positionName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -145,26 +125,10 @@
                         <label class="font-weight-bold">Employee Education ID</label>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select w-auto" aria-label="Default select example" name="educationDegreeID"
-                                value="${employee.educationDegreeID}">
-                            <option value="1">Intermediate</option>
-                            <option value="2">College</option>
-                            <option value="3">University</option>
-                            <option value="4">Graduate</option>
-                            <option hidden value="${employee.educationDegreeID}" selected>
-                                <c:if test="${employee.educationDegreeID == 1}">
-                                    Intermediate
-                                </c:if>
-                                <c:if test="${employee.educationDegreeID ==2}">
-                                    College
-                                </c:if>
-                                <c:if test="${employee.educationDegreeID ==3}">
-                                    University
-                                </c:if>
-                                <c:if test="${employee.educationDegreeID ==4}">
-                                    Graduate
-                                </c:if>
-                            </option>
+                        <select class="form-select w-auto" aria-label="Default select example" name="educationDegreeID">
+                            <c:forEach items="${educationDegreeList}" var="educationDegree">
+                                <option value="${educationDegree.educationDegreeID}" ${educationDegree.educationDegreeID==employee.educationDegree.educationDegreeID?"selected":""}>${educationDegree.educationDegreeName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -173,26 +137,10 @@
                         <label class="font-weight-bold">Employee Division ID</label>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select w-auto" aria-label="Default select example" name="divisionID"
-                                value="${employee.divisionID}">
-                            <option value="1">Sales-Marketing Department</option>
-                            <option value="2">Administrative Department</option>
-                            <option value="3">Service Department</option>
-                            <option value="4">Management Department</option>
-                            <option hidden value="${employee.divisionID}" selected>
-                                <c:if test="${employee.divisionID == 1}">
-                                    Sales-Marketing Department
-                                </c:if>
-                                <c:if test="${employee.divisionID ==2}">
-                                    Administrative Department
-                                </c:if>
-                                <c:if test="${employee.divisionID ==3}">
-                                    Service Department
-                                </c:if>
-                                <c:if test="${employee.divisionID ==4}">
-                                    Management Department
-                                </c:if>
-                            </option>
+                        <select class="form-select w-auto" aria-label="Default select example" name="divisionID">
+                            <c:forEach items="${divisionList}" var="division">
+                                <option value="${division.divisionID}" ${division.divisionID==employee.division.divisionID?"selected":""}>${division.divisionName}</option>
+                            </c:forEach>
                         </select></div>
                 </div>
                 <div class="row p-2 align-items-center">

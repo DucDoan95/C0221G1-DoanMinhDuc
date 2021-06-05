@@ -9,15 +9,15 @@ public class Employee {
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
-    private int positionID;
-    private int educationDegreeID;
-    private int divisionID;
+    private Position position;
+    private EducationDegree educationDegree;
+    private Division division;
     private String userName;
 
     public Employee() {
     }
 
-    public Employee(int employeeID, String employeeName, String employeeBirthday, String employeeIDCard, double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, int positionID, int educationDegreeID, int divisionID) {
+    public Employee(int employeeID, String employeeName, String employeeBirthday, String employeeIDCard, double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, Position position, EducationDegree educationDegree, Division division) {
         this.employeeID = employeeID;
         this.employeeName = employeeName;
         this.employeeBirthday = employeeBirthday;
@@ -26,12 +26,12 @@ public class Employee {
         this.employeePhone = employeePhone;
         this.employeeEmail = employeeEmail;
         this.employeeAddress = employeeAddress;
-        this.positionID = positionID;
-        this.educationDegreeID = educationDegreeID;
-        this.divisionID = divisionID;
+        this.position = position;
+        this.educationDegree = educationDegree;
+        this.division = division;
     }
 
-    public Employee(int employeeID, String employeeName, String employeeBirthday, String employeeIDCard, double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, int positionID, int educationDegreeID, int divisionID, String userName) {
+    public Employee(int employeeID, String employeeName, String employeeBirthday, String employeeIDCard, double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress,  Position position, EducationDegree educationDegree, Division division, String userName) {
         this.employeeID = employeeID;
         this.employeeName = employeeName;
         this.employeeBirthday = employeeBirthday;
@@ -40,13 +40,13 @@ public class Employee {
         this.employeePhone = employeePhone;
         this.employeeEmail = employeeEmail;
         this.employeeAddress = employeeAddress;
-        this.positionID = positionID;
-        this.educationDegreeID = educationDegreeID;
-        this.divisionID = divisionID;
+        this.position = position;
+        this.educationDegree = educationDegree;
+        this.division = division;
         this.userName = userName;
     }
 
-    public Employee(String employeeName, String employeeBirthday, String employeeIDCard, double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, int positionID, int educationDegreeID, int divisionID) {
+    public Employee(String employeeName, String employeeBirthday, String employeeIDCard, double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, Position position, EducationDegree educationDegree, Division division) {
         this.employeeName = employeeName;
         this.employeeBirthday = employeeBirthday;
         this.employeeIDCard = employeeIDCard;
@@ -54,9 +54,10 @@ public class Employee {
         this.employeePhone = employeePhone;
         this.employeeEmail = employeeEmail;
         this.employeeAddress = employeeAddress;
-        this.positionID = positionID;
-        this.educationDegreeID = educationDegreeID;
-        this.divisionID = divisionID;
+        this.position = position;
+        this.educationDegree = educationDegree;
+        this.division = division;
+
     }
 
     public int getEmployeeID() {
@@ -123,28 +124,28 @@ public class Employee {
         this.employeeAddress = employeeAddress;
     }
 
-    public int getPositionID() {
-        return positionID;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setPositionID(int positionID) {
-        this.positionID = positionID;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
-    public int getEducationDegreeID() {
-        return educationDegreeID;
+    public EducationDegree getEducationDegree() {
+        return educationDegree;
     }
 
-    public void setEducationDegreeID(int educationDegreeID) {
-        this.educationDegreeID = educationDegreeID;
+    public void setEducationDegree(EducationDegree educationDegree) {
+        this.educationDegree = educationDegree;
     }
 
-    public int getDivisionID() {
-        return divisionID;
+    public Division getDivision() {
+        return division;
     }
 
-    public void setDivisionID(int divisionID) {
-        this.divisionID = divisionID;
+    public void setDivision(Division division) {
+        this.division = division;
     }
 
     public String getUserName() {
@@ -153,23 +154,5 @@ public class Employee {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeID=" + employeeID +
-                ", employeeName='" + employeeName + '\'' +
-                ", employeeBirthday='" + employeeBirthday + '\'' +
-                ", employeeIDCard='" + employeeIDCard + '\'' +
-                ", employeeSalary=" + employeeSalary +
-                ", employeePhone='" + employeePhone + '\'' +
-                ", employeeEmail='" + employeeEmail + '\'' +
-                ", employeeAddress='" + employeeAddress + '\'' +
-                ", positionID=" + positionID +
-                ", educationDegreeID=" + educationDegreeID +
-                ", divisionID=" + divisionID +
-                ", userName='" + userName + '\'' +
-                '}';
     }
 }

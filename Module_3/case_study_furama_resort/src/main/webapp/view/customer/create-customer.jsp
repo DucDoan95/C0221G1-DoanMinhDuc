@@ -23,7 +23,7 @@
             height: 10%;
         }
 
-        input{
+        input {
             width: 85%;
         }
     </style>
@@ -58,22 +58,22 @@
                         <label class="font-weight-bold">Customer Name</label>
                     </div>
                     <div class="col-lg-8 ">
-                        <input type="text" name="customerName" value="${customer.customerName}">
+                        <input type="text" name="customerName">
                     </div>
                 </div>
-                <div class="row p-2">
-                    <div class="col-lg-4  text-right">
-                        <label class="font-weight-bold">Customer Type ID</label>
+                <div class="row">
+                    <div class="col-lg-4 text-right">
+                        <label class="font-weight-bold">Customer Type </label>
                     </div>
-
                     <div class="col-lg-8">
-                        <select class="form-select w-auto" aria-label="Default select example" name="customerTypeID">
-                            <option value="1">Diamond</option>
-                            <option value="2">Platinum</option>
-                            <option value="3">Gold</option>
-                            <option value="4">Silver</option>
-                            <option value="5">Member</option>
-                        </select>
+                        <div class="form-group">
+                            <select class="form-select w-auto" aria-label="Default select example"
+                                    name="customerTypeID">
+                                <c:forEach items="${customerTypeList}" var="customerType">
+                                    <option value="${customerType.customerTypeID}">${customerType.customerTypeName}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -89,7 +89,7 @@
                         <label class="font-weight-bold">Customer Gender</label>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select w-auto" aria-label="Default select example" name="customerGender" >
+                        <select class="form-select w-auto" aria-label="Default select example" name="customerGender">
                             <option value="0">Male</option>
                             <option value="1">Female</option>
                         </select>

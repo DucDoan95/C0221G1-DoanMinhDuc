@@ -75,7 +75,7 @@
                         <td>${employee.employeePhone}</td>
                         <td>
                             <button type="button" class="btn btn-info"
-                                    onclick="sendDataToModalView('${employee.employeeID}','${employee.employeeName}','${employee.employeeBirthday}','${employee.employeeIDCard}','${employee.employeeSalary}','${employee.employeePhone}','${employee.employeeEmail}','${employee.employeeAddress}','${employee.positionID}','${employee.educationDegreeID}','${employee.divisionID}')"
+                                    onclick="sendDataToModalView('${employee.employeeID}','${employee.employeeName}','${employee.employeeBirthday}','${employee.employeeIDCard}','${employee.employeeSalary}','${employee.employeePhone}','${employee.employeeEmail}','${employee.employeeAddress}','${employee.position.positionID}','${employee.educationDegree.educationDegreeID}','${employee.division.divisionID}')"
                                     data-toggle="modal" data-target="#exampleModalLongView">
                                 View
                             </button>

@@ -115,11 +115,9 @@
                     </div>
                     <div class="col-lg-8">
                         <select class="form-select w-auto" aria-label="Default select example" name="positionID">
-                            <option value="1">Receptionist</option>
-                            <option value="2">Service</option>
-                            <option value="3">Specialist</option>
-                            <option value="4">Supervisor</option>
-                            <option value="5">Director</option>
+                            <c:forEach items="${positionList}" var="position">
+                                <option value="${position.positionID}">${position.positionName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -129,10 +127,9 @@
                     </div>
                     <div class="col-lg-8">
                         <select class="form-select w-auto" aria-label="Default select example" name="educationDegreeID">
-                            <option value="1">Intermediate</option>
-                            <option value="2">College</option>
-                            <option value="3">University</option>
-                            <option value="4">Graduate</option>
+                            <c:forEach items="${educationDegreeList}" var="educationDegree">
+                                <option value="${educationDegree.educationDegreeID}">${educationDegree.educationDegreeName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -142,10 +139,9 @@
                     </div>
                     <div class="col-lg-8">
                         <select class="form-select w-auto" aria-label="Default select example" name="divisionID">
-                            <option value="1">Sales-Marketing Department</option>
-                            <option value="2">Administrative Department</option>
-                            <option value="3">Service Department</option>
-                            <option value="4">Management Department</option>
+                            <c:forEach items="${divisionList}" var="division">
+                                <option value="${division.divisionID}">${division.divisionName}</option>
+                            </c:forEach>
                         </select></div>
                 </div>
                 <div class="row p-2 align-items-center">

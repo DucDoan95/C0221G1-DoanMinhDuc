@@ -93,16 +93,16 @@ rent_type_id int not null,
 foreign key (rent_type_id) references rent_type(rent_type_id) ON DELETE CASCADE,
 service_type_id int not null,
 foreign key (service_type_id) references service_type(service_type_id) ON DELETE CASCADE,
-standrad_room varchar(45),
-description_other_convinience varchar(45),
+standard_room varchar(45),
+description_other_convenience varchar(45),
 pool_area double,
 number_of_floors int
 );
 
 create table contract(
 contract_id int not null primary key auto_increment,
-contract_start_date datetime,
-contract_end_date datetime,
+contract_start_date date,
+contract_end_date date,
 contract_deposit double default 0,
 contract_total_money double default 0,
 employee_id int not null,
@@ -126,7 +126,7 @@ create table contract_detail(
 contract_detail_id int not null primary key auto_increment,
 contract_id int not null,
 foreign key (contract_id) references contract(contract_id) ON DELETE CASCADE,
-attach_service_id int not null,
+attach_service_id int,
 foreign key (attach_service_id) references attach_service(attach_service_id) ON DELETE CASCADE,
 quantity int default 0
 );
@@ -191,7 +191,7 @@ values("Villa"),
 ("Room")
 ;
 
-insert into service(service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,standrad_room,description_other_convinience,pool_area,number_of_floors)
+insert into service(service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,standard_room,description_other_convenience,pool_area,number_of_floors)
 values ("Villa 01",500,50000000,20,1,1,"VIP","Incluede All",100,5),
 ("Villa 02",400,40000000,15,2,1,"Normal","Incluede All",100,4),
 ("House 01",200,20000000,10,3,2,"Normal","Free Food",0,3),
