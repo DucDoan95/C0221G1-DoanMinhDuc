@@ -207,3 +207,22 @@ values("Massage","200000","1","Available"),
 ("Water","50000","1","Available"),
 ("Car Forent","500000","1","Available")
 ;
+
+create view customer_using_service as
+select cus.customer_id,cus.customer_name,
+ctr.contract_id,ctr.contract_start_date,ctr.contract_end_date,
+ser.service_name,att.attach_service_name,cd.quantity
+from contract ctr
+left join customer cus on ctr.customer_id = cus.customer_id
+left join contract_detail cd on ctr.contract_id = cd.contract_id
+left join service ser on ctr.service_id = ser.service_id
+left join attach_service att on cd.attach_service_id = att.attach_service_id
+where (now() between ctr.contract_start_date and ctr.contract_end_date)
+group by ctr.customer_id;
+
+select *from customer_using_service;
+
+select att.attach_service_id,att.attach_service_name,ctr.contract_id,cd.quantity
+from attach_service att 
+join contract_detail cd on att.attach_service_id = cd.attach_service_id
+join contract ctr on cd.contract_id = ctr.contract_id;

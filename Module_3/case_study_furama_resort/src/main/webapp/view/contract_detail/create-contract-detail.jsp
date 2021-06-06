@@ -87,7 +87,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="form-group">
-                            <input type="text" name="quantity">
+                            <input type="text" name="quantity" value="0">
                         </div>
                     </div>
                 </div>

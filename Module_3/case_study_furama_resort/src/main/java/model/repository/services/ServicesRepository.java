@@ -45,8 +45,8 @@ public class ServicesRepository {
             preparedStatement.setInt(6, services.getServiceType().getServiceTypeID());
             preparedStatement.setString(7, services.getStandardRoom());
             preparedStatement.setString(8, services.getDescriptionOtherConvenience());
-            preparedStatement.setDouble(9, services.getPoolArea());
-            preparedStatement.setInt(10, services.getNumberOfFloors());
+            preparedStatement.setString(9, services.getPoolArea());
+            preparedStatement.setString(10, services.getNumberOfFloors());
             check = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,7 +68,7 @@ public class ServicesRepository {
             preparedStatement.setInt(6, services.getServiceType().getServiceTypeID());
             preparedStatement.setString(7, services.getStandardRoom());
             preparedStatement.setString(8, services.getDescriptionOtherConvenience());
-            preparedStatement.setInt(9, services.getNumberOfFloors());
+            preparedStatement.setString(9, services.getNumberOfFloors());
             check = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -112,8 +112,8 @@ public class ServicesRepository {
                 int serviceTypeId = resultSet.getInt("service_type_id");
                 String standardRoom = resultSet.getString("standard_room");
                 String descriptionOtherConvenience = resultSet.getString("description_other_convenience");
-                double poolArea = resultSet.getDouble("pool_area");
-                int numberOfFloors = resultSet.getInt("number_of_floors");
+                String poolArea = resultSet.getString("pool_area");
+                String numberOfFloors = resultSet.getString("number_of_floors");
 
                 RentType rentType = iRentType.findRentTypeByID(rentTypeId);
                 ServiceType serviceType = iServiceType.findServiceTypeByID(serviceTypeId);
@@ -143,8 +143,8 @@ public class ServicesRepository {
                 int serviceTypeId = resultSet.getInt("service_type_id");
                 String standardRoom = resultSet.getString("standard_room");
                 String descriptionOtherConvenience = resultSet.getString("description_other_convenience");
-                double poolArea = resultSet.getDouble("pool_area");
-                int numberOfFloors = resultSet.getInt("number_of_floors");
+                String poolArea = resultSet.getString("pool_area");
+                String numberOfFloors = resultSet.getString("number_of_floors");
 
                 RentType rentType = iRentType.findRentTypeByID(rentTypeId);
                 ServiceType serviceType = iServiceType.findServiceTypeByID(serviceTypeId);
