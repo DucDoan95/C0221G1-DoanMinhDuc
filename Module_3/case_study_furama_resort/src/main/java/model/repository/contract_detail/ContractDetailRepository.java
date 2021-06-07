@@ -19,7 +19,7 @@ public class ContractDetailRepository {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_CONTRACT_DETAIL);
             preparedStatement.setInt(1, contractDetail.getContract().getContractID());
-            preparedStatement.setInt(2, contractDetail.getAttachService().getAttachServiceID());
+            preparedStatement.setString(2, contractDetail.getAttachServiceID());
             preparedStatement.setInt(3, contractDetail.getQuantity());
             check = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {

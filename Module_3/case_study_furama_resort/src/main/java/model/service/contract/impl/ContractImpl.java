@@ -22,4 +22,10 @@ public class ContractImpl implements IContract {
     public List<Contract> getAllContract() {
         return contractRepository.getAllContract();
     }
+
+    @Override
+    public boolean editContractUsing(Contract contract) {
+        return contractRepository.editContractUsing(contract);
+    }
+
 }

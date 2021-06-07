@@ -28,6 +28,9 @@ public class ContractRepository {
             "values(?,?,?,?,?,?);";
     final String FIND_CONTRACT_BY_ID = "select *from contract where contract_id=?;";
     final String GET_ALL_CONTRACT = "select *from contract ;";
+    final String UPDATE_CONTRACT = "update contract\n" +
+            "set contract_start_date=?,contract_end_date=?,contract_deposit=?,employee_id=?,customer_id=?,service_id=?\n" +
+            "where contract_id=?;";
 
     public boolean createContract(Contract contract) {
         Connection connection = baseRepository.connectDatabase();
@@ -107,5 +110,27 @@ public class ContractRepository {
             e.printStackTrace();
         }
         return contractList;
+    }
+
+    public boolean editContractUsing(Contract contract) {
+        Connection connection = baseRepository.connectDatabase();
+        boolean check = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CONTRACT);
+            preparedStatement.setString(1, contract.getContractStartDate());
+            preparedStatement.setString(2, contract.getContractEndDate());
+            preparedStatement.setDouble(3, contract.getContractDeposit());
+            preparedStatement.setInt(4, contract.getEmployee().getEmployeeID());
+            preparedStatement.setInt(5, contract.getCustomer().getCustomerID());
+            preparedStatement.setInt(6, contract.getServices().getServiceID());
+            preparedStatement.setInt(7, contract.getContractID());
+
+            check = preparedStatement.executeUpdate() > 0;
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return check;
     }
 }

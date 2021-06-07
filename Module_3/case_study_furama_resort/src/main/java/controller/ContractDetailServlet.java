@@ -38,11 +38,13 @@ public class ContractDetailServlet extends HttpServlet {
 
     private void createContractDetail(HttpServletRequest request, HttpServletResponse response) {
         int contractID = Integer.parseInt(request.getParameter("contractID"));
-        int attachServiceID = Integer.parseInt(request.getParameter("attachServiceID"));
+        String attachServiceID = (request.getParameter("attachServiceID"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         Contract contract = iContract.findContractByID(contractID);
-        AttachService attachService = iAttachService.findAttachServiceByID(attachServiceID);
-        ContractDetail contractDetail = new ContractDetail(contract,attachService,quantity);
+        if(attachServiceID ==""){
+            attachServiceID=null;
+        }
+        ContractDetail contractDetail = new ContractDetail(contract,attachServiceID,quantity);
         List<Contract> contractList = iContract.getAllContract();
         List<AttachService> attachServiceList = iAttachService.getAllAttachService();
         request.setAttribute("contractList", contractList);

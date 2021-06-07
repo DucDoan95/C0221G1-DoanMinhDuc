@@ -7,19 +7,21 @@ public class CustomerUsingService {
     private String contractStartDate;
     private String contractEndDate;
     private String serviceName;
+    private String attachServiceID;
     private String attachServiceName;
     private int quantity;
 
     public CustomerUsingService() {
     }
 
-    public CustomerUsingService(int customerID, String customerName, int contractID, String contractStartDate, String contractEndDate, String serviceName, String attachServiceName, int quantity) {
+    public CustomerUsingService(int customerID, String customerName, int contractID, String contractStartDate, String contractEndDate, String serviceName, String attachServiceID, String attachServiceName, int quantity) {
         this.customerID = customerID;
         this.customerName = customerName;
         this.contractID = contractID;
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
         this.serviceName = serviceName;
+        this.attachServiceID = attachServiceID;
         this.attachServiceName = attachServiceName;
         this.quantity = quantity;
     }
@@ -86,5 +88,13 @@ public class CustomerUsingService {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getAttachServiceID() {
+        return attachServiceID;
+    }
+
+    public void setAttachServiceID(String attachServiceID) {
+        this.attachServiceID = attachServiceID;
     }
 }

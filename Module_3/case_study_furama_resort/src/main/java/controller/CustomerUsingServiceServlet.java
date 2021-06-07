@@ -1,6 +1,12 @@
 package controller;
 
+import model.bean.AttachService;
+import model.bean.Customer;
 import model.bean.CustomerUsingService;
+import model.service.attach_service.IAttachService;
+import model.service.attach_service.impl.AttachServiceImpl;
+import model.service.contract.IContract;
+import model.service.contract.impl.ContractImpl;
 import model.service.customer_using_service.ICustomerUsingService;
 import model.service.customer_using_service.impl.CustomerUsingServiceImpl;
 
@@ -16,6 +22,7 @@ import java.util.List;
 @WebServlet(name = "CustomerUsingServiceServlet" ,urlPatterns = "/customer-using-service")
 public class CustomerUsingServiceServlet extends HttpServlet {
     ICustomerUsingService iCustomerUsingService = new CustomerUsingServiceImpl();
+    IAttachService iAttachService = new AttachServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -26,15 +33,34 @@ public class CustomerUsingServiceServlet extends HttpServlet {
             action = "";
         }
         switch (action){
+            case "search":
+                searchCustomerUsingSerrviceByName(request, response);
+                break;
             default:
                 showListCustomerUsingService(request,response);
                 break;
         }
     }
 
+    private void searchCustomerUsingSerrviceByName(HttpServletRequest request, HttpServletResponse response) {
+        String search = request.getParameter("search");
+        List<CustomerUsingService> customerUsingServiceList = iCustomerUsingService.searchCustomerUsingServiceByName(search);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/customer_using_service/list-customer-using-service.jsp");
+        request.setAttribute("customerUsingServiceList", customerUsingServiceList);
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void showListCustomerUsingService(HttpServletRequest request, HttpServletResponse response) {
         List<CustomerUsingService> customerUsingServiceList = iCustomerUsingService.getAllCustomerUsingService();
+        List<AttachService> attachServiceList = iCustomerUsingService.getAllAttachServiceUsing();
         request.setAttribute("customerUsingServiceList", customerUsingServiceList);
+        request.setAttribute("attachServiceList", attachServiceList);
         try {
             RequestDispatcher requestDispatcher =request.getRequestDispatcher("/view/customer_using_service/list-customer-using-service.jsp");
             requestDispatcher.forward(request,response);

@@ -37,8 +37,52 @@ public class ContractServlet extends HttpServlet {
             case "create":
                 createContract(request, response);
                 break;
+            case "edit":
+                editContract(request,response);
+                break;
             default:
                 break;
+        }
+    }
+
+    private void editContract(HttpServletRequest request, HttpServletResponse response) {
+        int contractID = Integer.parseInt(request.getParameter("contractID"));
+        String contractStartDate = request.getParameter("contractStartDate");
+        String contractEndDate = request.getParameter("contractEndDate");
+        Double contractDeposit = Double.parseDouble(request.getParameter("contractDeposit"));
+        int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+        int customerID = Integer.parseInt(request.getParameter("customerID"));
+        int serviceID = Integer.parseInt(request.getParameter("serviceID"));
+        Customer customer = iCustomer.findCustomerByID(customerID);
+        Employee employee = iEmployee.findEmployeeByID(employeeID);
+        Services services = iServices.findServiceByID(serviceID);
+
+        List<Employee> employeeList = iEmployee.getAllEmployee();
+        List<Customer> customerList = iCustomer.getAllCustomer();
+        List<Services> servicesList = iServices.getAllServices();
+
+        Contract contract = new Contract(contractID,contractStartDate,contractEndDate,contractDeposit,employee,customer,services);
+        boolean check = iContract.editContractUsing(contract);
+        if (check) {
+            request.setAttribute("message", "Edit successful");
+            request.setAttribute("employeeList", employeeList);
+            request.setAttribute("customerList", customerList);
+            request.setAttribute("servicesList", servicesList);
+        } else {
+            request.setAttribute("message", "Edit unsuccessful");
+            request.setAttribute("employeeList", employeeList);
+            request.setAttribute("customerList", customerList);
+            request.setAttribute("servicesList", servicesList);
+        }
+        request.setAttribute("contract", contract);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/contract/edit-contract.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -87,8 +131,36 @@ public class ContractServlet extends HttpServlet {
             case "create":
                 showCreateContractForm(request, response);
                 break;
+            case "edit":
+                showEditContractForm(request,response);
             default:
                 break;
+        }
+    }
+
+    private void showEditContractForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("contractID"));
+        Contract contract = iContract.findContractByID(id);
+        List<Employee> employeeList = iEmployee.getAllEmployee();
+        List<Customer> customerList = iCustomer.getAllCustomer();
+        List<Services> servicesList = iServices.getAllServices();
+        RequestDispatcher requestDispatcher;
+
+        if (contract == null) {
+            requestDispatcher = request.getRequestDispatcher("/view/error-404.jsp");
+        } else {
+            requestDispatcher = request.getRequestDispatcher("/view/contract/edit-contract.jsp");
+            request.setAttribute("contract", contract);
+            request.setAttribute("employeeList", employeeList);
+            request.setAttribute("customerList", customerList);
+            request.setAttribute("servicesList", servicesList);
+        }
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

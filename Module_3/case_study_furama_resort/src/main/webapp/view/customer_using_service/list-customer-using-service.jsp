@@ -47,9 +47,10 @@
                     </h1>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 col-6 m-0">
-                    <form class="d-flex m-0 p-0" method="get" action="/customer">
+                    <form class="d-flex m-0 p-0" method="get" action="/customer-using-service">
                         <input name="action" value="search" hidden>
-                        <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="text" name="search" placeholder="Search"
+                               aria-label="Search">
                         <button class="btn btn-outline-success ml-2" type="submit">Search</button>
                     </form>
                 </div>
@@ -58,7 +59,6 @@
             <table class="table table-striped">
                 <tr class="text-center">
                     <th>STT</th>
-                    <th>CustomerID</th>
                     <th>Customer Name</th>
                     <th>Contract ID</th>
                     <th>Contract Start Date</th>
@@ -66,18 +66,33 @@
                     <th>Service Name</th>
                     <th>Attach Service Name</th>
                     <th>Quantity</th>
+                    <th>Edit</th>
                 </tr>
                 <c:forEach items="${customerUsingServiceList}" var="customerUsingService" varStatus="status">
                     <tr class="text-center">
                         <td>${status.count}</td>
-                        <td>${customerUsingService.customerID}</td>
                         <td>${customerUsingService.customerName}</td>
                         <td>${customerUsingService.contractID}</td>
                         <td>${customerUsingService.contractStartDate}</td>
                         <td>${customerUsingService.contractEndDate}</td>
                         <td>${customerUsingService.serviceName}</td>
-                        <td>${customerUsingService.attachServiceName}</td>
-                        <td>${customerUsingService.quantity}</td>
+                        <td>
+                            <c:forEach items="${attachServiceList}" var="attachService">
+                                <c:if test="${attachService.attachServiceID == customerUsingService.attachServiceID}">
+                                    <p>${attachService.attachServiceName}</p>
+                                </c:if>
+                            </c:forEach>
+                        </td>
+                        <td>
+                            <c:forEach items="${attachServiceList}" var="attachService">
+                                <c:if test="${attachService.attachServiceID == customerUsingService.attachServiceID}">
+                                    <p>${attachService.attachServiceUnit}</p>
+                                </c:if>
+                            </c:forEach>
+                        </td>
+                        <td>
+                            <a class="btn btn-warning " href="contract?action=edit&contractID=${customerUsingService.contractID}">Edit</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>

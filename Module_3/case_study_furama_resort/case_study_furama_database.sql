@@ -211,7 +211,7 @@ values("Massage","200000","1","Available"),
 create view customer_using_service as
 select cus.customer_id,cus.customer_name,
 ctr.contract_id,ctr.contract_start_date,ctr.contract_end_date,
-ser.service_name,att.attach_service_name,cd.quantity
+ser.service_name,att.attach_service_id,att.attach_service_name,cd.quantity
 from contract ctr
 left join customer cus on ctr.customer_id = cus.customer_id
 left join contract_detail cd on ctr.contract_id = cd.contract_id
@@ -222,7 +222,7 @@ group by ctr.customer_id;
 
 select *from customer_using_service;
 
-select att.attach_service_id,att.attach_service_name,ctr.contract_id,cd.quantity
+create view attach_service_using as
+select att.attach_service_id,att.attach_service_name,cd.quantity
 from attach_service att 
-join contract_detail cd on att.attach_service_id = cd.attach_service_id
-join contract ctr on cd.contract_id = ctr.contract_id;
+join contract_detail cd on att.attach_service_id = cd.attach_service_id;
