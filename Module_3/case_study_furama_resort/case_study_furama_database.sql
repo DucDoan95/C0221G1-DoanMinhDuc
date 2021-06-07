@@ -60,7 +60,7 @@ customer_type_name varchar(45) not null
 );
 
 create table customer(
-customer_id int not null primary key auto_increment,
+customer_id varchar(45) not null primary key,
 customer_type_id int not null ,
 foreign key (customer_type_id) references customer_type(customer_type_id) ON DELETE CASCADE,
 customer_name varchar(45) not null,
@@ -84,7 +84,7 @@ service_type_name varchar(45) not null
 );
 
 create table service(
-service_id int not null primary key auto_increment,
+service_id varchar(45) not null primary key,
 service_name varchar(45) not null,
 service_area int,
 service_cost double,
@@ -107,9 +107,9 @@ contract_deposit double default 0,
 contract_total_money double default 0,
 employee_id int not null,
 foreign key (employee_id) references employee(employee_id) ON DELETE CASCADE, 
-customer_id int not null,
+customer_id nvarchar(45) not null,
 foreign key (customer_id) references customer(customer_id) ON DELETE CASCADE,
-service_id int not null,
+service_id nvarchar(45) not null,
 foreign key (service_id) references service(service_id) ON DELETE CASCADE
 );
 
@@ -170,12 +170,12 @@ values("Diamond"),
 ("Member")
 ;
 
-insert into customer(customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address)
-values(1,"Nguyen Van Ha","1990-02-05","0","111111111","0101010101","havan@gmail.com","Binh Duong"),
-(2,"Nguyen Thi Thap","1993-05-01","1","222222222","0202020202","thapnguyen@gmail.com","Cu Chi"),
-(3,"Banh Van Tran","1985-10-10","1","333333333","0303030303","tranbanh@gmail.com","Can Gio"),
-(4,"Truong Thi Anh May","1988-03-04","1","444444444","0404040404","maytruong@gmail.com","Ha Noi"),
-(5,"Doan Van Nguyen","1998-08-08","0","555555555","0505050505","nguyendoan@gmail.com","Can Tho")
+insert into customer(customer_id,customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address)
+values("KH-0001",1,"Nguyen Van Ha","1990-02-05","0","111111111","0101010101","havan@gmail.com","Binh Duong"),
+("KH-0002",2,"Nguyen Thi Thap","1993-05-01","1","222222222","0202020202","thapnguyen@gmail.com","Cu Chi"),
+("KH-0003",3,"Banh Van Tran","1985-10-10","1","333333333","0303030303","tranbanh@gmail.com","Can Gio"),
+("KH-0004",4,"Truong Thi Anh May","1988-03-04","1","444444444","0404040404","maytruong@gmail.com","Ha Noi"),
+("KH-0005",5,"Doan Van Nguyen","1998-08-08","0","555555555","0505050505","nguyendoan@gmail.com","Can Tho")
 ;
 
 insert into rent_type(rent_type_name,rent_type_cost)
@@ -191,13 +191,13 @@ values("Villa"),
 ("Room")
 ;
 
-insert into service(service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,standard_room,description_other_convenience,pool_area,number_of_floors)
-values ("Villa 01",500,50000000,20,1,1,"VIP","Incluede All",100,5),
-("Villa 02",400,40000000,15,2,1,"Normal","Incluede All",100,4),
-("House 01",200,20000000,10,3,2,"Normal","Free Food",0,3),
-("House 02",150,15000000,5,4,2,"VIP","Free Massage",0,2),
-("Room 01",80,8000000,3,3,3,"VIP","Free Massage",0,1),
-("Room 02",60,6000000,2,4,3,"Normal","Free Water",0,1)
+insert into service(service_id,service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,standard_room,description_other_convenience,pool_area,number_of_floors)
+values ("DV-0001","Villa 01",500,50000000,20,1,1,"VIP","Incluede All",100,5),
+("DV-0002","Villa 02",400,40000000,15,2,1,"Normal","Incluede All",100,4),
+("DV-0003","House 01",200,20000000,10,3,2,"Normal","Free Food",0,3),
+("DV-0004","House 02",150,15000000,5,4,2,"VIP","Free Massage",0,2),
+("DV-0005","Room 01",80,8000000,3,3,3,"VIP","Free Massage",0,1),
+("DV-0006","Room 02",60,6000000,2,4,3,"Normal","Free Water",0,1)
 ;
 
 insert into attach_service(attach_service_name,attach_service_cost,attach_service_unit,attach_service_status)
@@ -223,6 +223,8 @@ group by ctr.customer_id;
 select *from customer_using_service;
 
 create view attach_service_using as
-select att.attach_service_id,att.attach_service_name,cd.quantity
+select ct.contract_id,att.attach_service_id,att.attach_service_name,sum(cd.quantity)
 from attach_service att 
-join contract_detail cd on att.attach_service_id = cd.attach_service_id;
+join contract_detail cd on att.attach_service_id = cd.attach_service_id
+join contract ct on cd.contract_id = ct.contract_id
+group by att.attach_service_id , ct.contract_id;

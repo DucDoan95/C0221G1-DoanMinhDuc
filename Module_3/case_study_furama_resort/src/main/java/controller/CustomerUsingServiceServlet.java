@@ -1,14 +1,11 @@
 package controller;
 
 import model.bean.AttachService;
-import model.bean.Customer;
 import model.bean.CustomerUsingService;
-import model.service.attach_service.IAttachService;
-import model.service.attach_service.impl.AttachServiceImpl;
-import model.service.contract.IContract;
-import model.service.contract.impl.ContractImpl;
-import model.service.customer_using_service.ICustomerUsingService;
-import model.service.customer_using_service.impl.CustomerUsingServiceImpl;
+import model.service.IAttachService;
+import model.service.impl.AttachServiceImpl;
+import model.service.ICustomerUsingService;
+import model.service.impl.CustomerUsingServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,7 +31,7 @@ public class CustomerUsingServiceServlet extends HttpServlet {
         }
         switch (action){
             case "search":
-                searchCustomerUsingSerrviceByName(request, response);
+                searchCustomerUsingServiceByName(request, response);
                 break;
             default:
                 showListCustomerUsingService(request,response);
@@ -42,7 +39,7 @@ public class CustomerUsingServiceServlet extends HttpServlet {
         }
     }
 
-    private void searchCustomerUsingSerrviceByName(HttpServletRequest request, HttpServletResponse response) {
+    private void searchCustomerUsingServiceByName(HttpServletRequest request, HttpServletResponse response) {
         String search = request.getParameter("search");
         List<CustomerUsingService> customerUsingServiceList = iCustomerUsingService.searchCustomerUsingServiceByName(search);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/customer_using_service/list-customer-using-service.jsp");
@@ -58,7 +55,7 @@ public class CustomerUsingServiceServlet extends HttpServlet {
 
     private void showListCustomerUsingService(HttpServletRequest request, HttpServletResponse response) {
         List<CustomerUsingService> customerUsingServiceList = iCustomerUsingService.getAllCustomerUsingService();
-        List<AttachService> attachServiceList = iCustomerUsingService.getAllAttachServiceUsing();
+        List<CustomerUsingService> attachServiceList = iCustomerUsingService.getAllAttachServiceUsing();
         request.setAttribute("customerUsingServiceList", customerUsingServiceList);
         request.setAttribute("attachServiceList", attachServiceList);
         try {

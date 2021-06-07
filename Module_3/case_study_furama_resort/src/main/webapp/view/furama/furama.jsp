@@ -10,9 +10,10 @@
 <html>
 <head>
     <title>Furama Resort</title>
-    <script src="../../lib/bootstrap-4.6.0-dist/js/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="../../lib/bootstrap-4.6.0-dist/css/bootstrap.css">
-    <script src="../../lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+
+
     <style>
         img {
             width: 20%;
@@ -105,5 +106,7 @@
         </div>
     </div>
 </div>
+<script src="../../lib/bootstrap-4.6.0-dist/js/jquery-3.6.0.min.js"></script>
+<script src="../../lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
 </body>
 </html>

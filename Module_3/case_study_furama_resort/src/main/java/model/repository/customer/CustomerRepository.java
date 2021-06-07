@@ -3,8 +3,8 @@ package model.repository.customer;
 import model.bean.Customer;
 import model.bean.CustomerType;
 import model.repository.BaseRepository;
-import model.service.customer_type.ICustomerType;
-import model.service.customer_type.impl.CustomerTypeImpl;
+import model.service.ICustomerType;
+import model.service.impl.CustomerTypeImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,12 +17,12 @@ public class CustomerRepository {
     BaseRepository baseRepository = new BaseRepository();
     ICustomerType iCustomerType = new CustomerTypeImpl();
 
-    final String CREATE_CUSTOMER = "insert into customer(customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address)\n" +
-            "values(?,?,?,?,?,?,?,?);";
+    final String CREATE_CUSTOMER = "insert into customer(customer_id,customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address)\n" +
+            "values(?,?,?,?,?,?,?,?,?);";
     final String FIND_CUSTOMER_BY_ID = "select *from customer where customer_id = ?;";
     final String GET_ALL_CUSTOMER = "select *from customer;";
     final String EDIT_CUSTOMER = " update customer\n" +
-            " set customer_type_id=?,customer_name=?,customer_birthday=?,customer_gender=?,customer_id_card=?,customer_phone=?,customer_email=?,customer_address=?\n" +
+            " set customer_id=?,customer_type_id=?,customer_name=?,customer_birthday=?,customer_gender=?,customer_id_card=?,customer_phone=?,customer_email=?,customer_address=?\n" +
             " where customer_id =?;";
     final String DELETE_CUSTOMER_BY_ID = "delete  from customer where customer_id =?;";
     final String SEARCH_CUSTOMER_BY_NAME = "select *from customer\n" +
@@ -35,14 +35,15 @@ public class CustomerRepository {
         boolean check = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_CUSTOMER);
-            preparedStatement.setInt(1, customer.getCustomerType().getCustomerTypeID());
-            preparedStatement.setString(2, customer.getCustomerName());
-            preparedStatement.setString(3, customer.getCustomerBirthday());
-            preparedStatement.setString(4, customer.getCustomerGender());
-            preparedStatement.setString(5, customer.getCustomerIDCard());
-            preparedStatement.setString(6, customer.getCustomerPhone());
-            preparedStatement.setString(7, customer.getCustomerEmail());
-            preparedStatement.setString(8, customer.getCustomerAddress());
+            preparedStatement.setString(1, customer.getCustomerID());
+            preparedStatement.setInt(2, customer.getCustomerType().getCustomerTypeID());
+            preparedStatement.setString(3, customer.getCustomerName());
+            preparedStatement.setString(4, customer.getCustomerBirthday());
+            preparedStatement.setString(5, customer.getCustomerGender());
+            preparedStatement.setString(6, customer.getCustomerIDCard());
+            preparedStatement.setString(7, customer.getCustomerPhone());
+            preparedStatement.setString(8, customer.getCustomerEmail());
+            preparedStatement.setString(9, customer.getCustomerAddress());
             check = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,15 +53,15 @@ public class CustomerRepository {
     }
 
 
-    public Customer findCustomerByID(int inputID) {
+    public Customer findCustomerByID(String inputID) {
         Connection connection = baseRepository.connectDatabase();
         Customer customer = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_CUSTOMER_BY_ID);
-            preparedStatement.setInt(1, inputID);
+            preparedStatement.setString(1, inputID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int customerID = resultSet.getInt("customer_id");
+                String customerID = resultSet.getString("customer_id");
                 int customerTypeId = resultSet.getInt("customer_type_id");
                 String customerName = resultSet.getString("customer_name");
                 String customerBirthday = resultSet.getString("customer_birthday");
@@ -87,7 +88,7 @@ public class CustomerRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_CUSTOMER);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int customerID = resultSet.getInt("customer_id");
+                String customerID = resultSet.getString("customer_id");
                 int customerTypeId = resultSet.getInt("customer_type_id");
                 String customerName = resultSet.getString("customer_name");
                 String customerBirthday = resultSet.getString("customer_birthday");
@@ -114,15 +115,16 @@ public class CustomerRepository {
         boolean check = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(EDIT_CUSTOMER);
-            preparedStatement.setInt(1, customer.getCustomerType().getCustomerTypeID());
-            preparedStatement.setString(2, customer.getCustomerName());
-            preparedStatement.setString(3, customer.getCustomerBirthday());
-            preparedStatement.setString(4, customer.getCustomerGender());
-            preparedStatement.setString(5, customer.getCustomerIDCard());
-            preparedStatement.setString(6, customer.getCustomerPhone());
-            preparedStatement.setString(7, customer.getCustomerEmail());
-            preparedStatement.setString(8, customer.getCustomerAddress());
-            preparedStatement.setInt(9, customer.getCustomerID());
+            preparedStatement.setString(1, customer.getCustomerID());
+            preparedStatement.setInt(2, customer.getCustomerType().getCustomerTypeID());
+            preparedStatement.setString(3, customer.getCustomerName());
+            preparedStatement.setString(4, customer.getCustomerBirthday());
+            preparedStatement.setString(5, customer.getCustomerGender());
+            preparedStatement.setString(6, customer.getCustomerIDCard());
+            preparedStatement.setString(7, customer.getCustomerPhone());
+            preparedStatement.setString(8, customer.getCustomerEmail());
+            preparedStatement.setString(9, customer.getCustomerAddress());
+            preparedStatement.setString(10, customer.getCustomerID());
             check = preparedStatement.executeUpdate() > 0;
             preparedStatement.close();
             connection.close();
@@ -133,12 +135,12 @@ public class CustomerRepository {
     }
 
 
-    public boolean deleteCustomer(int id) {
+    public boolean deleteCustomer(String id) {
         Connection connection = baseRepository.connectDatabase();
         boolean rowDelete = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER_BY_ID);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             rowDelete = preparedStatement.executeUpdate() > 0;
             preparedStatement.close();
             connection.close();
@@ -156,7 +158,7 @@ public class CustomerRepository {
             preparedStatement.setString(1, "%"+name+"%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int customerID = resultSet.getInt("customer_id");
+                String customerID = resultSet.getString("customer_id");
                 int customerTypeId = resultSet.getInt("customer_type_id");
                 String customerName = resultSet.getString("customer_name");
                 String customerBirthday = resultSet.getString("customer_birthday");

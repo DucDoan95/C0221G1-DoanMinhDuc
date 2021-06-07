@@ -27,7 +27,7 @@ public class CustomerUsingServiceRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_CUSTOMER_USING_SERVICE);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int customerId = resultSet.getInt("customer_id");
+                String customerId = resultSet.getString("customer_id");
                 String customerName = resultSet.getString("customer_name");
                 int contractId = resultSet.getInt("contract_id");
                 String contractStartDate = resultSet.getString("contract_start_date");
@@ -47,25 +47,26 @@ public class CustomerUsingServiceRepository {
         return customerUsingServiceList;
     }
 
-    public List<AttachService> getAllAttachServiceUsing() {
+    public List<CustomerUsingService> getAllAttachServiceUsing() {
         Connection connection = baseRepository.connectDatabase();
-        List<AttachService> attachServiceList = new ArrayList<>();
+        List<CustomerUsingService> customerUsingServiceList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_ATTACH_SERVICE_USING);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int attachServiceId = resultSet.getInt("attach_service_id");
+                int contract_id = resultSet.getInt("contract_id");
+                String attachServiceId = resultSet.getString("attach_service_id");
                 String attachServiceName = resultSet.getString("attach_service_name");
                 int quantity = resultSet.getInt("quantity");
-                AttachService attachService = new AttachService(attachServiceId,attachServiceName,quantity);
-                attachServiceList.add(attachService);
+                CustomerUsingService customerUsingService = new CustomerUsingService(contract_id,attachServiceId,attachServiceName,quantity);
+                customerUsingServiceList.add(customerUsingService);
             }
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return attachServiceList;
+        return customerUsingServiceList;
     }
     public List<CustomerUsingService> searchCustomerUsingServiceByName(String name) {
         Connection connection = baseRepository.connectDatabase();
@@ -75,7 +76,7 @@ public class CustomerUsingServiceRepository {
             preparedStatement.setString(1, "%"+name+"%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int customerId = resultSet.getInt("customer_id");
+                String customerId = resultSet.getString("customer_id");
                 String customerName = resultSet.getString("customer_name");
                 int contractId = resultSet.getInt("contract_id");
                 String contractStartDate = resultSet.getString("contract_start_date");

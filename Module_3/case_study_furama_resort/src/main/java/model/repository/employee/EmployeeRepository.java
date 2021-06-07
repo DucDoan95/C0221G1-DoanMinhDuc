@@ -5,12 +5,12 @@ import model.bean.EducationDegree;
 import model.bean.Employee;
 import model.bean.Position;
 import model.repository.BaseRepository;
-import model.service.division.IDivision;
-import model.service.division.impl.DivisionImpl;
-import model.service.education_degree.IEducationDegree;
-import model.service.education_degree.impl.EducationDegreeImpl;
-import model.service.position.IPosition;
-import model.service.position.impl.PositionImpl;
+import model.service.IDivision;
+import model.service.impl.DivisionImpl;
+import model.service.IEducationDegree;
+import model.service.impl.EducationDegreeImpl;
+import model.service.IPosition;
+import model.service.impl.PositionImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

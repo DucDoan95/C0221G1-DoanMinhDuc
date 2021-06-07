@@ -1,7 +1,7 @@
 package model.bean;
 
 public class CustomerUsingService {
-    private int customerID;
+    private String customerID;
     private String customerName;
     private int contractID;
     private String contractStartDate;
@@ -14,7 +14,7 @@ public class CustomerUsingService {
     public CustomerUsingService() {
     }
 
-    public CustomerUsingService(int customerID, String customerName, int contractID, String contractStartDate, String contractEndDate, String serviceName, String attachServiceID, String attachServiceName, int quantity) {
+    public CustomerUsingService(String customerID, String customerName, int contractID, String contractStartDate, String contractEndDate, String serviceName, String attachServiceID, String attachServiceName, int quantity) {
         this.customerID = customerID;
         this.customerName = customerName;
         this.contractID = contractID;
@@ -26,11 +26,18 @@ public class CustomerUsingService {
         this.quantity = quantity;
     }
 
-    public int getCustomerID() {
+    public CustomerUsingService(int contractID, String attachServiceID, String attachServiceName, int quantity) {
+        this.contractID = contractID;
+        this.attachServiceID = attachServiceID;
+        this.attachServiceName = attachServiceName;
+        this.quantity = quantity;
+    }
+
+    public String getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
 

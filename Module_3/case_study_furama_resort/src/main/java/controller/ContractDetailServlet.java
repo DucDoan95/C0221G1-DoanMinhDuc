@@ -1,12 +1,12 @@
 package controller;
 
 import model.bean.*;
-import model.service.attach_service.IAttachService;
-import model.service.attach_service.impl.AttachServiceImpl;
-import model.service.contract_detail.IContractDetail;
-import model.service.contract_detail.impl.ContractDetailImpl;
-import model.service.contract.IContract;
-import model.service.contract.impl.ContractImpl;
+import model.service.IAttachService;
+import model.service.impl.AttachServiceImpl;
+import model.service.IContractDetail;
+import model.service.impl.ContractDetailImpl;
+import model.service.IContract;
+import model.service.impl.ContractImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

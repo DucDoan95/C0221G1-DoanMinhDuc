@@ -1,16 +1,14 @@
 package controller;
 
 import model.bean.*;
-import model.service.contract.IContract;
-import model.service.contract.impl.ContractImpl;
-import model.service.customer.ICustomer;
-import model.service.customer.impl.CustomerImpl;
-import model.service.customer_type.ICustomerType;
-import model.service.customer_type.impl.CustomerTypeImpl;
-import model.service.employee.IEmployee;
-import model.service.employee.impl.EmployeeImpl;
-import model.service.services.IServices;
-import model.service.services.impl.ServicesImpl;
+import model.service.IContract;
+import model.service.impl.ContractImpl;
+import model.service.ICustomer;
+import model.service.impl.CustomerImpl;
+import model.service.IEmployee;
+import model.service.impl.EmployeeImpl;
+import model.service.IServices;
+import model.service.impl.ServicesImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,8 +49,8 @@ public class ContractServlet extends HttpServlet {
         String contractEndDate = request.getParameter("contractEndDate");
         Double contractDeposit = Double.parseDouble(request.getParameter("contractDeposit"));
         int employeeID = Integer.parseInt(request.getParameter("employeeID"));
-        int customerID = Integer.parseInt(request.getParameter("customerID"));
-        int serviceID = Integer.parseInt(request.getParameter("serviceID"));
+        String customerID = request.getParameter("customerID");
+        String serviceID = request.getParameter("serviceID");
         Customer customer = iCustomer.findCustomerByID(customerID);
         Employee employee = iEmployee.findEmployeeByID(employeeID);
         Services services = iServices.findServiceByID(serviceID);
@@ -91,8 +89,8 @@ public class ContractServlet extends HttpServlet {
         String contractEndDate = request.getParameter("contractEndDate");
         Double contractDeposit = Double.parseDouble(request.getParameter("contractDeposit"));
         int employeeID = Integer.parseInt(request.getParameter("employeeID"));
-        int customerID = Integer.parseInt(request.getParameter("customerID"));
-        int serviceID = Integer.parseInt(request.getParameter("serviceID"));
+        String customerID = request.getParameter("customerID");
+        String serviceID = request.getParameter("serviceID");
         Employee employee = iEmployee.findEmployeeByID(employeeID);
         Customer customer = iCustomer.findCustomerByID(customerID);
         Services services = iServices.findServiceByID(serviceID);

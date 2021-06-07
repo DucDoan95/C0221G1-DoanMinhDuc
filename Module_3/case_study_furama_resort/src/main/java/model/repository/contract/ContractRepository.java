@@ -2,15 +2,13 @@ package model.repository.contract;
 
 import model.bean.*;
 import model.repository.BaseRepository;
-import model.service.attach_service.IAttachService;
-import model.service.customer.ICustomer;
-import model.service.customer.impl.CustomerImpl;
-import model.service.employee.IEmployee;
-import model.service.employee.impl.EmployeeImpl;
-import model.service.services.IServices;
-import model.service.services.impl.ServicesImpl;
+import model.service.ICustomer;
+import model.service.impl.CustomerImpl;
+import model.service.IEmployee;
+import model.service.impl.EmployeeImpl;
+import model.service.IServices;
+import model.service.impl.ServicesImpl;
 
-import javax.xml.ws.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,8 +39,8 @@ public class ContractRepository {
             preparedStatement.setString(2, contract.getContractEndDate());
             preparedStatement.setDouble(3, contract.getContractDeposit());
             preparedStatement.setInt(4, contract.getEmployee().getEmployeeID());
-            preparedStatement.setInt(5, contract.getCustomer().getCustomerID());
-            preparedStatement.setInt(6, contract.getServices().getServiceID());
+            preparedStatement.setString(5, contract.getCustomer().getCustomerID());
+            preparedStatement.setString(6, contract.getServices().getServiceID());
             check = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,8 +61,8 @@ public class ContractRepository {
                 String contractEndDate = resultSet.getString("contract_end_date");
                 Double contractDeposit = resultSet.getDouble("contract_deposit");
                 int employeeId = resultSet.getInt("employee_id");
-                int customerId = resultSet.getInt("customer_id");
-                int serviceId = resultSet.getInt("service_id");
+                String  customerId = resultSet.getString("customer_id");
+                String serviceId = resultSet.getString("service_id");
 
                 Employee employee = iEmployee.findEmployeeByID(employeeId);
                 Customer customer = iCustomer.findCustomerByID(customerId);
@@ -93,8 +91,8 @@ public class ContractRepository {
                 String contractEndDate = resultSet.getString("contract_end_date");
                 Double contractDeposit = resultSet.getDouble("contract_deposit");
                 int employeeId = resultSet.getInt("employee_id");
-                int customerId = resultSet.getInt("customer_id");
-                int serviceId = resultSet.getInt("service_id");
+                String customerId = resultSet.getString("customer_id");
+                String serviceId = resultSet.getString("service_id");
 
                 Employee employee = iEmployee.findEmployeeByID(employeeId);
                 Customer customer = iCustomer.findCustomerByID(customerId);
@@ -121,8 +119,8 @@ public class ContractRepository {
             preparedStatement.setString(2, contract.getContractEndDate());
             preparedStatement.setDouble(3, contract.getContractDeposit());
             preparedStatement.setInt(4, contract.getEmployee().getEmployeeID());
-            preparedStatement.setInt(5, contract.getCustomer().getCustomerID());
-            preparedStatement.setInt(6, contract.getServices().getServiceID());
+            preparedStatement.setString(5, contract.getCustomer().getCustomerID());
+            preparedStatement.setString(6, contract.getServices().getServiceID());
             preparedStatement.setInt(7, contract.getContractID());
 
             check = preparedStatement.executeUpdate() > 0;

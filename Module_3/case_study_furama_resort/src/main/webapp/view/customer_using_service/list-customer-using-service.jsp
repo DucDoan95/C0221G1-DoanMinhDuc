@@ -10,9 +10,7 @@
 <html>
 <head>
     <title>Furama Resort</title>
-    <script src="../../lib/bootstrap-4.6.0-dist/js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../lib/bootstrap-4.6.0-dist/css/bootstrap.css">
-    <script src="../../lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
     <style>
         img {
             width: 20%;
@@ -56,7 +54,8 @@
                 </div>
             </div>
 
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered" id="tableCustomerUsingService">
+                <thead>
                 <tr class="text-center">
                     <th>STT</th>
                     <th>Customer Name</th>
@@ -68,6 +67,8 @@
                     <th>Quantity</th>
                     <th>Edit</th>
                 </tr>
+                </thead>
+                <tbody>
                 <c:forEach items="${customerUsingServiceList}" var="customerUsingService" varStatus="status">
                     <tr class="text-center">
                         <td>${status.count}</td>
@@ -78,15 +79,15 @@
                         <td>${customerUsingService.serviceName}</td>
                         <td>
                             <c:forEach items="${attachServiceList}" var="attachService">
-                                <c:if test="${attachService.attachServiceID == customerUsingService.attachServiceID}">
+                                <c:if test="${attachService.contractID == customerUsingService.contractID}">
                                     <p>${attachService.attachServiceName}</p>
                                 </c:if>
                             </c:forEach>
                         </td>
                         <td>
                             <c:forEach items="${attachServiceList}" var="attachService">
-                                <c:if test="${attachService.attachServiceID == customerUsingService.attachServiceID}">
-                                    <p>${attachService.attachServiceUnit}</p>
+                                <c:if test="${attachService.contractID == customerUsingService.contractID}">
+                                    <p>${attachService.quantity}</p>
                                 </c:if>
                             </c:forEach>
                         </td>
@@ -95,10 +96,27 @@
                         </td>
                     </tr>
                 </c:forEach>
+                </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<%--Phân trang--%>
+
+<script src="../../lib/bootstrap-4.6.0-dist/js/jquery-3.6.0.min.js"></script>
+<script src="../../lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+<script src="../../lib/datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../lib/datatables/js/dataTables.bootstrap4.min.js"></script>>
+<script>
+    $(document).ready(function () {
+        $('#tableCustomerUsingService').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5,
+        });
+    });
+</script>
 <jsp:include page="../../view/furama/furama-footer.jsp"></jsp:include>
 
 </body>

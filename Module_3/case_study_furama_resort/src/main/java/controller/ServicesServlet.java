@@ -1,15 +1,14 @@
 package controller;
 
-import model.bean.Customer;
 import model.bean.RentType;
 import model.bean.ServiceType;
 import model.bean.Services;
-import model.service.rent_type.IRentType;
-import model.service.rent_type.impl.RentTypeImpl;
-import model.service.service_type.IServiceType;
-import model.service.service_type.impl.ServiceTypeImpl;
-import model.service.services.IServices;
-import model.service.services.impl.ServicesImpl;
+import model.service.IRentType;
+import model.service.impl.RentTypeImpl;
+import model.service.IServiceType;
+import model.service.impl.ServiceTypeImpl;
+import model.service.IServices;
+import model.service.impl.ServicesImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,6 +41,7 @@ public class ServicesServlet extends HttpServlet {
 
 
     private void createService(HttpServletRequest request, HttpServletResponse response) {
+        String serviceID = request.getParameter("serviceID");
         String serviceName = request.getParameter("serviceName");
         int serviceArea = Integer.parseInt(request.getParameter("serviceArea"));
         double serviceCost = Double.parseDouble(request.getParameter("serviceCost"));
@@ -70,8 +70,8 @@ public class ServicesServlet extends HttpServlet {
         RentType rentType = iRentType.findRentTypeByID(rentTypeID);
         ServiceType serviceType = iServiceType.findServiceTypeByID(serviceTypeID);
 
-        Services villa = new Services(serviceName, serviceArea, serviceCost, serviceMaxPeople, rentType, serviceType, standardRoom, descriptionOtherConvenience, poolArea, numberOfFloors);
-        boolean check = iServices.createVillaService(villa);
+        Services services = new Services(serviceID,serviceName, serviceArea, serviceCost, serviceMaxPeople, rentType, serviceType, standardRoom, descriptionOtherConvenience, poolArea, numberOfFloors);
+        boolean check = iServices.createService(services);
         if (check) {
             request.setAttribute("message", "Create successful");
             request.setAttribute("rentTypeList", rentTypeList);

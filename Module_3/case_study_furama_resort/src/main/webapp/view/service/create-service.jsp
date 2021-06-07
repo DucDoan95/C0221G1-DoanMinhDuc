@@ -37,7 +37,7 @@
             <div class="col-lg-8 bg-info">
                 <div class="row p-3 bg-light">
                     <div class="col-lg-12 text-center">
-                        <h1>Create Villa Service</h1>
+                        <h1>Create Service</h1>
                         <h3>
                             <c:if test="${message=='Create successful'}">
                                 <p class="text-success">${message}</p>
@@ -54,6 +54,14 @@
                     </div>
                 </div>
                 <div class="row p-2 pt-5">
+                    <div class="col-lg-4 text-right">
+                        <label class="font-weight-bold">Service ID: </label>
+                    </div>
+                    <div class="col-lg-8 ">
+                        <input type="text" name="serviceID">
+                    </div>
+                </div>
+                <div class="row p-2">
                     <div class="col-lg-4 text-right">
                         <label class="font-weight-bold">Service Name: </label>
                     </div>
