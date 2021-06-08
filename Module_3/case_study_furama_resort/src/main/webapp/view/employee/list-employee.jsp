@@ -296,7 +296,7 @@
 <script src="../../lib/datatables/js/dataTables.bootstrap4.min.js"></script>>
 <script>
     $(document).ready(function () {
-        $('#tableCustomer').dataTable({
+        $('#tableEmployee').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
             "pageLength": 5,

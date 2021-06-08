@@ -2,6 +2,7 @@ package controller;
 
 import model.bean.Customer;
 import model.bean.CustomerType;
+
 import model.service.ICustomer;
 import model.service.impl.CustomerImpl;
 import model.service.ICustomerType;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -54,14 +56,23 @@ public class CustomerServlet extends HttpServlet {
         String customerAddress = request.getParameter("customerAddress");
         CustomerType customerType = iCustomerType.findCustomerTypeByID(customerTypeID);
         Customer customer = new Customer(customerID,customerType, customerName, customerBirthday, customerGender, customerIDCard, customerPhone, customerEmail, customerAddress);
-        boolean check = iCustomer.createCustomer(customer);
-        if (check) {
+        Map<String, String> msgMap =iCustomer.createCustomer(customer);
+
+
+        if (msgMap.isEmpty()) {
             request.setAttribute("message", "Create successful");
             request.setAttribute("customerTypeList",customerTypeList);
-
         } else {
+            request.setAttribute("msgID",msgMap.get("id"));
+            request.setAttribute("msgName",msgMap.get("name"));
+            request.setAttribute("msgBirthday",msgMap.get("birthday"));
+            request.setAttribute("msgIDCard",msgMap.get("idCard"));
+            request.setAttribute("msgPhone",msgMap.get("phone"));
+            request.setAttribute("msgEmail",msgMap.get("email"));
             request.setAttribute("message", "Create unsuccessful");
             request.setAttribute("customerTypeList",customerTypeList);
+            request.setAttribute("customer", customer);
+            request.setAttribute("customerType", customerTypeList);
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/customer/create-customer.jsp");

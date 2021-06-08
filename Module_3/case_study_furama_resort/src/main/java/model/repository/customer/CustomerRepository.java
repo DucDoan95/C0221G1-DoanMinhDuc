@@ -29,10 +29,9 @@ public class CustomerRepository {
                     "where customer_name like ?;";
 
 
-    public boolean createCustomer(Customer customer) {
+    public void createCustomer(Customer customer) {
         Connection connection = baseRepository.connectDatabase();
         List<Customer> customerList = new ArrayList<>();
-        boolean check = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_CUSTOMER);
             preparedStatement.setString(1, customer.getCustomerID());
@@ -44,12 +43,9 @@ public class CustomerRepository {
             preparedStatement.setString(7, customer.getCustomerPhone());
             preparedStatement.setString(8, customer.getCustomerEmail());
             preparedStatement.setString(9, customer.getCustomerAddress());
-            check = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return check;
-
     }
 
 

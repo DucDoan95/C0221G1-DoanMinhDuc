@@ -3,9 +3,10 @@ package model.service;
 import model.bean.Customer;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ICustomer {
-    public boolean createCustomer(Customer customer);
+    public Map<String,String> createCustomer(Customer customer);
     public Customer findCustomerByID(String id);
     public List<Customer> getAllCustomer();
     public boolean editCustomer(Customer customer);

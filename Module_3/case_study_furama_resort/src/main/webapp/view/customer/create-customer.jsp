@@ -58,7 +58,8 @@
                         <label class="font-weight-bold">Customer ID</label>
                     </div>
                     <div class="col-lg-8 ">
-                        <input type="text" name="customerID">
+                        <input type="text" name="customerID" value="${customer.customerID}">
+                        <small style="color: red">${msgID}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -66,7 +67,8 @@
                         <label class="font-weight-bold">Customer Name</label>
                     </div>
                     <div class="col-lg-8 ">
-                        <input type="text" name="customerName">
+                        <input type="text" name="customerName" value="${customer.customerName}">
+                        <small style="color: red">${msgName}</small>
                     </div>
                 </div>
                 <div class="row">
@@ -89,7 +91,8 @@
                         <label class="font-weight-bold">Customer Birthday</label>
                     </div>
                     <div class="col-lg-8">
-                        <input class="w-auto" type="date" name="customerBirthday">
+                        <input class="w-auto" type="date" name="customerBirthday" value="${customer.customerBirthday}">
+                        <small style="color: red">${msgBirrthday}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -108,7 +111,8 @@
                         <label class="font-weight-bold">Customer ID Card</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="customerIDCard">
+                        <input type="text" name="customerIDCard" value="${customer.customerIDCard}">
+                        <small style="color: red">${msgIDCard}</small>
                     </div>
                 </div>
                 <div class="row p-2 ">
@@ -116,7 +120,8 @@
                         <label class="font-weight-bold">Customer Phone</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="customerPhone">
+                        <input type="text" name="customerPhone" value="${customer.customerPhone}">
+                        <small style="color: red">${msgPhone}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -124,7 +129,8 @@
                         <label class="font-weight-bold">Customer Email</label>
                     </div>
                     <div class="col-lg-8 ">
-                        <input type="text" name="customerEmail">
+                        <input type="text" name="customerEmail" value="${customer.customerEmail}">
+                        <small style="color: red">${msgEmail}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -132,7 +138,8 @@
                         <label class="font-weight-bold">Customer Address</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="customerAddress">
+                        <input type="text" name="customerAddress" value="${customer.customerAddress}">
+                        <small style="color: red">${msgAddress}</small>
                     </div>
                 </div>
                 <div class="row p-2 justify-content-center pb-4">
