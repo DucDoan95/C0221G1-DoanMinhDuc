@@ -27,9 +27,8 @@ public class ServicesRepository {
     final String GET_ALL_SERVICES = "select *from service;";
 
 
-    public boolean createService(Services services) {
+    public void createService(Services services) {
         Connection connection = baseRepository.connectDatabase();
-        boolean check = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_SERVICE);
             preparedStatement.setString(1, services.getServiceID());
@@ -43,11 +42,10 @@ public class ServicesRepository {
             preparedStatement.setString(9, services.getDescriptionOtherConvenience());
             preparedStatement.setString(10, services.getPoolArea());
             preparedStatement.setString(11, services.getNumberOfFloors());
-            check = preparedStatement.executeUpdate() > 0;
+             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return check;
     }
 
 

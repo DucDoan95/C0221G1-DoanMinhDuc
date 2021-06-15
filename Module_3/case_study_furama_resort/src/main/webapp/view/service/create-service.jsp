@@ -58,7 +58,8 @@
                         <label class="font-weight-bold">Service ID: </label>
                     </div>
                     <div class="col-lg-8 ">
-                        <input type="text" name="serviceID">
+                        <input type="text" name="serviceID" value="${services.serviceID}">
+                        <small style="color: red">${msgID}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -66,7 +67,8 @@
                         <label class="font-weight-bold">Service Name: </label>
                     </div>
                     <div class="col-lg-8 ">
-                        <input type="text" name="serviceName">
+                        <input type="text" name="serviceName" ${services.serviceName}>
+                        <small style="color: red">${msgName} </small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -74,8 +76,8 @@
                         <label class="font-weight-bold">Service Area: </label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="serviceArea">
-
+                        <input type="number" name="serviceArea" value="0">
+                        <small style="color: red">${msgArea}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -83,7 +85,8 @@
                         <label class="font-weight-bold">Service Cost: </label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="serviceCost">
+                        <input type="number" name="serviceCost" value="0">
+                        <small style="color: red">${msgCost}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -91,7 +94,8 @@
                         <label class="font-weight-bold">Service Max People: </label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="serviceMaxPeople">
+                        <input type="number" name="serviceMaxPeople" value="0">
+                        <small style="color: red">${msgMaxPeople}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -124,6 +128,7 @@
                     </div>
                     <div class="col-lg-8 ">
                         <input type="text" name="standardRoom" id="ipStandardRoom">
+                        <small style="color: red">${msgStandardRoom}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -131,7 +136,8 @@
                         <label class="font-weight-bold" id="labDescription">Description Other Convenience: </label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="descriptionOtherConvenience" id="ipDescription">
+                        <input type="text" name="descriptionOtherConvenience" id="ipDescription" ${services.descriptionOtherConvenience}>
+                        <small style="color: red">${msgDescription}</small>
                     </div>
                 </div>
                 <div class="row p-2">
@@ -139,7 +145,8 @@
                         <label class="font-weight-bold" id="labPoolArea">Pool Area: </label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="poolArea" id="ipPoolArea">
+                        <input type="text" name="poolArea" id="ipPoolArea" ${services.poolArea}>
+                        <small style="color: red">${msgPoolArea}</small>
                     </div>
                 </div>
                 <div class="row p-2" >
@@ -147,7 +154,8 @@
                         <label class="font-weight-bold" id="labNumberFloor">Number of Floors: </label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="numberOfFloors" id="ipNumberFloor">
+                        <input type="text" name="numberOfFloors" id="ipNumberFloor" ${services.numberOfFloors}>
+                        <small style="color: red">${msgArea}</small>
                     </div>
                 </div>
                 <div class="row p-2 justify-content-center pb-4">

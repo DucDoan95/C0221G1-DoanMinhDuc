@@ -86,7 +86,7 @@
                         <td>${customer.customerPhone}</td>
                         <td>
                             <button type="button" class="btn btn-info"
-                                    onclick="sendDataToModalView('${customer.customerID}','${customer.customerName}','${customer.customerType.customerTypeID}','${customer.customerBirthday}','${customer.customerGender}','${customer.customerIDCard}','${customer.customerPhone}','${customer.customerEmail}','${customer.customerAddress}')"
+                                    onclick="sendDataToModalView('${customer.customerID}','${customer.customerName}','${customer.customerType.customerTypeName}','${customer.customerBirthday}','${customer.customerGender}','${customer.customerIDCard}','${customer.customerPhone}','${customer.customerEmail}','${customer.customerAddress}')"
                                     data-toggle="modal" data-target="#exampleModalLongView">
                                 View
                             </button>
@@ -243,21 +243,12 @@
     function sendDataToModalView(id, name, typeID, birthday, gender, idCard, phone, email, address) {
         document.getElementById("idCustomerView").innerText = id;
         document.getElementById("nameCustomerView").innerText = name;
-        if (typeID == 1) {
-            document.getElementById("typeIDCustomerView").innerText = "Diamond";
-        } else if (typeID == 2) {
-            document.getElementById("typeIDCustomerView").innerText = "Platinum";
-        } else if (typeID == 3) {
-            document.getElementById("typeIDCustomerView").innerText = "Gold";
-        } else if (typeID == 4) {
-            document.getElementById("typeIDCustomerView").innerText = "Silver";
-        } else {
-            document.getElementById("typeIDCustomerView").innerText = "Member";
-        }
+        document.getElementById("typeIDCustomerView").innerText = typeID;
         document.getElementById("birthdayCustomerView").innerText = birthday;
-        if (gender == 0) {
+        if(gender==0){
             document.getElementById("genderCustomerView").innerText = "Male";
-        } else {
+        }
+        if(gender==1){
             document.getElementById("genderCustomerView").innerText = "Female";
         }
         document.getElementById("idCardCustomerView").innerText = idCard;

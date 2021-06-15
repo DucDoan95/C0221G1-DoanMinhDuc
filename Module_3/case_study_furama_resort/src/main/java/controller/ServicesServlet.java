@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "ServicesServlet", urlPatterns = "/services")
 public class ServicesServlet extends HttpServlet {
@@ -52,18 +53,7 @@ public class ServicesServlet extends HttpServlet {
         String descriptionOtherConvenience = request.getParameter("descriptionOtherConvenience");
         String poolArea = request.getParameter("poolArea");
         String numberOfFloors = request.getParameter("numberOfFloors");
-        if(standardRoom==""){
-            standardRoom=null;
-        }
-        if(descriptionOtherConvenience==""){
-            descriptionOtherConvenience=null;
-        }
-        if(poolArea==""){
-            poolArea=null;
-        }
-        if(numberOfFloors==""){
-            numberOfFloors=null;
-        }
+
 
         List<RentType> rentTypeList = iRentType.getAllRentType();
         List<ServiceType> serviceTypeList = iServiceType.getAllServiceType();
@@ -71,17 +61,32 @@ public class ServicesServlet extends HttpServlet {
         ServiceType serviceType = iServiceType.findServiceTypeByID(serviceTypeID);
 
         Services services = new Services(serviceID,serviceName, serviceArea, serviceCost, serviceMaxPeople, rentType, serviceType, standardRoom, descriptionOtherConvenience, poolArea, numberOfFloors);
-        boolean check = iServices.createService(services);
-        if (check) {
+
+        Map<String, String> msgMap = iServices.createService(services);
+
+        if (msgMap.isEmpty()) {
             request.setAttribute("message", "Create successful");
             request.setAttribute("rentTypeList", rentTypeList);
             request.setAttribute("serviceTypeList", serviceTypeList);
+            request.setAttribute("services", services);
         } else {
+            request.setAttribute("msgName", msgMap.get("name"));
+            request.setAttribute("msgID", msgMap.get("id"));
+            request.setAttribute("msgFloor", msgMap.get("floor"));
+            request.setAttribute("msgArea", msgMap.get("area"));
+            request.setAttribute("msgPoolArea", msgMap.get("poolArea"));
+            request.setAttribute("msgCost", msgMap.get("cost"));
+            request.setAttribute("msgMaxPeople", msgMap.get("maxPeople"));
+            request.setAttribute("msgStandardRoom", msgMap.get("standardRoom"));
+            request.setAttribute("msgDescription", msgMap.get("description"));
             request.setAttribute("message", "Create unsuccessful");
             request.setAttribute("rentTypeList", rentTypeList);
             request.setAttribute("serviceTypeList", serviceTypeList);
-
+            request.setAttribute("services", services);
         }
+
+
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/service/create-service.jsp");
         try {
             requestDispatcher.forward(request, response);

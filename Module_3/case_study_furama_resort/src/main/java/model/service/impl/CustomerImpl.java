@@ -60,6 +60,9 @@ public class CustomerImpl implements ICustomer {
             mapMsg.put("address","Please input Customer Address");
             flag=false;
         }
+        if(flag){
+            customerRepository.createCustomer(customer);
+        }
         return mapMsg;
     }
 

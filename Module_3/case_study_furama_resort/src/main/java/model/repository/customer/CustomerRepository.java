@@ -31,7 +31,6 @@ public class CustomerRepository {
 
     public void createCustomer(Customer customer) {
         Connection connection = baseRepository.connectDatabase();
-        List<Customer> customerList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_CUSTOMER);
             preparedStatement.setString(1, customer.getCustomerID());
@@ -43,6 +42,7 @@ public class CustomerRepository {
             preparedStatement.setString(7, customer.getCustomerPhone());
             preparedStatement.setString(8, customer.getCustomerEmail());
             preparedStatement.setString(9, customer.getCustomerAddress());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

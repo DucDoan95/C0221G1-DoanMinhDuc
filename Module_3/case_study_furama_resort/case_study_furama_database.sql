@@ -223,8 +223,10 @@ group by ctr.customer_id;
 select *from customer_using_service;
 
 create view attach_service_using as
-select ct.contract_id,att.attach_service_id,att.attach_service_name,sum(cd.quantity)
+select ct.contract_id,att.attach_service_id,att.attach_service_name,sum(cd.quantity) as quantity
 from attach_service att 
 join contract_detail cd on att.attach_service_id = cd.attach_service_id
 join contract ct on cd.contract_id = ct.contract_id
 group by att.attach_service_id , ct.contract_id;
+
+select *from attach_service_using
