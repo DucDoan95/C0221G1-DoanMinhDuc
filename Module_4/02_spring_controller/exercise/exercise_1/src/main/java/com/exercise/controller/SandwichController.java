@@ -16,8 +16,12 @@ public class SandwichController {
     }
 
     @RequestMapping("/save")
-    public String save(@RequestParam("condiment") String condiment, Model model) {
-        model.addAttribute("condiment","Sandwich include: "+condiment);
+    public String save(@RequestParam("condiment") String[] condiment, Model model) {
+        String result="";
+        for(int i=0;i<condiment.length;i++){
+            result+=condiment[i]+" ";
+        }
+        model.addAttribute("condiment","Sandwich include: "+result);
         return "/sandwich";
     }
 
