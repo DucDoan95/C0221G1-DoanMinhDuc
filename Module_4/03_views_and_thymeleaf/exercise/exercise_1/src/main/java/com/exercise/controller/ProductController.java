@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/create")
-    public String create(Product product, RedirectAttributes redirectAttributes) {
+    public String create(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         product.setId((int) (Math.random() * 10000));
         iProductService.create(product);
         redirectAttributes.addFlashAttribute("success", "Create successfully");
@@ -44,21 +44,21 @@ public class ProductController {
     }
 
     @PostMapping(value = "/edit")
-    public String edit(Product product, RedirectAttributes redirectAttributes) {
+    public String edit(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         iProductService.edit(product.getId(), product);
         redirectAttributes.addFlashAttribute("success", "Edit successfully");
         return "redirect:/product";
     }
 
-    @GetMapping(value = "/{id}/delete-form")
-    public String deleteForm(@PathVariable int id, Model model) {
-        model.addAttribute("product", iProductService.findByID(id));
-        return "/delete";
-    }
+//    @GetMapping(value = "/{id}/delete-form")
+//    public String deleteForm(@PathVariable int id, Model model) {
+//        model.addAttribute("product", iProductService.findByID(id));
+//        return "/delete";
+//    }
 
     @PostMapping(value = "/delete")
-    public String delete(Product product, RedirectAttributes redirectAttributes) {
-        iProductService.delete(product.getId());
+    public String delete(@RequestParam int idProduct, RedirectAttributes redirectAttributes) {
+        iProductService.delete(idProduct);
         redirectAttributes.addFlashAttribute("success", "Delete successfully");
         return "redirect:/product";
     }
