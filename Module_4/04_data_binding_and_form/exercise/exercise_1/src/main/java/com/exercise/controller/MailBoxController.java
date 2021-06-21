@@ -22,7 +22,7 @@ public class MailBoxController {
         return "/mail-box";
     }
 
-    @PostMapping(value = "/saveMailBox")
+    @PostMapping(value = "/mail-save")
     public String saveMailBox(@ModelAttribute("mailBox") MailBox mailBox,Model model){
         model.addAttribute("mailBox",mailBox);
         return "/display";

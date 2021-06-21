@@ -15,7 +15,7 @@
 </head>
 <body>
 <h3>Settings</h3>
-<form:form method="post" action="saveMailBox" modelAttribute="mailBox">
+<form:form method="post" action="mail-save" modelAttribute="mailBox">
     <table>
         <tr>
             <td><form:label path="language">Languages: </form:label></td>
