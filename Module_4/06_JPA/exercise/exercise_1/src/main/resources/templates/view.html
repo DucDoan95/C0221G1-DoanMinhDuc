@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>View blog </h1>
+<p>
+    <a href="/blog/list">Back to menu</a>
+</p>
+<div>
+    <form  th:object="${blog}">
+        <input type="hidden" th:field="*{id}">
+        <table>
+            <tr>
+                <td>Title:</td>
+                <td>
+                    <input readonly type="text" th:field="*{name}">
+                </td>
+            </tr>
+            <tr>
+                <td>Content:</td>
+                <td>
+                    <textarea readonly rows="8" cols="50" th:field="*{content}"></textarea>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
