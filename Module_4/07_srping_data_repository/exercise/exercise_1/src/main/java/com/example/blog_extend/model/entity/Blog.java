@@ -1,6 +1,7 @@
 package com.example.blog_extend.model.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Blog {
@@ -9,6 +10,7 @@ public class Blog {
     private Integer id;
     private String title;
     private String content;
+    private Date dateWrite;
 
     @ManyToOne
     @JoinColumn(name = "id_category")
@@ -16,9 +18,10 @@ public class Blog {
     public Blog() {
     }
 
-    public Blog(String title, String content) {
+    public Blog(String title, String content,Date dateWrite) {
         this.title = title;
         this.content = content;
+        this.dateWrite = dateWrite;
     }
 
     public Integer getId() {
@@ -51,5 +54,13 @@ public class Blog {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Date getDateWrite() {
+        return dateWrite;
+    }
+
+    public void setDateWrite(Date dateWrite) {
+        this.dateWrite = dateWrite;
     }
 }

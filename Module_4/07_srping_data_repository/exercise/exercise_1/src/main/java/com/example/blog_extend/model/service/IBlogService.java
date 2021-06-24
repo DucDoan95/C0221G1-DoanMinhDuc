@@ -12,5 +12,5 @@ public interface IBlogService {
     void save(Blog blog);
     void remove(Integer id);
     Page<Blog> findByTitle(String title, Pageable pageable);
-
+    Page<Blog> findByCategory(Integer idCategory, Pageable pageable);
 }

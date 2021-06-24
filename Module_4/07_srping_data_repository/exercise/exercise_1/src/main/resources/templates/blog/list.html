@@ -5,7 +5,8 @@
     <title></title>
 </head>
 <body>
-<a href="/blog/create">Create new blog</a>
+<a href="/blog/create">Create new blog</a><br>
+<a href="/category/create">Create new Category</a>
 <form>
     Search by Title:
     <input name="search" type="text"/>
@@ -14,6 +15,13 @@
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
+<table>
+    <tr>
+        <td th:each="category : ${categoryList}">
+        <a th:href="@{/blog/searchCategory(id=${category.id})}" th:text="${category.name}"></a>
+        </td>
+    </tr>
+</table>
 <h2>List Blog</h2>
 <div>
     <table border="1">
@@ -23,7 +31,7 @@
             <td>Name</td>
             <td>Content</td>
             <td>Category</td>
-            </td>
+            <td>Date Write</td>
             <td>View</td>
             <td>Edit</td>
             <td>Delete</td>
@@ -36,8 +44,7 @@
             <td th:text="${blog.title}"></td>
             <td th:text="${blog.content}"></td>
             <td th:text="${blog.category.name}"></td>
-            <td>
-            </td>
+            <td th:text="${blog.dateWrite}"></td>
             <td><a th:href="@{/blog/view(id=${blog.id})}">View</a></td>
             <td><a th:href="@{/blog/edit(id=${blog.id})}">Edit</a></td>
             <td><a th:href="@{/blog/delete(id=${blog.id})}">Delete</a></td>
@@ -45,7 +52,8 @@
         </tbody>
     </table>
     <div>
-        <a th:href="@{'/list'(page=${blogList.number - 1},search=${search})}" th:if="${blogList.hasPrevious()}">Previous</a>
+        <a th:href="@{'/list'(page=${blogList.number - 1},search=${search})}"
+           th:if="${blogList.hasPrevious()}">Previous</a>
         <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
         <a th:href="@{'/list'(page=${blogList.number + 1},search=${search})}" th:if="${blogList.hasNext()}">Next</a>
     </div>

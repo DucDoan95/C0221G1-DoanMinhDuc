@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -33,7 +33,7 @@ public class BlogController {
         }
         model.addAttribute("categoryList",iCategoryService.findByAll());
         model.addAttribute("blogList", blogs);
-        return "/list";
+        return "/blog/list";
     }
 
     @GetMapping(value = "/edit")
@@ -41,7 +41,7 @@ public class BlogController {
         Blog blog = iBlogService.findById(id);
         model.addAttribute("blog",blog);
         model.addAttribute("categoryList",iCategoryService.findByAll());
-        return "edit";
+        return "/blog/edit";
     }
 
     @PostMapping(value = "/edit")
@@ -55,11 +55,12 @@ public class BlogController {
     public String showCreateForm( Model model){
         model.addAttribute("categoryList",iCategoryService.findByAll());
         model.addAttribute("blog",new Blog());
-        return "create";
+        return "/blog/create";
     }
 
     @PostMapping(value = "/create")
     public String saveBlog(@ModelAttribute Blog blog,Model model ,RedirectAttributes redirectAttributes){
+        blog.setDateWrite(new Date());
         iBlogService.save(blog);
         model.addAttribute("categoryList",iCategoryService.findByAll());
         redirectAttributes.addFlashAttribute("message", "Blog created successfully");
@@ -70,7 +71,7 @@ public class BlogController {
     public String showDeleteForm(@RequestParam Integer id, Model model){
         Blog blog = iBlogService.findById(id);
         model.addAttribute("blog",blog);
-        return "delete";
+        return "/blog/delete";
     }
     @PostMapping(value = "/delete")
     public String deleteBlog(@ModelAttribute Blog blog, RedirectAttributes redirectAttributes){
@@ -84,7 +85,15 @@ public class BlogController {
     public String showViewForm(@RequestParam Integer id, Model model){
         Blog blog = iBlogService.findById(id);
         model.addAttribute("blog",blog);
-        return "view";
+        return "/blog/view";
+    }
+
+    @GetMapping(value = "/searchCategory")
+    public String searchCategory(@RequestParam Integer id,@PageableDefault(size = 2) Pageable pageable, Model model){
+        Page<Blog> blog = iBlogService.findByCategory(id,pageable);
+        model.addAttribute("blogList",blog);
+        model.addAttribute("categoryList",iCategoryService.findByAll());
+        return "/blog/list";
     }
 
 }
