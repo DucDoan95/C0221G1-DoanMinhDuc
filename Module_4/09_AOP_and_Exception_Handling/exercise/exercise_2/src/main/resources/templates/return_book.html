@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<body>
+<h3>Return Book</h3>
+<a href="/">Go back Library</a>
+<div class="notify">
+    <div th:if="${msg}">
+        <span th:text="${msg}"></span>
+    </div>
+</div>
+<form action="/borrow/return_book_by_code" method="get">
+    <tr>
+        <td><input type="text" name="search" style="width: 150px;height: 25px"></td>
+        <td>
+            <button type="submit">Return Book</button>
+        </td>
+    </tr>
+</form>
+</body>
+</html>
