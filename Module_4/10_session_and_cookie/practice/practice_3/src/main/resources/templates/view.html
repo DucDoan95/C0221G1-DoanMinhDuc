@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Thông tin sản phẩm</h1>
+<a href="/shop">Quay lại</a>
+<div>
+    <div style="width: 300px;height: 100px; float: left">
+        <img th:src="${productList.image}" style="width: 250px; height: 300px">
+        <br><label>Mã SP: </label><span th:text="${productList.id}"></span><br>
+        <label>Giá SP: </label><span th:text="${productList.price}"></span><label> Đ</label><br><br>
+        <a th:href="@{/add/__${productList.id}__(action='list')}"><button>Mua Ngay</button></a>
+    </div>
+    <div style="width: 600px;height: 100px; float: left">
+        <p th:text="${productList.name}"></p>
+        <hr>
+        <p>1. Tặng banner, thiệp
+        <p>2. Giảm ngay 20.000Đ khi mua hàng online</p>
+        <p>3. Giảm tiếp 3% cho đơn hàng online thứ 2</p>
+        <p>4. Giao hàng miễn phí nội thành</p>
+        <p>5. Giao gấp trong 2 giờ</p>
+        <p>6. Cam kết 100% hoàn tiền nếu không hài lòng</p>
+        <p>7. Cam kết hoa tươi trong 3 ngày</p>
+    </div>
+</div>
+</body>
+</html>
