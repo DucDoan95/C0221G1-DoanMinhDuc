@@ -8,7 +8,6 @@
 <body>
 <a href="/shop">Quay lại</a>
 <h1>Bạn đã thanh toán thành công đơn hàng với tổng tiền </h1>
-<h1 th:text="${cart.countTotalPayment()} +VND" style="color: red"></h1>
-<p hidden th:action="${cart.clearProduct()}"></p>
+<h1 th:text="${total} +VND" style="color: red"></h1>
 </body>
 </html>

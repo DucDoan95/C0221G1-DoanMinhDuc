@@ -26,7 +26,8 @@ public class ShoppingCartController {
 
     @GetMapping(value = "/payment")
     public String payment(@SessionAttribute("cart") Cart cart,Model model){
-        model.addAttribute("cart",cart);
+        model.addAttribute("total",cart.countTotalPayment());
+        cart.clearProduct();
         return "payment";
     }
 }
