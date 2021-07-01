@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List blog </title>
+    <link rel="stylesheet" href="./bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+    <input type="text" id="input">
+    <input type="button" value="search" onclick="searchBlog()">
+</div>
+<div class="container mt-4">
+    <div class="row w-50 mx-auto">
+        <div class="col-lg-12">
+            <h2>List blog </h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Tittle</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Date Write</th>
+                    <th scope="col">Category</th>
+                </tr>
+                </thead>
+                <tbody id="blog">
+                </tbody>
+            </table>
+            <div>
+                <button id="lui" onclick="getLui()">Lui</button>
+                <button id="more" onclick="getTien()">Toi</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+></script>
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script src="./bootstrap-4.0.0-alpha.6-dist/jquery/jquery.js"></script>
+<script src="./bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>
+<script>
+    let stt = 1;
+    let page = 0;
+    function listBlog(page, search) {
+        if(page==0){
+            $("#lui").css("display","none");
+        }
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "GET", //GET, DELETE, PUT...
+            url: "http://localhost:8080/blog/list/?page=" + page + "&search=" + search,
+            success: function (resultSuccess) {
+                console.log("Success");
+                console.log(resultSuccess);
+                let list = resultSuccess.content;
+                let resultHTML = "";
+                let text = resultSuccess.totalPages
+                console.log(text);
+                console.log(page);
+                tam=text;
+                if(page<text){
+                    for (let i = 0; i < list.length; i++) {
+                        resultHTML += "<tr>";
+                        resultHTML += "<th scope='row'>" + (stt) + "</th>";
+                        resultHTML += "<td>" + list[i].title + "</td>";
+                        resultHTML += "<td>" + list[i].content + "</td>";
+                        resultHTML += "<td>" + list[i].dateWrite + "</td>";
+                        resultHTML += "<td>" + list[i].category.name + "</td>";
+                        resultHTML += "</tr>";
+                        stt++;
+                    }if(page==(text-1)){
+                        $("#more").css("display","none");
+                        page=page-1;
+                    }
+                }
+                console.log(resultHTML);
+                // innerHTML
+                $("#blog").html(resultHTML);
+            },
+            error: function (resultError) {
+                console.log("Error: ");
+                console.log(resultError);
+            }
+        });
+    }
+
+    listBlog(page, "");
+
+    function searchBlog() {
+        page = 0;
+        stt=1;
+        let search = $("#input").val()
+        listBlog(page, search);
+    }
+
+    function getTien() {
+        $("#lui").css("display","inline-block");
+        let search = $("#input").val();
+        page = page + 1;
+        listBlog(page, search);
+    }
+
+    function getLui() {
+
+        if (page > 0) {
+            $("#more").css("display","inline-block");
+            let search = $("#input").val();
+            stt = page * 2 - 1
+            page = page - 1;
+            listBlog(page, search);
+        }
+    }
+</script>
+</body>
+</html>
