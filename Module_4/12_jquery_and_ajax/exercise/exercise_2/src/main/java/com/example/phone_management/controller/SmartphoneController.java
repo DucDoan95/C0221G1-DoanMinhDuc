@@ -11,15 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/smartphones")
-@CrossOrigin
 public class SmartphoneController {
     @Autowired
     private ISmartphoneService smartphoneService;
 
-    @PostMapping(value = "/create")
+    @PostMapping
     public ResponseEntity<Smartphone> createSmartphone(@RequestBody Smartphone smartphone) {
         return new ResponseEntity<>(smartphoneService.save(smartphone), HttpStatus.CREATED);
     }
@@ -30,12 +28,12 @@ public class SmartphoneController {
         return modelAndView;
     }
 
-    @GetMapping("/getList")
+    @GetMapping
     public ResponseEntity<Iterable<Smartphone>> allPhones() {
         return new ResponseEntity<>(smartphoneService.findAll(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Smartphone> deleteSmartphone(@PathVariable Long id) {
         Optional<Smartphone> smartphoneOptional = smartphoneService.findById(id);
         if (!smartphoneOptional.isPresent()) {
@@ -43,13 +41,5 @@ public class SmartphoneController {
         }
         smartphoneService.remove(id);
         return new ResponseEntity<>(smartphoneOptional.get(), HttpStatus.NO_CONTENT);
-    }
-    @GetMapping("/getPhone/{id}")
-    public ResponseEntity<Smartphone> getSmartphone(@PathVariable Long id) {
-        Optional<Smartphone> smartphoneOptional = smartphoneService.findById(id);
-        if (!smartphoneOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(smartphoneOptional.get(), HttpStatus.OK);
     }
 }
