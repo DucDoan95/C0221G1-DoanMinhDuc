@@ -1,0 +1,112 @@
+package com.example.security_login.controller;
+
+import java.security.Principal;
+import java.util.List;
+
+
+import com.example.security_login.config.WebSecurityConfig;
+import com.example.security_login.model.entity.AppRole;
+import com.example.security_login.model.entity.AppUser;
+import com.example.security_login.model.entity.UserRole;
+import com.example.security_login.model.repository.AppRoleRepository;
+import com.example.security_login.model.service.UserDetailsServiceImpl;
+import com.example.security_login.util.WebUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+public class MainController {
+    @Autowired
+    UserDetailsServiceImpl userDetailsService;
+    @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
+    public String welcomePage(Model model) {
+        model.addAttribute("title", "Welcome");
+        model.addAttribute("message", "This is welcome page!");
+        return "welcomePage";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String adminPage(Model model, Principal principal) {
+
+        User loginedUser = (User) ((Authentication) principal).getPrincipal();
+
+        String userInfo = WebUtils.toString(loginedUser);
+        model.addAttribute("userInfo", userInfo);
+
+        return "adminPage";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(Model model) {
+
+        return "login";
+    }
+
+    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
+    public String logoutSuccessfulPage(Model model) {
+        model.addAttribute("title", "Logout");
+        return "logoutSuccessfulPage";
+    }
+
+    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+    public String userInfo(Model model, Principal principal) {
+
+        // Sau khi user login thanh cong se co principal
+        String userName = principal.getName();
+
+        System.out.println("User Name: " + userName);
+
+        User loginedUser = (User) ((Authentication) principal).getPrincipal();
+
+        String userInfo = WebUtils.toString(loginedUser);
+        model.addAttribute("userInfo", userInfo);
+
+        return "userInfoPage";
+    }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String accessDenied(Model model, Principal principal) {
+
+        if (principal != null) {
+            User loginedUser = (User) ((Authentication) principal).getPrincipal();
+
+            String userInfo = WebUtils.toString(loginedUser);
+
+            model.addAttribute("userInfo", userInfo);
+
+            String message = "Hi " + principal.getName() //
+                    + "<br> You do not have permission to access this page!";
+            model.addAttribute("message", message);
+
+        }
+
+        return "403Page";
+    }
+
+    @RequestMapping(value = "/create",method = RequestMethod.GET)
+    public String showFormCreate(Model model){
+        List<AppRole> appRoleList = userDetailsService.findAllAppRole();
+        model.addAttribute("appUser",new AppUser());
+        model.addAttribute("appRole",appRoleList);
+        return "create";
+    }
+
+    @PostMapping(value = "/createUser")
+    public String createUser(@ModelAttribute AppUser appUser, @RequestParam Long roleID,Model model){
+        WebSecurityConfig webSecurityConfig = new WebSecurityConfig();
+        String password = webSecurityConfig.passwordEncoder().encode(appUser.getEncrytedPassword());
+        appUser.setEncrytedPassword(password);
+        AppRole appRole = userDetailsService.findAppRoleById(roleID);
+        userDetailsService.saveAppUser(appUser);
+        UserRole userRole = new UserRole(appUser,appRole);
+        userDetailsService.saveUserRole(userRole);
+        model.addAttribute("msg","Tạo tài khoản thành công");
+        return "login";
+    }
+
+
+}
