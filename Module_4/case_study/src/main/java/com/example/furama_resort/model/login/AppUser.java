@@ -1,5 +1,7 @@
 package com.example.furama_resort.model.login;
 
+import com.example.furama_resort.model.entity.Employee;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +23,8 @@ public class AppUser {
 
     @Column(name = "Enabled", length = 1, nullable = false)
     private boolean enabled;
+    @OneToOne(mappedBy = "appUser", fetch = FetchType.EAGER)
+    private Employee employee;
 
     public AppUser(Long userId, String userName, String encrytedPassword, boolean enabled) {
         this.userId = userId;
@@ -30,6 +34,15 @@ public class AppUser {
     }
 
     public AppUser() {
+    }
+
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public Long getUserId() {

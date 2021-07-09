@@ -1,5 +1,7 @@
 package com.example.furama_resort.model.entity;
 
+import com.example.furama_resort.model.login.AppUser;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -44,7 +46,9 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee")
     private Set<Contract>contractSet;
-
+    @OneToOne
+    @JoinColumn(name = "User_Id", referencedColumnName = "User_Id") //để tường minh hơn thì nên khai báo thêm referencedColumnName
+    private AppUser appUser;
 
     public Employee() {
     }
@@ -88,6 +92,14 @@ public class Employee {
         this.position = position;
         this.educationDegree = educationDegree;
         this.division = division;
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public Integer getEmployeeId() {

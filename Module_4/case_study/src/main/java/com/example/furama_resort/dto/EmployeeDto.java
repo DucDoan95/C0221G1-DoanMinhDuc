@@ -3,6 +3,7 @@ package com.example.furama_resort.dto;
 import com.example.furama_resort.model.entity.Division;
 import com.example.furama_resort.model.entity.EducationDegree;
 import com.example.furama_resort.model.entity.Position;
+import com.example.furama_resort.model.login.AppUser;
 
 import javax.persistence.Column;
 import javax.validation.constraints.Min;
@@ -33,7 +34,7 @@ public class EmployeeDto {
     private Position position;
     private EducationDegree educationDegree;
     private Division division;
-
+    private AppUser appUser;
     public EmployeeDto() {
     }
 
@@ -75,6 +76,14 @@ public class EmployeeDto {
 
     public void setEmployeeSalary(double employeeSalary) {
         this.employeeSalary = employeeSalary;
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public String getEmployeePhone() {

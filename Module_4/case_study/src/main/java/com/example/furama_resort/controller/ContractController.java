@@ -53,6 +53,7 @@ public class ContractController {
 
     @PostMapping(value = "/create")
     public String saveContract(@Valid @ModelAttribute("contract") ContractDto contractDto, BindingResult bindingResult, Model model) {
+        new ContractDto().validate(contractDto,bindingResult);
         if(bindingResult.hasErrors()){
             model.addAttribute("customerList", iCustomerService.findCustomerByAll());
             model.addAttribute("employeeList", iEmployeeService.findEmployeeByAll());
