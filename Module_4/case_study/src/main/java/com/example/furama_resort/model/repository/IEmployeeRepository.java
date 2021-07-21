@@ -6,7 +6,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IEmployeeRepository extends PagingAndSortingRepository<Employee,Integer> {
     Page<Employee> findEmployeeByEmployeeNameContainingAndEmployeeFlagTrue(String name, Pageable pageable);
+    List<Employee> findAllByEmployeeFlagTrue();
 }

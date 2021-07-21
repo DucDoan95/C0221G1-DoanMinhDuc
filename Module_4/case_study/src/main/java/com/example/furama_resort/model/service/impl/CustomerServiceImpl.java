@@ -17,13 +17,13 @@ public class CustomerServiceImpl implements ICustomerService {
     @Autowired
     ICustomerRepository iCustomerRepository;
     @Override
-    public Page<Customer> findCustomerByName(String name, Pageable pageable) {
-        return iCustomerRepository.findCustomerByCustomerNameContainingAndCustomerFlagTrue(name,pageable);
+    public Page<Customer> findCustomerByName(String name,String idCard,String phone, Pageable pageable) {
+        return iCustomerRepository.findCustomerByCustomerNameContainingAndCustomerFlagTrue(name,idCard,phone,pageable);
     }
 
     @Override
     public List<Customer> findCustomerByAll() {
-        return (List<Customer>) iCustomerRepository.findAll();
+        return (List<Customer>) iCustomerRepository.findAllByCustomerFlagTrue();
     }
 
     @Override

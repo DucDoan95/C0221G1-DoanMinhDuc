@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerService {
-    Page<Customer>findCustomerByName(String name, Pageable pageable);
+    Page<Customer>findCustomerByName(String name,String idCard,String phone, Pageable pageable);
     List<Customer>findCustomerByAll();
     Optional<Customer> findCustomerById(String id);
     void save(Customer customer);

@@ -26,14 +26,21 @@ public class CustomerController {
     ICustomerTypeService iCustomerTypeService;
 
     @RequestMapping(value = "/list")
-    public String showListCustomer(@RequestParam(name = "search")Optional<String> search ,@PageableDefault(size = 5) Pageable pageable, Model model) {
-        String name="";
-        if(search.isPresent()){
-            name = search.get();
+    public String showListCustomer(@RequestParam(name = "search")Optional<String> search,@RequestParam(name = "idCard") Optional<String> idCard,@RequestParam(name = "phone") Optional<String> phone ,@PageableDefault(size = 5) Pageable pageable, Model model) {
+        String name = "";
+        String idCards = "";
+        String phones ="";
+        if(search.isPresent() || idCard.isPresent() || phone.isPresent()){
+            name=search.get();
+            idCards=idCard.get();
+            phones=phone.get();
         }
-        Page<Customer> customers = iCustomerService.findCustomerByName(name,pageable);
+
+        Page<Customer> customers = iCustomerService.findCustomerByName(name,idCards,phones,pageable);
         model.addAttribute("listCustomer", customers);
-        model.addAttribute("name", name);
+        model.addAttribute("search", name);
+        model.addAttribute("idCard", idCards);
+        model.addAttribute("phone", phones);
         return "/customer/list-customer";
     }
 

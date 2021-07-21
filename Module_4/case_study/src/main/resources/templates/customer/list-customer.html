@@ -36,7 +36,9 @@
     <div class="col-6"></div>
     <div class="col-3">
         <form class="d-flex">
-            <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" type="search" name="search" placeholder="Search" >
+            <input class="form-control me-2" type="search" name="idCard" placeholder="ID Card">
+            <input class="form-control me-2" type="search" name="phone" placeholder="Phone">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
@@ -75,9 +77,9 @@
     </tr>
     </tbody>
 </table>
-<a th:href="@{/customer/list(page=${listCustomer.number - 1},name=${name})}" th:if="${listCustomer.hasPrevious()}">Previous</a>
+<a th:href="@{/customer/list(page=${listCustomer.number - 1},search=${search},idCard=${idCard},phone=${phone})}" th:if="${listCustomer.hasPrevious()}">Previous</a>
 <span th:text="${listCustomer.number + 1}"></span>/<span th:text="${listCustomer.totalPages}"></span>
-<a th:href="@{/customer/list(page=${listCustomer.number + 1},name=${name})}" th:if="${listCustomer.hasNext()}">Next</a>
+<a th:href="@{/customer/list(page=${listCustomer.number + 1},search=${search},idCard=${idCard},phone=${phone})}" th:if="${listCustomer.hasNext()}">Next</a>
 <div th:replace="footer"></div>
 <!-- Modal Delete-->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -105,7 +107,7 @@
 </div>
 <!--modal delete-->
 <script>
-    function sendMoDalDelete(id, name) {
+    function sendMoDalDelete(id, name   ) {
         document.getElementById("customerId").value = id;
         document.getElementById("customerName").innerText = name;
     }
