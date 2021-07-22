@@ -1,0 +1,16 @@
+<span>Num A: <input  value="{{numA}}" (change)="changeNumA($event.target)" placeholder="number A" ></span>
+<span> Num B: </span><input  value="{{numB}}" (change)="changeNumB($event.target)" placeholder="number B">
+<span> Result: </span><input value="{{result}}" readonly placeholder="Result"><br>
+<button  (click)="addNumber()" style="width: 50px">+</button>
+<button  (click)="subNumber()" style="width: 50px">-</button>
+<button  (click)="mulNumber()" style="width: 50px">*</button>
+<button  (click)="divNumber()" style="width: 50px">/</button>
+
+<p> Cộng </p>
+<input  [(ngModel)]="numA"> + <input [(ngModel)]="numB"> = <output [value]="numA + numB"></output><br>
+<p> Trừ </p>
+<input  [(ngModel)]="numA"> - <input [(ngModel)]="numB"> = <output [value]="numA - numB"></output><br>
+<p> Nhân </p>
+<input [(ngModel)]="numA"> * <input  [(ngModel)]="numB"> = <output [value]="numA * numB"></output><br>
+<p> Chia </p>
+<input  [(ngModel)]="numA"> / <input  [(ngModel)]="numB"> = <output [value]="numA / numB"></output>

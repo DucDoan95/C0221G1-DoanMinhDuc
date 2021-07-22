@@ -20,19 +20,18 @@
 
 console.log("Start");
 async function test() {
-    let rs;
-    let xHttp = new XMLHttpRequest();
-    xHttp.onload = function () {
-        if (this.status == 200) {
-            rs = (xHttp.responseText);
-        } else {
-            rs= ("Error call API");
-        }
-    };
-    xHttp.open("GET", "https://api.github.com/search/repositories?q=angular")
-    xHttp.send();
-    rs = await xHttp;
-    return rs;
+    return await new Promise((resolve, rejects) => {
+        let xHttp = new XMLHttpRequest()
+        xHttp.onload = function () {
+            if (this.status == 200) {
+                resolve(xHttp.responseText);
+            } else {
+                rejects("Error call API")
+            }
+        };
+        xHttp.open("GET", "https://api.github.com/search/repositories?q=angular")
+        xHttp.send();
+    });
 }
 test().then((result) => {
     console.log("OK")
