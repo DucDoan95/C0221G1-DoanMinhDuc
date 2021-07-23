@@ -1,0 +1,44 @@
+
+<div style="text-align:center">
+  <h4>
+    Today's article
+  </h4>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Item</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let art of articles | paginate:config let i = index">
+      <th scope="row">{{i+1}}</th>
+      <th scope="row"><a href="{{art.url}}" target="_blank">{{art.title}}</a>: <app-like></app-like></th>
+    </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+</div>
+
+<div>
+  <h2 class="col-12">Article Information</h2>
+  <table class="table">
+    <tr>
+      <td>Title:</td>
+      <td><textarea #title value="{{article.title}}" cols="70"></textarea></td>
+    </tr>
+    <tr>
+      <td>Url:</td>
+      <td>
+        <textarea #url value="{{article.url}}" cols="70"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button style="float: right" (click)="addNewArticle(title.value,url.value)">Add</button></td>
+    </tr>
+  </table>
+</div>
