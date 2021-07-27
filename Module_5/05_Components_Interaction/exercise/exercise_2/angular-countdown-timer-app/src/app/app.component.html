@@ -1,5 +1,5 @@
 <h2>Countdown Time</h2>
-<input type="text" [(ngModel)]="timeIn" >
+<input type="text" [(ngModel)]="timeIn" [value]="0" >
 <app-countdown-timer (finish)="display($event)" [seconds]="timeIn"></app-countdown-timer>
 time :{{timeIn}}
 <p>{{timeOut}}</p>

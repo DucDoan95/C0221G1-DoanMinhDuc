@@ -1,0 +1,56 @@
+<form [formGroup]="userForm" (ngSubmit)="createUser()">
+  <label>Email</label>
+  <input type="text" formControlName="email">
+  <div *ngFor="let validate of validate_message.email">
+    <div style="color: red"
+         *ngIf="userForm.get('email')?.hasError(validate.type) && (userForm.get('email')?.touched)">{{validate.message}}</div>
+    <!--  <div style="color: red" *ngIf="userForm.get('email')?.hasError('email') && (userForm.get('email')?.touched)">{{validate.message}}</div>-->
+  </div>
+  <br>
+  <div formGroupName="groupPW">
+    <label>Password</label>
+    <input type="text" formControlName="password">
+    <div *ngFor="let validate of validate_message.password">
+      <div style="color: red"
+           *ngIf="userForm.get('groupPW').get('password')?.hasError(validate.type) && (userForm.get('groupPW').get('password')?.touched)">{{validate.message}}</div>
+    </div>
+    <br>
+    <label>Config Password</label>
+    <input type="text" formControlName="config_password">
+    <div *ngFor="let validate of validate_message.config_password">
+      <div style="color: red"
+           *ngIf="userForm.get('groupPW').get('config_password')?.hasError(validate.type) && (userForm.get('groupPW').get('config_password')?.touched)">{{validate.message}}</div>
+    </div>
+  </div>
+  <div *ngFor="let validate of validate_message.groupPW">
+    <div style="color: red"
+         *ngIf="userForm.get('groupPW')?.hasError(validate.type) && (userForm.get('groupPW')?.touched)">{{validate.message}}</div>
+  </div>
+  <br>
+  <label>Country</label>
+  <select config_password>
+    <option value="Việt Nam">Việt Nam</option>
+    <option value="Thái Lan">Thái Lan</option>
+    <option value="Campuchia">Campuchia</option>
+  </select>
+  <br>
+  <label>Age</label>
+  <input type="number" formControlName="age">
+  <div *ngFor="let validate of validate_message.age">
+    <div style="color: red"
+         *ngIf="userForm.get('age')?.hasError(validate.type) && (userForm.get('age')?.touched)">{{validate.message}}</div>
+  </div>
+  <br>
+  <label>Gender</label>
+  <input type=radio formControlName="gender" value="Male">Male
+  <input type=radio formControlName="gender" value="Female">Female
+  <br>
+  <label>Phone</label>
+  <input type="text" formControlName="phone">
+  <div *ngFor="let validate of validate_message.phone">
+    <div style="color: red"
+         *ngIf="userForm.get('phone')?.hasError(validate.type) && (userForm.get('phone')?.touched)">{{validate.message}}</div>
+  </div>
+  <br>
+  <button type="submit">Create</button>
+</form>

@@ -1,0 +1,18 @@
+<form [formGroup]="userForm" (ngSubmit)="checkLogin()">
+  <label>Email</label>
+  <input type="text" formControlName="email">
+  <div *ngFor="let validate of validate_message.email">
+    <div style="color: red"
+         *ngIf="userForm.get('email')?.hasError(validate.type) && (userForm.get('email')?.touched)">{{validate.message}}</div>
+  </div>
+  <br>
+  <label>Password</label>
+  <input type="text" formControlName="password">
+  <div *ngFor="let validate of validate_message.password">
+    <div style="color: red"
+         *ngIf="userForm.get('password')?.hasError(validate.type) && (userForm.get('password')?.touched)">{{validate.message}}</div>
+  </div>
+  <br>
+
+  <button type="submit">Login</button>
+</form>

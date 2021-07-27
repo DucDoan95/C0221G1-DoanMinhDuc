@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-countdown-timer',
   templateUrl: './countdown-timer.component.html',
   styleUrls: ['./countdown-timer.component.scss']
 })
-export class CountdownTimerComponent implements OnInit {
+export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   message = '';
   remainingTime: number;
   @Input()
@@ -14,14 +14,14 @@ export class CountdownTimerComponent implements OnInit {
   finish = new EventEmitter();
   private intervalId = 0;
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if ('seconds' in changes) {
-  //     let v = changes.seconds.currentValue;
-  //     v = typeof v === 'undefined' ? 11 : v;
-  //     const vFixed = Number(v);
-  //     this.seconds = Number.isNaN(vFixed) ? 11 : vFixed;
-  //   }
-  // }
+  ngOnChanges(changes: SimpleChanges) {
+    if ('seconds' in changes) {
+      let v = changes.seconds.currentValue;
+      v = typeof v === 'undefined' ? 0 : v;
+      const vFixed = Number(v);
+      this.seconds = Number.isNaN(vFixed) ? 0 : vFixed;
+    }
+  }
 
   clearTimer() {
     clearInterval(this.intervalId);
@@ -30,10 +30,10 @@ export class CountdownTimerComponent implements OnInit {
   ngOnInit() {
     this.reset();
   }
-  //
-  // ngOnDestroy() {
-  //   this.clearTimer();
-  // }
+
+  ngOnDestroy() {
+    this.clearTimer();
+  }
 
   start() {
     this.count();
@@ -79,7 +79,7 @@ export class CountdownTimerComponent implements OnInit {
         this.clearTimer();
         this.finish.emit('Blast off!');
       } else {
-        this.finish.emit(`T-${this.remainingTime} seconds and counting`) ;
+        this.finish.emit(`T-${this.remainingTime} seconds and counting`);
       }
     }, 1000);
   }
