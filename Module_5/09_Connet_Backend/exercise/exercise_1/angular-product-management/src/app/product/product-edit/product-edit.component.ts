@@ -14,7 +14,7 @@ export class ProductEditComponent implements OnInit {
   productForm: FormGroup;
   id: number;
   categories: Category[] = [];
-
+  getName: any;
   constructor(private productService: ProductService,
               private categoryService: CategoryService,
               private activatedRoute: ActivatedRoute) {
@@ -34,15 +34,17 @@ export class ProductEditComponent implements OnInit {
         name: new FormControl(product.name),
         price: new FormControl(product.price),
         description: new FormControl(product.description),
-        category: new FormControl(product.category.id)
+        category: new FormControl(product.category)
       });
+      this.getName = product.name;
     });
   }
 
   updateProduct(id: number) {
     const product = this.productForm.value;
     product.category = {
-      id: product.category
+      id: product.category.id,
+      name: product.category.name
     };
     this.productService.updateProduct(id, product).subscribe(() => {
       alert('Cập nhật thành công');
@@ -53,5 +55,8 @@ export class ProductEditComponent implements OnInit {
     this.categoryService.getAll().subscribe(categoires => {
       this.categories = categoires;
     });
+  }
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 }

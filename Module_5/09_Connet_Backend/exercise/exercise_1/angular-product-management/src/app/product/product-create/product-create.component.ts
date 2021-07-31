@@ -16,7 +16,6 @@ export class ProductCreateComponent implements OnInit {
     description: new FormControl(),
     category: new FormControl()
   });
-  category1: Category;
   categories: Category[] = [];
 
   constructor(private productService: ProductService,
@@ -28,15 +27,10 @@ export class ProductCreateComponent implements OnInit {
   }
 
   submit() {
-    this.categoryService.findById(this.productForm.get('category').value).subscribe(category => {
-      this.category1 = category;
-      console.log(this.category1);
       const product = this.productForm.value;
-      product.category = this.category1;
       this.productService.saveProduct(product).subscribe(() => {
         alert('Thêm thành công');
       });
-    });
   }
 
   getAllCategory() {
