@@ -1,0 +1,42 @@
+<div style="background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');background-size: cover">
+  <h1 class="col-lg-12 text-center pt-3"> View Customer</h1>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form class="container" [formGroup]="customerForm">
+        <table class="table table-striped">
+          <tr class="row">
+            <th class="col-3"><label>Customer Name: </label></th>
+            <td class="col-9"><label class="form-control ">{{customers.name}}</label></td>
+          </tr>
+          <tr class="row">
+            <th class="col-3"><label>Date of birth: </label></th>
+            <td class="col-9"><label class="form-control ">{{customers.dateOfBirth}}</label></td>
+          </tr>
+          <tr class="row">
+            <th class="col-3"><label>Customer ID Card: </label></th>
+            <td class="col-9"><label class="form-control ">{{customers.idCard}}</label></td>
+          </tr>
+          <tr class="row">
+            <th class="col-3"><label>Customer Phone: </label></th>
+            <td class="col-9"><label class="form-control ">{{customers.phone}}</label></td>
+          </tr>
+          <tr class="row">
+            <th class="col-3"><label>Customer Email: </label></th>
+            <td class="col-9"><label class="form-control ">{{customers.email}}</label></td>
+          </tr>
+          <tr class="row">
+            <th class="col-3"><label>Customer Address: </label></th>
+            <td class="col-9"><label class="form-control" >{{customers.address}}</label></td>
+          </tr>
+          <tr class="row">
+            <th class="col-3"><label>Customer Type:</label></th>
+            <td class="col-9"><label class="form-control ">{{customers.customerType.name}}</label></td>
+            <td class="col-9"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

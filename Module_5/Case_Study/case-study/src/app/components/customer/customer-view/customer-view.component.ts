@@ -4,16 +4,18 @@ import {CustomerType} from '../../../models/customer/CustomerType';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {CustomerTypeService} from '../../../service/customer/customer-type.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Customer} from '../../../models/customer/Customer';
 
 @Component({
-  selector: 'app-customer-edit',
-  templateUrl: './customer-edit.component.html',
-  styleUrls: ['./customer-edit.component.scss']
+  selector: 'app-customer-view',
+  templateUrl: './customer-view.component.html',
+  styleUrls: ['./customer-view.component.scss']
 })
-export class CustomerEditComponent implements OnInit {
+export class CustomerViewComponent implements OnInit {
   customerForm: FormGroup;
   id: string;
   customerType: CustomerType[] = [];
+  customers: Customer;
 
   constructor(private customerService: CustomerService,
               private customerTypeService: CustomerTypeService,
@@ -25,20 +27,14 @@ export class CustomerEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.getCustomer();
     this.getAllCustomerType();
   }
 
   getCustomer(id: string) {
     return this.customerService.findById(id).subscribe(customer => {
-      this.customerForm = new FormGroup({
-        name: new FormControl(customer.name),
-        dateOfBirth: new FormControl(customer.dateOfBirth),
-        idCard: new FormControl(customer.idCard),
-        phone: new FormControl(customer.phone),
-        email: new FormControl(customer.email),
-        address: new FormControl(customer.address),
-        customerType: new FormControl(customer.customerType),
-      });
+      this.customers = customer;
     });
   }
 
@@ -52,14 +48,4 @@ export class CustomerEditComponent implements OnInit {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
-
-  editCustomer(id: string) {
-    const customer = this.customerForm.value;
-    customer.customerType = {
-      id: customer.customerType.id,
-      name: customer.customerType.name
-    };
-    this.customerService.updateCustomer(id, customer).subscribe(() =>
-      alert('Update Thành công! '));
-  }
 }

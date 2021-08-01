@@ -2,7 +2,7 @@ import {CustomerType} from './CustomerType';
 
 export interface Customer {
   id: string;
-  //customerType: CustomerType;
+  customerType: CustomerType;
   name: string;
   dateOfBirth: string;
   idCard: string;

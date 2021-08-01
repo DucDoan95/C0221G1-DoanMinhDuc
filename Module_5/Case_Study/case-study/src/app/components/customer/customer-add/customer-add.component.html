@@ -1,1 +1,52 @@
-<p>customer-add works!</p>
+<div style="background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');background-size: cover">
+  <h1 class="col-lg-12 text-center pt-3"> Create Customer</h1>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+    <form class="container" [formGroup]="customerForm" (ngSubmit)="createCustomer()">
+      <table class="table table-striped">
+        <tr class="row">
+          <th class="col-3"><label>Customer ID: </label></th>
+          <td class="col-9"><input class="form-control" type="text" name="id" formControlName="id"></td>
+        </tr>
+        <tr class="row">
+          <th class="col-3"><label>Customer Name: </label></th>
+          <td class="col-9"><input class="form-control" type="text" name="name" formControlName="name"></td>
+        </tr>
+        <tr class="row">
+          <th class="col-3"><label>Date of birth: </label></th>
+          <td class="col-9"><input class="form-control " type="date" name="dateOfBirth" formControlName="dateOfBirth"></td>
+        </tr>
+        <tr class="row">
+          <th class="col-3"><label>Customer ID Card: </label></th>
+          <td class="col-9"><input class="form-control" type="text" name="idCard" formControlName="idCard"></td>
+        </tr>
+        <tr class="row">
+          <th class="col-3"><label>Customer Phone: </label></th>
+          <td class="col-9"><input class="form-control" type="text" name="phone" formControlName="phone"></td>
+        </tr>
+        <tr class="row">
+          <th class="col-3"><label>Customer Email: </label></th>
+          <td class="col-9"><input class="form-control" type="email" name="email" formControlName="email"></td>
+        </tr>
+        <tr class="row" >
+          <th class="col-3"><label>Customer Address:</label></th>
+          <td class="col-9"><input class="form-control" type="text" name="address" formControlName="address"></td>
+        </tr>
+        <tr class="row">
+          <th class="col-3"><label>Customer Type:</label></th>
+          <td class="col-9">
+            <select class="form-control" formControlName="customerType">
+              <option *ngFor="let customerType of customerTypes" [ngValue]="customerType">{{customerType.name}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr class="row">
+          <th class="col-12 text-center"><input class="btn btn-success" type="submit" value="Create Customer"></th>
+        </tr>
+      </table>
+    </form>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
