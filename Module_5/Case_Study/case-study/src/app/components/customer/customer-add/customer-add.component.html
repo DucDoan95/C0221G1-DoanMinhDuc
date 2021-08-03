@@ -7,38 +7,67 @@
       <table class="table table-striped">
         <tr class="row">
           <th class="col-3"><label>Customer ID: </label></th>
-          <td class="col-9"><input class="form-control" type="text" name="id" formControlName="id"></td>
+          <td class="col-9">
+            <input class="form-control" type="text" name="id" formControlName="id">
+            <small *ngIf="customerForm.get('id')?.hasError('required') && (customerForm.get('id')?.touched || customerForm.get('id')?.pristine == false)">ID can't null</small>
+            <small *ngIf="customerForm.get('id')?.hasError('pattern') && (customerForm.get('id')?.touched )">ID wrong format 'KH-XXXX'</small>
+          </td>
         </tr>
         <tr class="row">
           <th class="col-3"><label>Customer Name: </label></th>
-          <td class="col-9"><input class="form-control" type="text" name="name" formControlName="name"></td>
+          <td class="col-9">
+            <input class="form-control" type="text" name="name" formControlName="name">
+            <small *ngIf="customerForm.get('name')?.hasError('required') && customerForm.get('name')?.touched">Name can't null</small>
+          </td>
         </tr>
         <tr class="row">
           <th class="col-3"><label>Date of birth: </label></th>
-          <td class="col-9"><input class="form-control " type="date" name="dateOfBirth" formControlName="dateOfBirth"></td>
+          <td class="col-9">
+            <input class="form-control " type="date" name="dateOfBirth" formControlName="dateOfBirth">
+            <small *ngIf="customerForm.get('dateOfBirth')?.hasError('required') && customerForm.get('dateOfBirth')?.touched">Date Of Birth can't null</small>
+
+          </td>
         </tr>
         <tr class="row">
           <th class="col-3"><label>Customer ID Card: </label></th>
-          <td class="col-9"><input class="form-control" type="text" name="idCard" formControlName="idCard"></td>
+          <td class="col-9">
+            <input class="form-control" type="text" name="idCard" formControlName="idCard">
+            <small *ngIf="customerForm.get('idCard')?.hasError('required') && customerForm.get('idCard')?.touched">ID Card can't null</small>
+            <small *ngIf="customerForm.get('idCard')?.hasError('pattern') && customerForm.get('idCard')?.touched">ID Card wrong format '9 character number '</small>
+
+          </td>
         </tr>
         <tr class="row">
           <th class="col-3"><label>Customer Phone: </label></th>
-          <td class="col-9"><input class="form-control" type="text" name="phone" formControlName="phone"></td>
+          <td class="col-9">
+            <input class="form-control" type="text" name="phone" formControlName="phone">
+            <small *ngIf="customerForm.get('phone')?.hasError('required') && customerForm.get('phone')?.touched">Phone can't null</small>
+            <small *ngIf="customerForm.get('phone')?.hasError('pattern') && customerForm.get('phone')?.touched">Phone wrong format '+84XXXXXXXXX or +84XXXXXXXXXX'</small>
+          </td>
         </tr>
         <tr class="row">
           <th class="col-3"><label>Customer Email: </label></th>
-          <td class="col-9"><input class="form-control" type="email" name="email" formControlName="email"></td>
+          <td class="col-9">
+            <input class="form-control" type="email" name="email" formControlName="email">
+            <small *ngIf="customerForm.get('email')?.hasError('required') && customerForm.get('email')?.touched">Email can't null</small>
+            <small *ngIf="customerForm.get('email')?.hasError('email') && customerForm.get('email')?.touched">Email wrong format 'xxx@xxx.xxx</small>
+          </td>
         </tr>
         <tr class="row" >
           <th class="col-3"><label>Customer Address:</label></th>
-          <td class="col-9"><input class="form-control" type="text" name="address" formControlName="address"></td>
+          <td class="col-9">
+            <input class="form-control" type="text" name="address" formControlName="address">
+            <small *ngIf="customerForm.get('address')?.hasError('required') && customerForm.get('address')?.touched">Address can't null</small>
+          </td>
         </tr>
         <tr class="row">
           <th class="col-3"><label>Customer Type:</label></th>
           <td class="col-9">
-            <select class="form-control" formControlName="customerType">
-              <option *ngFor="let customerType of customerTypes" [ngValue]="customerType">{{customerType.name}}</option>
+            <select [compareWith]="compareFn" class="form-control" formControlName="customerType">
+              <option  *ngFor="let customerType of customerTypes" [ngValue]="customerType" >{{customerType.name}}</option>
             </select>
+            <small *ngIf="customerForm.get('customerType')?.hasError('required') && customerForm.get('customerType')?.touched">Choose Customer Type</small>
+
           </td>
         </tr>
         <tr class="row">

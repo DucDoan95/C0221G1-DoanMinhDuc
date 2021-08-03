@@ -2,93 +2,54 @@
   "customer": [
     {
       "id": "KH-0001",
-      "name": "Đức Đoàn 1",
-      "dateOfBirth": "2020-02-02",
-      "idCard": "1000000",
-      "phone": "09090909",
+      "name": "Duc",
+      "dateOfBirth": "2021-08-04",
+      "idCard": "123123123",
+      "phone": "+84111111111",
       "email": "abc@gmail.com",
-      "address": "123abc",
+      "address": "aba",
       "customerType": {
         "id": 1,
         "name": "Diamond"
       }
     },
     {
-      "name": "Duc 1",
-      "dateOfBirth": "2021-07-28",
-      "idCard": "123",
-      "phone": "123",
-      "email": "123",
-      "address": "123",
-      "customerType": {
-        "id": 5,
-        "name": "Member"
-      },
-      "id": "KH-0010"
-    },
-    {
-      "id": "KH-0003",
+      "id": "KH-0002",
       "name": "Minh",
-      "dateOfBirth": "2021-07-07",
-      "idCard": "123",
-      "phone": "123",
-      "email": "123",
+      "dateOfBirth": "2021-08-12",
+      "idCard": "123123123",
+      "phone": "+84333333333",
+      "email": "abc@gmail.coim",
       "address": "123",
       "customerType": {
-        "id": 3,
-        "name": "Gold"
+        "id": 2,
+        "name": "Platinium"
       }
     },
     {
-      "id": "33333",
-      "name": "Duc",
-      "dateOfBirth": "2021-07-21",
+      "id": "KH-1234",
+      "name": "abc",
+      "dateOfBirth": "2021-08-11",
       "idCard": "123123123",
-      "phone": "123123123",
-      "email": "123123",
-      "address": "123123",
+      "phone": "+84111111111",
+      "email": "123123@gmail.com",
+      "address": "123",
       "customerType": {
         "id": 5,
         "name": "Member"
       }
     },
     {
-      "id": "213123",
-      "name": "Duc 3",
-      "dateOfBirth": "2021-07-23",
-      "idCard": "123",
-      "phone": "123",
-      "email": "123",
+      "id": "KH-1235",
+      "name": "abc",
+      "dateOfBirth": "2021-08-12",
+      "idCard": "123123123",
+      "phone": "+84999999999",
+      "email": "abs@gmail.com",
       "address": "123",
       "customerType": {
-        "id": 4,
-        "name": "Silver"
-      }
-    },
-    {
-      "id": "12312313",
-      "name": "Duc 4",
-      "dateOfBirth": "2021-07-08",
-      "idCard": "123",
-      "phone": "123",
-      "email": "123",
-      "address": "123",
-      "customerType": {
-        "id": 3,
-        "name": "Gold"
-      }
-    },
-    {
-      "id": "8",
-      "name": "Duc 5",
-      "dateOfBirth": "2021-07-30",
-      "idCard": "123",
-      "phone": "123",
-      "email": "123",
-      "address": "123",
-      "customerType": {
-        "id": 4,
-        "name": "Silver"
+        "id": 2,
+        "name": "Platinium"
       }
     }
   ],

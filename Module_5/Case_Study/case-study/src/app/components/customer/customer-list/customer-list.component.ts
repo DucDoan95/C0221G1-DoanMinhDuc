@@ -40,9 +40,7 @@ export class CustomerListComponent implements OnInit {
       data: {id, name}
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.customerService.getAll().subscribe(customer => {
-        this.customers = customer;
-      });
+      this.ngOnInit();
     });
   }
 
